@@ -6,7 +6,8 @@
 body{
   font-family: 'Roboto Slab', sans-serif;
   margin: 0px;
-  color: #{{ site.colors.text }};
+  background-color: #ffffff;  /* 背景色を白に設定 */
+  color: #000000;  /* テキスト色を黒に設定 */
 }
 
 .col3 {
