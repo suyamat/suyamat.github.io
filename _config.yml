@@ -42,7 +42,7 @@ syntax_highlight_stylesheet: syntax_highlight.css
 
 # Colors - white mode
 colors:
-  text: 00000
+  text: 333
   tag: dbefdc
   tag_hover: 93cf95
   header_background: ffffff
