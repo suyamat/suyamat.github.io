@@ -1,28 +1,26 @@
 # Info about you
-name: Your Name
+name: Takuya Matsuyama
 position: Job Title
-email: youremail@gmail.com
-company_name: Company Name
+email: u722117c@ecs.osaka-u.ac.jp
+company_name: Osaka University
 company_url: https://www.yourcompany.com
-place_name: City, ST
+place_name: Osaka, Japan
 
 # Blog info
-title: Your Name's Blog
+title: Personal Website
 description: Blog
-url: https://brendanhasz.github.io/github-io-blog-template/
+url: https://suyamat.github.io
 main_github_io: false
 long_description: >-
-    Hi!  Welcome to the template github.io blog site.  This can be a paragraph
-    introducing yourself which will go at the top of the main page for your
-    blog.
+    Hi! I'm Takuya Matsuyama.
 
 # Social links
-github_url: https://github.com/yourgithubusername
-linkedin_url: http://www.linkedin.com/in/your-name
+github_url: https://github.com/suyamat
+# linkedin_url: http://www.linkedin.com/in/your-name
 social:
   links:
-    - http://www.linkedin.com/in/your-name
-    - https://github.com/yourgithubusername
+    # - http://www.linkedin.com/in/your-name
+    - https://github.com/suyamat
 
 # Images + files
 logo: assets/img/headshot.svg
