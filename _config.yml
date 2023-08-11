@@ -54,7 +54,7 @@ colors_dark:
   text: ccc
   tag: 2e6830
   tag_hover: 93cf95
-  header_background: 232
+  header_background: 333
   header_text: 93cf95
   header_link: 93cf95
   header_link_hover: 459c48
