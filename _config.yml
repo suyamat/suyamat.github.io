@@ -42,14 +42,15 @@ syntax_highlight_stylesheet: syntax_highlight.css
 
 # Colors - light mode
 colors:
-  text: 282828
-  tag: dbefdc
-  tag_hover: 93cf95
-  header_background: 000
-  header_text: dbefdc
-  header_link_hover: 93cf95
-  links: 459c48
-  links_visited: 357a38
+  background: ffffff  # set the background to white
+  text: 000000  # set the text to black
+  tag: 000000  # set tag color to black
+  tag_hover: 000000  # set tag hover color to black
+  header_background: ffffff  # set header background to white
+  header_text: 000000  # set header text to black
+  header_link_hover: 000000  # set header link hover to black
+  links: 000000  # set links to black
+  links_visited: 000000  # set visited links to black
 
 # Colors - dark mode
 colors_dark:
