@@ -1,19 +1,20 @@
 # Info about you
 name: Takuya Matsuyama
 position: Graduate Student
-email: u722117c@ecs.osaka-u.ac.jp
-company_name: Osaka University
-company_url: https://nishimotolab.org
+email: 
+company_name: Graduate School of Frontier Biosciences, <br />
+Osaka University
+company_url: https://www.fbs.osaka-u.ac.jp/en/
 place_name: Osaka, Japan
 
 # Blog info
-title: Personal Website
-description: Blog
+title: Takuya Matsuyama
+description: Personal Website
 url: https://suyamat.github.io
 main_github_io: false
 long_description: >-
     Hello! I'm Takuya Matsuyama, a first-year master's student. 
-    Currently, I am affiliated with the Perception and Cognitive Neuroscience Laboratory (Nishimoto Lab) at Osaka University. 
+    Currently, I am affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>) at Osaka University. 
     I am interested in the theme of the fusion between AI and the brain, 
     and I am working on elucidating brain functions using AI for image, video, music, and language processing.
 
