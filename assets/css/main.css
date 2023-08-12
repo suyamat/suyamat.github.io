@@ -269,17 +269,14 @@ body{
   .header {
     width: 100%;
   }
-
+  .name_header_name {
+    font-size: large;
+  }
   div.big_header {
     display:none;
   }
-
   div.small_header {
     display:flex;
-  }
-  
-  .name_header_name {
-    font-size: large;
   }
 }
 
@@ -288,16 +285,16 @@ body{
     width: 100%;
   }
 
+  .name_header_name {
+    font-size: medium;
+  }
+  
   div.big_header {
     display:none;
   }
 
   div.small_header {
     display:flex;
-  }
-  
-  .name_header_name {
-    font-size: medium;
   }
 }
  
@@ -305,6 +302,10 @@ body{
   .header {
     width: 100%;
   }
+
+  .name_header_name {
+    font_size: small;
+  }
   
   div.big_header {
     display:none;
@@ -314,7 +315,4 @@ body{
     display:flex;
   }
   
-  .name_header_name {
-    font_size: small;
-  }
 }
