@@ -52,18 +52,19 @@ layout: default
   <div id="publications_preprint">
   <h2> Publicatins/Preprint </h2>
   {% for post in site.posts %}
-    <div class="post_block">
-      <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-      <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
-      {% if post.description %} 
-        <p> {{ post.description }} </p>
-      {% endif %}
-      {% if post.img_url %} 
-        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
-          <img src="{{ post.img_url }}" class="center_img">
-        </a>
-      {% endif %}
-    </div>
+    {% if post.tags contains 'publications_preprint' %}
+      <div class="post_block">
+        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
+        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %} 
+          <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %} 
+          <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+            <img src="{{ post.img_url }}" class="center_img">
+          </a>
+        {% endif %}
+      </div>
   {% endfor %}
   </div>
 
@@ -100,18 +101,19 @@ layout: default
   <div id="conferences">
   <h2> Conferences </h2>
   {% for post in site.posts %}
-    <div class="conf_block">
-      <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-      <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
-      {% if post.description %} 
-        <p> {{ post.description }} </p>
-      {% endif %}
-      {% if post.img_url %} 
-        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
-          <img src="{{ post.img_url }}" class="center_img">
-        </a>
-      {% endif %}
-    </div>
+    {% if post.tags contains 'conferences' %}
+      <div class="conf_block">
+        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
+        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %} 
+          <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %} 
+          <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+            <img src="{{ post.img_url }}" class="center_img">
+          </a>
+        {% endif %}
+      </div>
   {% endfor %}
   </div>
 
