@@ -248,7 +248,7 @@ body{
   }
 
   .name_group {
-    font-size: large;
+    font-size: smaller;
     padding-top: 20px;
     padding-bottom: 10px;
   }
