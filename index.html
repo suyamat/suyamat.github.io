@@ -70,7 +70,7 @@ layout: default
     {% endfor %}
   
     {% for tag in tags %}
-      <div id="post-{{ tag | slugify }}" class="by_tag">
+      <div id="{{ tag | slugify }}" class="by_tag">
       <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
       {% for post in site.posts %}
         {% if post.tags contains tag %}
@@ -110,7 +110,7 @@ layout: default
     {% endfor %}
 
     {% for tag in tags %}
-      <div id="conf-{{ tag | slugify }}" class="by_tag">
+      <div id="{{ tag | slugify }}" class="by_tag">
       <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
       {% for post in site.posts %}
         {% if post.tags contains tag %}
