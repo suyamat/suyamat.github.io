@@ -234,7 +234,7 @@ body{
 {% endunless %}
 
 /* Large screen widths */
-@media print, screen and (min-width: 1241px) {
+@media print, screen and (min-width: 1240px) {
 
   .header {
     position: fixed;
@@ -266,54 +266,15 @@ body{
 }
 
 /* Small screen widths */
-@media print, screen and (min_width: 769px) and (max-width: 1240px) {
+@media print, screen and (max-width: 1240px) {
   .header {
     width: 100%;
   }
-  .name_header_name {
-    font-size: xx-small;
-  }
+
   div.big_header {
     display:none;
   }
   div.small_header {
     display:flex;
   }
-}
-
-@media print, screen and (min_width: 481px) and (max-width: 768px) {
-  .header {
-    width: 100%;
-  }
-
-  .name_header_name {
-    font-size: small;
-  }
-  
-  div.big_header {
-    display:none;
-  }
-
-  div.small_header {
-    display:flex;
-  }
-}
- 
-@media print, screen and (max-width: 480px) {
-  .header {
-    width: 100%;
-  }
-
-  .name_header_name {
-    font_size: xx-small;
-  }
-  
-  div.big_header {
-    display:none;
-  }
-
-  div.small_header {
-    display:flex;
-  }
-  
 }
