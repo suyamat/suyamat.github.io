@@ -233,7 +233,7 @@ body{
 {% endunless %}
 
 /* Large screen widths */
-@media print, screen and (min-width: 1240px) {
+@media print, screen and (min-width: 1241px) {
 
   .header {
     position: fixed;
@@ -288,6 +288,8 @@ body{
 
 @media print, screen and (min_width: 481px) and (max-width: 768px) {
   .name_group {
+    padding-top: 10px;
+    padding-bottom: 5px;
     font-size: medium;
   }
   
@@ -306,6 +308,8 @@ body{
  
 @media print, screen and (max-width: 480px) {
   .name_group {
+    padding-top: 10px;
+    padding-bottom: 5px;
     font-size: small;
   }
   
