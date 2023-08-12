@@ -283,7 +283,7 @@ body{
   }
 }
 
-@media print and screen and (min_width: 481px) and (max-width: 768px) {
+@media print, screen and (min_width: 481px) and (max-width: 768px) {
   .header {
     width: 100%;
   }
@@ -301,7 +301,7 @@ body{
   }
 }
  
-@media print and screen and (max-width: 480px) {
+@media print, screen and (max-width: 480px) {
   .header {
     width: 100%;
   }
