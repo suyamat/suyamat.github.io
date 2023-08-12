@@ -271,7 +271,7 @@ body{
     width: 100%;
   }
   .name_header_name {
-    font-size: medium;
+    font-size: small;
     float: left;
     position: relative;
     bottom: 16px;
