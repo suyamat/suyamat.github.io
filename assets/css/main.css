@@ -92,6 +92,7 @@ body{
 }
 
 .name_header_name {
+  font-size: small;
   float: left;
   position: relative;
   bottom: 16px;
