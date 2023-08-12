@@ -271,24 +271,6 @@ body{
     width: 100%;
   }
   .name_header_name {
-    font-size: large;
-    float: left;
-    position: relative;
-    bottom: 16px;
-  }
-  div.big_header {
-    display:none;
-  }
-  div.small_header {
-    display:flex;
-  }
-}
-
-@media print, screen and (min-width:480px) and (max-width: 768px) {
-  .header {
-    width: 100%;
-  }
-  .name_header_name {
     font-size: medium;
     float: left;
     position: relative;
@@ -302,7 +284,7 @@ body{
   }
 }
 
-@media print, screen and (max-width:480px) {
+@media print, screen and (max-width: 768px) {
   .header {
     width: 100%;
   }
@@ -310,7 +292,7 @@ body{
     font-size: small;
     float: left;
     position: relative;
-    bottom: 16px;
+    bottom: 8px;
   }
   div.big_header {
     display:none;
