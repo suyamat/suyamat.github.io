@@ -265,7 +265,7 @@ body{
 }
 
 /* Small screen widths */
-@media print, screen and (max-width: 1240px) and (min_width: 768px) {
+@media print, screen and (min_width: 768px) and (max-width: 1240px) {
   .name_group {
     padding-top: 20px;
     padding-bottom: 10px;
@@ -286,14 +286,38 @@ body{
 
 }
 
-@media print, screen and (max-width: 768px) and (min_width: 480px) {
+@media print, screen and and (min_width: 480px) and (max-width: 768px) {
   .name_group {
     font-size: medium;
+  }
+  
+  .header {
+    width: 100%;
+  }
+
+  div.big_header {
+    display:none;
+  }
+
+  div.small_header {
+    display:flex;
   }
 }
  
 @media print, screen and (max-width: 480px) {
   .name_group {
     font-size: small;
+  }
+  
+  .header {
+    width: 100%;
+  }
+
+  div.big_header {
+    display:none;
+  }
+
+  div.small_header {
+    display:flex;
   }
 }
