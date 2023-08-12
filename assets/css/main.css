@@ -281,7 +281,7 @@ body{
 
 }
 
-@media print, screen and (max-width: 480px) {
+@media print, screen and (max-width: 40em) {
   .name_group {
     font-size: small;
   }
