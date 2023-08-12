@@ -123,6 +123,9 @@ body{
   margin: 0.25rem;
   border-radius: 5px;
 }
+.by_tag {
+    display: none;
+}
 
 .post_tag:hover {
   background: #{{ site.colors.tag_hover }};
