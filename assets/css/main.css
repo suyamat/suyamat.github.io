@@ -283,6 +283,6 @@ body{
 
 @media print, screen and (max-width: 480px) {
     .name_group {
-    font-size: small;
+      font-size: small;
   }
 }
