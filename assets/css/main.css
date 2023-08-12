@@ -284,7 +284,7 @@ body{
 
 }
 
-@media screen and (min_width: 481px) and (max-width: 768px) {
+@media print and screen and (min_width: 481px) and (max-width: 768px) {
   .name_header_name {
     font-size: medium;
   }
@@ -299,7 +299,7 @@ body{
   
 }
  
-@media screen and (max-width: 480px) {
+@media print and screen and (max-width: 480px) {
   .name_header_name {
     font_size: small;
   }
