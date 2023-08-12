@@ -94,7 +94,7 @@ body{
 .name_header_name {
   float: left;
   position: relative;
-  bottom: 12px;
+  bottom: 16px;
 }
 
 .language-python.highlighter-rouge {
