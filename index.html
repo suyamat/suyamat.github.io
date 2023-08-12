@@ -45,6 +45,8 @@ layout: default
   <h2> Tags </h2>
   <a onclick="show_tag_section('publications_preprint')" style="cursor: pointer;" class="post_tag"> Publications/Preprint </a>
   {% for tag in tags %}
+  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="post_tag"> Conferences </a>
+  {% for tag in tags %}
     <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
   {% endfor %}
   </p>
@@ -118,12 +120,6 @@ layout: default
     {% endif %}
   {% endfor %}
   <p>
-  <h2> Tags </h2>
-  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="conf_tag"> Conferences </a>
-  {% for tag in tags %}
-    <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="conf_tag"> {{ tag }} </a>
-  {% endfor %}
-  </p>
 
   <div id="conferences">
     <h2> Conferences </h2>
