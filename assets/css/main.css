@@ -135,6 +135,10 @@ body{
   vertical-align: middle;
 }
 
+div.big_header {
+  font-size: large;
+}
+
 .header {
   background-color: #{{ site.colors.header_background }};
   color: #{{ site.colors.header_text }};
