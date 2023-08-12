@@ -45,6 +45,8 @@ layout: default
   <h2> Tags </h2>
   <a onclick="show_tag_section('publications_preprint')" style="cursor: pointer;" class="post_tag"> Publications/Preprint </a>
   {% for tag in tags %}
+  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="post_tag"> Conferences </a>
+  {% for tag in tags %}
     <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
   {% endfor %}
   </p>
@@ -69,28 +71,30 @@ layout: default
     {% endfor %}
   </div>
 
-  {% for tag in tags %}
-    <div id="{{ tag | slugify }}" class="by_tag">
-    <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
-    {% for post in site.posts %}
-      {% if post.tags contains tag %}
-        <div class="post_block">
-          <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-          <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
-          {% if post.description %} 
-            <p> {{ post.description }} </p>
-          {% endif %}
-          {% if post.img_url %} 
-            <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
-              <img src="{{ post.img_url }}" class="center_img">
-            </a>
-          {% endif %}
-        </div>
-      {% endif %}
+  <div id="tag_publications_preprint">
+    {% for tag in tags %}
+      <div id="post-{{ tag | slugify }}" class="by_tag">
+      <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
+      {% for post in site.posts %}
+        {% if post.tags contains tag %}
+          <div class="post_block">
+            <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
+            <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+            {% if post.description %} 
+              <p> {{ post.description }} </p>
+            {% endif %}
+            {% if post.img_url %} 
+              <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+                <img src="{{ post.img_url }}" class="center_img">
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      </div>
     {% endfor %}
-    </div>
-  {% endfor %}
-  
+  </div>
+    
   {% comment %} 
   Get tags from all posts
   {% endcomment %}
@@ -115,15 +119,7 @@ layout: default
       {% endunless %}
     {% endif %}
   {% endfor %}
-
-
   <p>
-  <h2> Tags </h2>
-  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="conf_tag"> Conferences </a>
-  {% for tag in tags %}
-    <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="conf_tag"> {{ tag }} </a>
-  {% endfor %}
-  </p>
 
   <div id="conferences">
     <h2> Conferences </h2>
@@ -145,27 +141,30 @@ layout: default
     {% endfor %}
   </div>
 
-  {% for tag in tags %}
-    <div id="{{ tag | slugify }}" class="by_tag">
-    <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
-    {% for post in site.posts %}
-      {% if post.tags contains tag %}
-        <div class="conf_block">
-          <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-          <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
-          {% if post.description %} 
-            <p> {{ post.description }} </p>
-          {% endif %}
-          {% if post.img_url %} 
-            <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
-              <img src="{{ post.img_url }}" class="center_img">
-            </a>
-          {% endif %}
-        </div>
-      {% endif %}
+  <div id="tag_conferences">
+    {% for tag in tags %}
+      <div id="conf-{{ tag | slugify }}" class="by_tag">
+      <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
+      {% for post in site.posts %}
+        {% if post.tags contains tag %}
+          <div class="conf_block">
+            <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
+            <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+            {% if post.description %} 
+              <p> {{ post.description }} </p>
+            {% endif %}
+            {% if post.img_url %} 
+              <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+                <img src="{{ post.img_url }}" class="center_img">
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      </div>
     {% endfor %}
-    </div>
-  {% endfor %}
+  </div>
 
 </div>
+
 
