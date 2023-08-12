@@ -265,11 +265,11 @@ body{
 }
 
 /* Small screen widths */
-@media print, screen and (max-width: 1240px) {
+@media print, screen and (max-width: 1240px) and (min_width: 768px) {
   .name_group {
     padding-top: 20px;
     padding-bottom: 10px;
-    font-size: 12px;
+    font-size: large;
   }
   
   .header {
@@ -286,7 +286,13 @@ body{
 
 }
 
-@media print, screen and (max-width: 768px) {
+@media print, screen and (max-width: 768px) and (min_width: 480px) {
+  .name_group {
+    font-size: medium;
+  }
+}
+ 
+@media print, screen and (max-width: 480px) {
   .name_group {
     font-size: small;
   }
