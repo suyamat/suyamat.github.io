@@ -135,7 +135,7 @@ body{
   vertical-align: middle;
 }
 
-div.big_header {
+div.big_header.name_group {
   font-size: medium;
 }
 
