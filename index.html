@@ -91,16 +91,16 @@ layout: default
 
   <p>
   <h2> Tags </h2>
-  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="post_tag"> Conferences </a>
+  <a onclick="show_tag_section('conferences')" style="cursor: pointer;" class="conf_tag"> Conferences </a>
   {% for tag in tags %}
-    <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
+    <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="conf_tag"> {{ tag }} </a>
   {% endfor %}
   </p>
 
   <div id="conferences">
   <h2> Conferences </h2>
   {% for post in site.posts %}
-    <div class="post_block">
+    <div class="conf_block">
       <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
       <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
       {% if post.description %} 
@@ -120,7 +120,7 @@ layout: default
     <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
     {% for post in site.posts %}
       {% if post.tags contains tag %}
-        <div class="post_block">
+        <div class="conf_block">
           <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
           <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
           {% if post.description %} 
