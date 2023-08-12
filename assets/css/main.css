@@ -248,7 +248,6 @@ body{
   }
 
   .name_group {
-    font-size: small;
     padding-top: 20px;
     padding-bottom: 10px;
   }
@@ -269,7 +268,7 @@ body{
 @media print, screen and (max-width: 1240px) {
 
   .name_group {
-    font-size: small;
+    font-size: smaller;
   }
   
   .header {
