@@ -266,9 +266,7 @@ body{
 
 /* Small screen widths */
 @media print, screen and (min_width: 769px) and (max-width: 1240px) {
-  .name_group {
-    padding-top: 20px;
-    padding-bottom: 10px;
+  .name_header_name {
     font-size: large;
   }
   
@@ -287,18 +285,30 @@ body{
 }
 
 @media screen and (min_width: 481px) and (max-width: 768px) {
-  .name_group {
-    padding-top: 10px;
-    padding-bottom: 5px;
-    font-size: small;
+  .name_header_name {
+    font-size: medium;
+  }
+
+  div.big_header {
+    display:none;
+  }
+
+  div.small_header {
+    display:flex;
   }
   
 }
  
 @media screen and (max-width: 480px) {
-  .name_group {
-    padding-top: 10px;
-    padding-bottom: 5px;
-    font-size: 6px;
+  .name_header_name {
+    font_size: small;
+  }
+
+  div.big_header {
+    display:none;
+  }
+
+  div.small_header {
+    display:flex;
   }
 }
