@@ -265,7 +265,7 @@ body{
 }
 
 /* Small screen widths */
-@media print, screen and (min_width: 768px) and (max-width: 1240px) {
+@media print, screen and (min_width: 769px) and (max-width: 1240px) {
   .name_group {
     padding-top: 20px;
     padding-bottom: 10px;
@@ -286,7 +286,7 @@ body{
 
 }
 
-@media print, screen and and (min_width: 480px) and (max-width: 768px) {
+@media print, screen and and (min_width: 481px) and (max-width: 768px) {
   .name_group {
     font-size: medium;
   }
