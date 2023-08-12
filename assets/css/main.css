@@ -268,7 +268,7 @@ body{
 @media print, screen and (max-width: 1240px) {
 
   .name_group {
-    font-size: medium;
+    font-size: small;
   }
   
   .header {
