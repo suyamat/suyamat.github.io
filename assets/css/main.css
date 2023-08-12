@@ -266,10 +266,6 @@ body{
 
 /* Small screen widths */
 @media print, screen and (max-width: 1240px) {
-
-  .name_group {
-    font-size: smaller;
-  }
   
   .header {
     width: 100%;
@@ -283,4 +279,10 @@ body{
     display:flex;
   }
 
+}
+
+@media print, screen and (max-width: 480px) {
+    .name_group {
+    font-size: small;
+  }
 }
