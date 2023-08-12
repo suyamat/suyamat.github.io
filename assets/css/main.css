@@ -135,10 +135,6 @@ body{
   vertical-align: middle;
 }
 
-.site_name {
-  font-size: medium;
-}
-
 .header {
   background-color: #{{ site.colors.header_background }};
   color: #{{ site.colors.header_text }};
@@ -252,6 +248,7 @@ body{
   }
 
   .name_group {
+    font-size: large;
     padding-top: 20px;
     padding-bottom: 10px;
   }
