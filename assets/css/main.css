@@ -290,38 +290,15 @@ body{
   .name_group {
     padding-top: 10px;
     padding-bottom: 5px;
-    font-size: medium;
+    font-size: small;
   }
   
-  .header {
-    width: 100%;
-  }
-
-  div.big_header {
-    display:none;
-  }
-
-  div.small_header {
-    display:flex;
-  }
 }
  
 @media screen and (max-width: 480px) {
   .name_group {
     padding-top: 10px;
     padding-bottom: 5px;
-    font-size: small;
-  }
-  
-  .header {
-    width: 100%;
-  }
-
-  div.big_header {
-    display:none;
-  }
-
-  div.small_header {
-    display:flex;
+    font-size: 6px;
   }
 }
