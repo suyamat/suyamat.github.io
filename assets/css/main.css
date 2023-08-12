@@ -274,7 +274,7 @@ body{
     font-size: small;
     float: left;
     position: relative;
-    bottom: 16px;
+    bottom: 8px;
   }
   div.big_header {
     display:none;
