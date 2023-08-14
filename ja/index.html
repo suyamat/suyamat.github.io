@@ -46,7 +46,7 @@ layout: ja_default
   {% endif %}
 
   <p>
-  <h2> Tags </h2>
+  <h2> タグ </h2>
   <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">All</a>
   {% for tag in tags %}
   <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
@@ -55,7 +55,7 @@ layout: ja_default
 
   <div id="all_posts">
     <div id="publications_preprint">
-      <h2> Publications/Preprint </h2>
+      <h2> 論文 </h2>
       {% for post in site.posts %}
       {% if post.category == "publication" or post.category == "preprint" %}
       <div class="post_block">
@@ -75,7 +75,7 @@ layout: ja_default
     </div>
 
     <div id="conferences">
-      <h2> Conferences </h2>
+      <h2> 学会 </h2>
       {% for post in site.posts %}
       {% if post.category == "conference" %}
       <div class="conf_block">
@@ -98,7 +98,7 @@ layout: ja_default
 
   {% for tag in tags %}
   <div id="{{ tag | slugify }}" class="by_tag">
-    <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
+    <h2 id="{{ tag | slugify }}">"{{ tag }}" に関する投稿</h2>
     {% for post in site.posts %}
     {% if post.tags contains tag %}
     <div class="post_block">
@@ -121,38 +121,36 @@ layout: ja_default
 </div>
 
 <div id="education">
-  <h2> Education </h2>
-  <p><i>2023 April - </i><br />
-    <b>Osaka University</b><br />
-    Graduate School of Frontier Biosciences <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
+  <h2> 学歴 </h2>
+  <p><i>2023/4 - </i><br />
+    <b>大阪大学</b><br />
+    生命機能研究科 <br />
+    指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+      西本 伸志</a>
   </p>
 
-  <p><i>2019 April - 2023 March </i><br />
-    <b>Osaka University</b><br />
-    Division of Biophysical Engineering, <br />
-    Department of Systems Science, <br />
-    School of Engineering Science, <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
+  <p><i>2019/4 - 2023/3 </i><br />
+    <b>大阪大学</b><br />
+    基礎工学部システム化学科生物工学コース<br />
+    指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+      西本 伸志</a>
   </p>
 
   <div id="awards"></div>
-  <h2> Awards </h2>
+  <h2> コンテスト </h2>
   <p><i>2023 August</i><br />
     <a href="http://algonauts.csail.mit.edu/challenge.html">
       Alogonauts Project 2023 Challenge</a><br />
-    Ranked <b>8th</b> out of 107 teams.<br />
+    <b>8位入賞</b> (107チーム中)<br />
   </p>
 
   <div id="skills">
-    <h2> Skills</h2>
-    <h3>Programing Languages</h3>
+    <h2> スキル</h2>
+    <h3>プログラミング言語</h3>
     <p>
       Python, C, MATLAB, R, HTML, CSS
     </p>
-    <h3>Tools</h3>
+    <h3>開発ツール</h3>
     <p>
       VS Code, git, ChatGPT, Docker, Singularity
     </p>
