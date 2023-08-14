@@ -1,21 +1,19 @@
 # Info about you
-name: Takuya Matsuyama
-position: Graduate Student
+name: 松山 卓矢
+position: 修士課程一年生
 email: 
-company_name: Osaka University
-company_url: https://www.fbs.osaka-u.ac.jp/en/
-place_name: Osaka, Japan
+company_name: 大阪大学
+company_url: https://www.fbs.osaka-u.ac.jp/ja
+place_name: 大阪
 
 # Blog info
-title: Takuya Matsuyama
+title: 松山 卓矢
 description: Personal Website
 url: https://suyamat.github.io/ja
 main_github_io: false
 long_description: >-
-    Hello! I'm Takuya Matsuyama, a first-year master's student. 
-    Currently, I am affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>) at Osaka University. 
-    I am interested in the theme of the fusion between AI and the brain, 
-    and I am working on elucidating brain functions using AI for image, video, music, and language processing.
+    初めまして! 大阪大学の知覚認知神経科学研究室（<a href="https://nishimotolab.org/">西本研究室</a>）に所属しています、修士課程一年生の松山卓矢です。
+    AIと脳の融合を目指したテーマに興味があり、画像・動画・音楽・言語処理などのAIを用いて脳機能の解明に取り組んでいます。
 
 # Social links
 github_url: https://github.com/suyamat
