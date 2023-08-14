@@ -1,0 +1,65 @@
+# Info about you
+name: Takuya Matsuyama
+position: Graduate Student
+email: 
+company_name: Osaka University
+company_url: https://www.fbs.osaka-u.ac.jp/en/
+place_name: Osaka, Japan
+
+# Blog info
+title: Takuya Matsuyama
+description: Personal Website
+url: https://suyamat.github.io
+main_github_io: false
+long_description: >-
+    Hello! I'm Takuya Matsuyama, a first-year master's student. 
+    Currently, I am affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>) at Osaka University. 
+    I am interested in the theme of the fusion between AI and the brain, 
+    and I am working on elucidating brain functions using AI for image, video, music, and language processing.
+
+# Social links
+github_url: https://github.com/suyamat
+# linkedin_url: http://www.linkedin.com/in/your-name
+social:
+  links:
+    # - http://www.linkedin.com/in/your-name
+    - https://github.com/suyamat
+
+# Images + files
+logo: assets/img/headshot.svg
+cv_url: assets/files/cv.pdf
+resume_url: assets/files/resume.pdf
+
+# Blog settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+highlighter: rouge
+color_mode: light  # auto, light, or dark
+comments: false
+disqus_shortname: none
+syntax_highlight_stylesheet: syntax_highlight.css
+
+# Colors - white mode
+colors:
+  text: 333
+  tag: dbefdc
+  tag_hover: 93cf95
+  header_background: ffffff
+  header_text: 00000
+  header_link_hover: 93cf95
+  links: 459c48
+  links_visited: 357a38
+
+# Colors - dark mode
+colors_dark:
+  background: 333
+  text: ccc
+  tag: 2e6830
+  tag_hover: 93cf95
+  header_background: 232
+  header_text: 93cf95
+  header_link: 93cf95
+  header_link_hover: 459c48
+  links: 459c48
+  links_visited: 357a38
