@@ -51,8 +51,8 @@ layout: default
   </p>
 
   <div id="all_posts">
-    <div id="publicatins_preprint">
-      <h2> Publications/Preprint </h2>
+    <div id="publications_preprint">
+    <h2> Publications/Preprint </h2>
       {% for post in site.posts %}
         {% if post.category == "publication" or post.category == "preprint" %}
           <div class="post_block">
@@ -72,7 +72,7 @@ layout: default
     </div>
 
     <div id="conferences">
-      <h2> Conferences </h2>
+    <h2> Conferences </h2>
       {% for post in site.posts %}
         {% if post.category == "conference" %}
           <div class="conf_block">
