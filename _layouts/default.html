@@ -271,12 +271,12 @@ Get assets path
     </script>
     <script>
       window.addEventListener("load", function() {
-        setTimeout(function() {
-          const blocks = document.querySelectorAll('.post_block, .conf_block, .awards, .profile, .education, .skills, .post_tag, .language-btn');
-          blocks.forEach(block => {
+        const blocks = document.querySelectorAll('.post_block, .conf_block, .awards, .profile, .education, .skills, .post_tag, .language-btn');
+        blocks.forEach((block, index) => {
+          setTimeout(() => {
             block.classList.add('revealed');
-          });
-        }, 100);  // 100ms後にアニメーションを開始
+          }, 100 + index * 50); // 100ms + 連続するブロックごとに50msの遅延
+        });
       });
     </script>
   </body>
