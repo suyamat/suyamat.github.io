@@ -42,15 +42,6 @@ h2, h3 {
   padding-bottom: 10px;
 }
 
-.education, .skills, {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
 .awards {
   background: #f9f9f9;
   padding: 10px;
