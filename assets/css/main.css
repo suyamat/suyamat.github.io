@@ -218,6 +218,10 @@ body{
   color: #{{ site.colors.links_visited }};
 }
 
+.content {
+  padding: 20px 40px;
+}
+
 .post_block h3 {
   margin-block-end: 2px;
 }
