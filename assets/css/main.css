@@ -19,9 +19,13 @@
   width: 100%;
   height: 100%;
   opacity: 1; /* 追加 */
-  background: linear-gradient(45deg, #4CAF50, #8BC34A, #CDDC39); /* 3段階の緑色のグラデーション */
-  transition: transform 1.0s cubic-bezier(0.1, 1.0); /* ゆっくりから速くへの変化 */
+  background: linear-gradient(45deg, 
+                              #4CAF50 0%, #4CAF50 33.3%, 
+                              #8BC34A 33.3%, #8BC34A 66.6%, 
+                              #CDDC39 66.6%, #CDDC39 100%); /* 3色の離散的なグラデーション */
+  transition: transform 1.0s cubic-bezier(0.2, 0.01, 0.58, 1); /* 初めはほぼ止まって、後で一気にアクセル */
 }
+
 
 .revealed .block-veil {
   transform: translateX(-100%) scale(1); /* 変更 */
