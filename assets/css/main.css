@@ -16,7 +16,10 @@
 
 .language-selector .language-btn:hover {
   background: #f9f9f9;
+  padding: 10px;
   border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 
 body{
@@ -247,8 +250,11 @@ body{
   }
 
   .post_tag:hover {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
 {% if site.color_mode == "auto" %}
@@ -297,8 +303,11 @@ body{
   }
 
   .post_tag:hover {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
 /* 投稿ブロックのスタイル */
@@ -354,8 +363,11 @@ body{
   }
 
   .post_tag:hover {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
 /* 投稿ブロックのスタイル */
@@ -409,8 +421,11 @@ body{
   }
 
   .post_tag:hover {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
 /* 投稿ブロックのスタイル */
