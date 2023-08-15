@@ -27,53 +27,6 @@
   transform: translateX(-100%);
 }
 
-.post_block, .conf_block {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-.education, .skills {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-}
-h2, h3 {
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 10px;
-}
-
-.awards {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-}
-.profile {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-}
-
 .language-selector .language-btn {
   position: relative; /* 追加: post_blockを相対位置に設定 */
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
@@ -346,6 +299,52 @@ body{
     position: relative;
     left: calc(calc(100% - 350px)/2 - 400px + 350px);
   }
+  .post_block, .conf_block {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .education, .skills {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  h2, h3 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .awards {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  .profile {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Small screen widths */
@@ -365,6 +364,52 @@ body{
   div.small_header {
     display:flex;
   }
+  .post_block, .conf_block {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .education, .skills {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  h2, h3 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .awards {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  .profile {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media print, screen and (max-width: 768px) {
@@ -382,6 +427,52 @@ body{
   }
   div.small_header {
     display:flex;
+  }
+  .post_block, .conf_block {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .education, .skills {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  h2, h3 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .awards {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  .profile {
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   }
 
 }
