@@ -28,8 +28,7 @@ Get assets path
     <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
     <script>
       function show_tag_section(tag) {
         // Hide all other tag divs
@@ -204,53 +203,11 @@ Get assets path
 
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
-          let scene, camera, renderer, geometry, material, fish;
+          let scene, camera, renderer, material, mesh;
+          let geometryParams, gui;
 
           init();
           animate();
-
-          function createFishGeometry() {
-              const geometry = new THREE.BufferGeometry();
-
-              const vertices = new Float32Array([
-                  // Body of the fish
-                  0, 0, 0,
-                  1, 0.5, 0,
-                  2, 0.2, 0.5,
-                  2, 0.2, -0.5,
-                  1, 0.5, 0,
-                  0, 0, 0,
-                  1, -0.5, 0,
-                  2, -0.2, 0.5,
-                  2, -0.2, -0.5,
-                  1, -0.5, 0,
-                  // Tail of the fish
-                  2, 0.2, 0.5,
-                  2, -0.2, 0.5,
-                  3, 0, 0,
-                  2, 0.2, -0.5,
-                  2, -0.2, -0.5,
-                  3, 0, 0
-              ]);
-
-              const indices = [
-                  0, 1, 2, 
-                  0, 2, 3, 
-                  0, 3, 4, 
-                  0, 4, 1,
-                  5, 6, 7,
-                  5, 7, 8,
-                  5, 8, 9,
-                  5, 9, 6,
-                  10, 11, 12,
-                  13, 14, 15
-              ];
-
-              geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-              geometry.setIndex(indices);
-
-              return geometry;
-          }
 
           function init() {
               scene = new THREE.Scene();
@@ -261,14 +218,34 @@ Get assets path
               renderer.setClearColor(0x000000, 0);
               renderer.setSize(window.innerWidth, window.innerHeight);
 
-              geometry = createFishGeometry();
-              material = new THREE.MeshBasicMaterial({
-                  color: 0x88aaff,
-                  side: THREE.DoubleSide
+              material = new THREE.MeshPhongMaterial({
+                  color: 0x156289,
+                  emissive: 0x072534,
+                  side: THREE.DoubleSide,
+                  shading: THREE.FlatShading
               });
 
-              fish = new THREE.Mesh(geometry, material);
-              scene.add(fish);
+              // TorusGeometry parameters for dat.gui
+              geometryParams = {
+                  radius: 2,
+                  tube: 0.5,
+                  radialSegments: 16,
+                  tubularSegments: 100,
+                  p: 2,
+                  q: 3
+              };
+
+              mesh = new THREE.Mesh(new THREE.TorusGeometry(geometryParams.radius, geometryParams.tube, geometryParams.radialSegments, geometryParams.tubularSegments, geometryParams.p * Math.PI * 2, geometryParams.q * Math.PI * 2), material);
+              scene.add(mesh);
+
+              // Create GUI
+              gui = new dat.GUI();
+              gui.add(geometryParams, 'radius', 1, 5).onChange(updateGeometry);
+              gui.add(geometryParams, 'tube', 0.1, 2).onChange(updateGeometry);
+              gui.add(geometryParams, 'radialSegments', 4, 100).step(1).onChange(updateGeometry);
+              gui.add(geometryParams, 'tubularSegments', 4, 200).step(1).onChange(updateGeometry);
+              gui.add(geometryParams, 'p', 1, 10).step(1).onChange(updateGeometry);
+              gui.add(geometryParams, 'q', 1, 15).step(1).onChange(updateGeometry);
 
               window.addEventListener('resize', onWindowResize, false);
           }
@@ -279,11 +256,15 @@ Get assets path
               renderer.setSize(window.innerWidth, window.innerHeight);
           }
 
+          function updateGeometry() {
+              let newGeometry = new THREE.TorusGeometry(geometryParams.radius, geometryParams.tube, geometryParams.radialSegments, geometryParams.tubularSegments, geometryParams.p * Math.PI * 2, geometryParams.q * Math.PI * 2);
+              mesh.geometry.dispose();
+              mesh.geometry = newGeometry;
+          }
+
           function animate() {
               requestAnimationFrame(animate);
-
-              fish.rotation.y += 0.01;
-
+              mesh.rotation.y += 0.005;
               renderer.render(scene, camera);
           }
       });
