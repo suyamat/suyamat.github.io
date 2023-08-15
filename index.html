@@ -4,8 +4,15 @@ layout: default
 
 <div>
   <div class="language-selector">
-    <a href="https://suyamat.github.io" class="language-btn">English</a>
-    <a href="https://suyamat.github.io/ja" class="language-btn">Japanese</a>
+    <a href="https://suyamat.github.io" class="language-btn">
+      English
+      <div class="block-veil"></div>
+    </a>
+    <a href="https://suyamat.github.io/ja" class="language-btn">
+      Japanese
+      <div class="block-veil"></div>
+    </a>
+    <div class="block-veil"></div>
   </div>
 
   <h2>Profile</h2>
@@ -51,9 +58,15 @@ layout: default
 
   <p>
   <h2> Tags </h2>
-  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">All</a>
+  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">
+    All
+    <div class="block-veil"></div>
+  </a>
   {% for tag in tags %}
-  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
+  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> 
+    {{ tag }} 
+    <div class="block-veil"></div>
+  </a>
   {% endfor %}
   </p>
 
