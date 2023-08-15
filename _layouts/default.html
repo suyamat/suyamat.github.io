@@ -44,9 +44,11 @@ Get assets path
     </script>
     <script>
       // ページの読み込みが完了したときにアニメーションを開始
-      window.onload = function() {
-        document.querySelector('.content').classList.add('revealed');
-      }
+      document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+          document.querySelector('.content').classList.add('revealed');
+        }, 100);  // 100ms後にアニメーションを開始
+      });
     </script>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     {% seo %}
