@@ -203,7 +203,7 @@ Get assets path
 
 
     <script>
-      let scene, camera, renderer, material, line, geometry;
+      let scene, camera, renderer, material, mesh, geometry;
 
       init();
       animate();
@@ -211,7 +211,7 @@ Get assets path
       function init() {
           scene = new THREE.Scene();
           camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-          camera.position.z = 50;
+          camera.position.z = 100;
 
           renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
           renderer.setClearColor(0x000000, 0);
@@ -219,29 +219,45 @@ Get assets path
 
           let vertices = [];
           let colors = [];
+          let indices = [];
 
           // Lissajous Curve parameters
           const a = 3, b = 4, delta = Math.PI / 2;
-          const scale = 10;
-          const steps = 1000;
+          const scale = 50;
+          const steps = 100;
 
-          for (let t = 0; t < 2 * Math.PI; t += (2 * Math.PI) / steps) {
-              const x = scale * Math.sin(a * t + delta);
-              const y = scale * Math.sin(b * t);
-              const z = scale * Math.sin((a + b) * t);
+          for (let i = 0; i < steps; i++) {
+              for (let j = 0; j < steps; j++) {
+                  const t1 = (i * 2 * Math.PI) / steps;
+                  const t2 = (j * 2 * Math.PI) / steps;
+                  const x = scale * Math.sin(a * t1 + delta) + scale * Math.sin(a * t2 + delta);
+                  const y = scale * Math.sin(b * t1) + scale * Math.sin(b * t2);
+                  const z = scale * Math.sin((a + b) * t1 + delta);
 
-              vertices.push(x, y, z);
-              colors.push((x + scale) / (2 * scale), (y + scale) / (2 * scale), (z + scale) / (2 * scale), 0.8);
+                  vertices.push(x, y, z);
+                  colors.push((x + scale) / (2 * scale), (y + scale) / (2 * scale), (z + scale) / (2 * scale), 0.8);
+
+                  // Create indices for mesh
+                  if (i < steps - 1 && j < steps - 1) {
+                      const index1 = i * steps + j;
+                      const index2 = (i + 1) * steps + j;
+                      const index3 = (i + 1) * steps + j + 1;
+                      const index4 = i * steps + j + 1;
+
+                      indices.push(index1, index2, index3, index1, index3, index4);
+                  }
+              }
           }
 
           geometry = new THREE.BufferGeometry();
           geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
           geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
+          geometry.setIndex(indices);
 
-          material = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true });
+          material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide, transparent: true });
 
-          line = new THREE.Line(geometry, material);
-          scene.add(line);
+          mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
 
           window.addEventListener('resize', () => {
               camera.aspect = window.innerWidth / window.innerHeight;
@@ -252,8 +268,8 @@ Get assets path
 
       function animate() {
           requestAnimationFrame(animate);
-          line.rotation.x += 0.005;
-          line.rotation.y += 0.005;
+          mesh.rotation.x += 0.005;
+          mesh.rotation.y += 0.005;
           renderer.render(scene, camera);
       }
     </script>
