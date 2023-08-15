@@ -6,11 +6,13 @@ layout: default
   <div class="language-selector">
     <a href="https://suyamat.github.io" class="language-btn">English</a>
     <a href="https://suyamat.github.io/ja" class="language-btn">Japanese</a>
+    <div class="block-veil"></div>
   </div>
 
   <div class="profile">
     <h2>Profile</h2>
     <p>{{ site.long_description }}</p>
+    <div class="block-veil"></div>
   </div>
 
   {% comment %}
@@ -72,6 +74,7 @@ layout: default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -92,6 +95,7 @@ layout: default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -115,39 +119,42 @@ layout: default
         <img src="{{ post.img_url }}" class="center_img">
       </a>
       {% endif %}
+      
     </div>
     {% endif %}
     {% endfor %}
   </div>
   {% endfor %}
 
-</div>
+  <div id="education">
+    <h2> Education </h2>
+    <p><i>2023 April - </i><br />
+      <b>Osaka University</b><br />
+      Graduate School of Frontier Biosciences <br />
+      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        Shinji Nishimoto</a>
+    </p>
 
-<div id="education">
-  <h2> Education </h2>
-  <p><i>2023 April - </i><br />
-    <b>Osaka University</b><br />
-    Graduate School of Frontier Biosciences <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
-  </p>
-
-  <p><i>2019 April - 2023 March </i><br />
-    <b>Osaka University</b><br />
-    Division of Biophysical Engineering, <br />
-    Department of Systems Science, <br />
-    School of Engineering Science, <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
-  </p>
+    <p><i>2019 April - 2023 March </i><br />
+      <b>Osaka University</b><br />
+      Division of Biophysical Engineering, <br />
+      Department of Systems Science, <br />
+      School of Engineering Science, <br />
+      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        Shinji Nishimoto</a>
+    </p>
+    <div class="block-veil"></div>
+  </div>
 
   <div id="awards"></div>
-  <h2> Contests </h2>
-  <p><i>2023 August</i><br />
-    <a href="http://algonauts.csail.mit.edu/challenge.html">
-      Alogonauts Project 2023 Challenge</a><br />
-    Ranked <b>8th</b> out of 107 teams.<br />
-  </p>
+    <h2> Contests </h2>
+    <p><i>2023 August</i><br />
+      <a href="http://algonauts.csail.mit.edu/challenge.html">
+        Alogonauts Project 2023 Challenge</a><br />
+      Ranked <b>8th</b> out of 107 teams.<br />
+    </p>
+    <div class="block-veil"></div>
+  </div>
 
   <div id="skills">
     <h2> Skills</h2>
@@ -159,6 +166,18 @@ layout: default
     <p>
       VS Code, git, ChatGPT, Docker, Singularity
     </p>
+    <div class="block-veil"></div>
   </div>
 
-</div>
+  <script>
+    // ページの読み込みが完了したときにアニメーションを開始
+    window.addEventListener("load", function() {
+      setTimeout(function() {
+        const blocks = document.querySelectorAll('.post_block, .conf_block');
+        blocks.forEach(block => {
+          block.classList.add('revealed');
+        });
+      }, 100);  // 100ms後にアニメーションを開始
+    });
+  </script>
+</div?>

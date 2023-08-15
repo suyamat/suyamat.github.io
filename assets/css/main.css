@@ -12,13 +12,12 @@
   z-index: -1; /* 最背面に配置 */
 }
 
-.content {
-  position: relative; /* 追加: contentを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがcontentの外に出ないようにする */
-  padding: 20px 40px;
+.post_block, .conf_block {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
 }
 
-.content-veil {
+.block-veil {
   position: absolute; /* 追加: ベールを絶対位置に設定 */
   top: 0;
   left: 0;
@@ -29,7 +28,7 @@
   transition: transform 1.5s ease-out;
 }
 
-.content.revealed .content-veil {
+.revealed .block-veil {
   transform: translateX(-100%);
 }
 
