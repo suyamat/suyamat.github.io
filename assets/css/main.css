@@ -12,6 +12,14 @@
   z-index: -1; /* 最背面に配置 */
 }
 
+.reveal-content {
+  transform: translateX(-100%);
+  transition: transform 1.5s ease-out;
+}
+
+.revealed {
+  transform: translateX(0);
+}
 
 .profile p {
   background: #f9f9f9;

@@ -42,6 +42,12 @@ Get assets path
         document.getElementById(tag).style.display = 'block';
       }
     </script>
+    <script>
+      // ページの読み込みが完了したときにアニメーションを開始
+      window.onload = function() {
+        document.querySelector('.content').classList.add('revealed');
+      }
+    </script>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     {% seo %}
   </head>
@@ -195,12 +201,9 @@ Get assets path
     </div>
     
     <!-- Page content -->
-    <div class="content">
-
+    <div class="content reveal-content">
       {{ content }}
-
     </div>
-
 
     <script>
       let scene, camera, renderer, material, lineSegments, geometry;
