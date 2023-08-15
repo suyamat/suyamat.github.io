@@ -38,11 +38,11 @@
   border-radius: 4px;
   margin-right: 10px;
   transition: background 0.3s;
-  cursor: pointer;
 }
 
 .language-btn:hover {
   color: #{{ site.colors.tag_hover }};
+  cursor: pointer;
 }
 
 body{
