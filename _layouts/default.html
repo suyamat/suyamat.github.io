@@ -206,6 +206,7 @@ Get assets path
 
         // Three.jsの初期化とアニメーション
         let scene, camera, renderer, geometry, material, mesh;
+        let positions;
 
         init();
         animate();
@@ -219,20 +220,27 @@ Get assets path
             renderer.setClearColor(0xffffff, 0); 
             renderer.setSize(window.innerWidth, window.innerHeight);
 
-            // BufferGeometryの作成
-            const vertices = [];
-            const numVertices = 1000;
-            for (let i = 0; i < numVertices; i++) {
-                const x = (Math.random() - 0.5) * 10;
-                const y = (Math.random() - 0.5) * 10;
-                const z = (Math.random() - 0.5) * 10;
-                vertices.push(x, y, z);
-            }
+            const divisions = 100;
+            positions = new Float32Array(divisions * divisions * 3);
             geometry = new THREE.BufferGeometry();
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            for(let i = 0; i < divisions; i++) {
+                for(let j = 0; j < divisions; j++) {
+                    const x = (i / divisions) * 5 - 2.5;
+                    const y = (j / divisions) * 5 - 2.5;
+                    const z = Math.sin(x * 2) * 0.5 + Math.cos(y * 2) * 0.5;
 
-            material = new THREE.PointsMaterial({ color: 0x888888, size: 0.1 });
-            mesh = new THREE.Points(geometry, material);
+                    const index = (i * divisions + j) * 3;
+                    positions[index] = x;
+                    positions[index + 1] = y;
+                    positions[index + 2] = z;
+                }
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            material = new THREE.MeshNormalMaterial();
+            mesh = new THREE.Mesh(geometry, material);
             scene.add(mesh);
 
             window.addEventListener('resize', onWindowResize, false);
@@ -242,6 +250,23 @@ Get assets path
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // 波の動きを追加
+            for(let i = 0; i < positions.length; i += 3) {
+                positions[i + 2] = Math.sin(positions[i] * 2 + performance.now() * 0.001) * 0.5 
+                                 + Math.cos(positions[i + 1] * 2 + performance.now() * 0.001) * 0.5;
+            }
+
+            geometry.attributes.position.needsUpdate = true;
+
+            mesh.rotation.x += 0.01;
+            mesh.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
         }
 
         function animate() {
