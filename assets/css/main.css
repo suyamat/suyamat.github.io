@@ -326,7 +326,7 @@ body{
     padding-bottom: 10px;
   }
 
-  .education, .skills {
+  .education, .skills, .awards {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
@@ -335,7 +335,6 @@ body{
     border-radius: 4px;
     margin-bottom: 20px;
   }
-  
 
 }
 
@@ -373,7 +372,7 @@ body{
     padding-bottom: 10px;
   }
 
-  .education , .skills {
+  .education , .skills, .awards {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
@@ -418,7 +417,7 @@ body{
     padding-bottom: 10px;
   }
 
-  .education, .skills {
+  .education, .skills, .awards {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
