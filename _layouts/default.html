@@ -217,29 +217,21 @@ Get assets path
           renderer.setClearColor(0x000000, 0);
           renderer.setSize(window.innerWidth, window.innerHeight);
 
-          const attractorParams = {
-              sigma: 10,
-              rho: 28,
-              beta: 8 / 3,
-              dt: 0.01,
-              steps: 10000
-          };
-
-          let x = 0.1, y = 0, z = 0;
           let vertices = [];
           let colors = [];
 
-          for (let i = 0; i < attractorParams.steps; i++) {
-              let dx = attractorParams.sigma * (y - x);
-              let dy = x * (attractorParams.rho - z) - y;
-              let dz = x * y - attractorParams.beta * z;
+          // Lissajous Curve parameters
+          const a = 3, b = 4, delta = Math.PI / 2;
+          const scale = 10;
+          const steps = 1000;
 
-              x += dx * attractorParams.dt;
-              y += dy * attractorParams.dt;
-              z += dz * attractorParams.dt;
+          for (let t = 0; t < 2 * Math.PI; t += (2 * Math.PI) / steps) {
+              const x = scale * Math.sin(a * t + delta);
+              const y = scale * Math.sin(b * t);
+              const z = scale * Math.sin((a + b) * t);
 
               vertices.push(x, y, z);
-              colors.push(i / attractorParams.steps, 0.5, 1 - i / attractorParams.steps, 0.8); 
+              colors.push((x + scale) / (2 * scale), (y + scale) / (2 * scale), (z + scale) / (2 * scale), 0.8);
           }
 
           geometry = new THREE.BufferGeometry();
