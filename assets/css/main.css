@@ -12,6 +12,15 @@
   z-index: -1; /* 最背面に配置 */
 }
 
+.profile_block {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
 .language-selector .language-btn {
   display: inline-block;
   background: #f9f9f9;
