@@ -6,7 +6,7 @@
 
 .language-selector .language-btn {
   display: inline-block;
-  background: #e74c3c;
+  background: #f9f9f9;
   color: #fff;
   padding: 10px 20px;
   border-radius: 4px;
@@ -15,7 +15,7 @@
 }
 
 .language-selector .language-btn:hover {
-  background: #c0392b;
+  background: #f9f9f9;
 }
 
 body{
@@ -237,7 +237,7 @@ body{
 
   .post_tag {
     display: inline-block;
-    background: #16a085;
+    background: #f9f9f9;
     color: #fff;
     padding: 5px 15px;
     border-radius: 4px;
@@ -246,7 +246,7 @@ body{
   }
 
   .post_tag:hover {
-      background: #13876b;
+      background: #f9f9f9;
   }
 
 {% if site.color_mode == "auto" %}
@@ -286,7 +286,7 @@ body{
   }
   .post_tag {
     display: inline-block;
-    background: #16a085;
+    background: #f9f9f9;
     color: #fff;
     padding: 5px 15px;
     border-radius: 4px;
@@ -295,7 +295,7 @@ body{
   }
 
   .post_tag:hover {
-      background: #13876b;
+      background: #f9f9f9;
   }
 
 /* 投稿ブロックのスタイル */
@@ -342,7 +342,7 @@ body{
   }
   .post_tag {
     display: inline-block;
-    background: #16a085;
+    background: #f9f9f9;
     color: #fff;
     padding: 5px 15px;
     border-radius: 4px;
@@ -351,7 +351,7 @@ body{
   }
 
   .post_tag:hover {
-      background: #13876b;
+      background: #f9f9f9;
   }
 
 /* 投稿ブロックのスタイル */
@@ -396,7 +396,7 @@ body{
   }
   .post_tag {
     display: inline-block;
-    background: #16a085;
+    background: #f9f9f9;
     color: #fff;
     padding: 5px 15px;
     border-radius: 4px;
@@ -405,7 +405,7 @@ body{
   }
 
   .post_tag:hover {
-      background: #13876b;
+      background: #f9f9f9;
   }
 
 /* 投稿ブロックのスタイル */
