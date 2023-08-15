@@ -40,7 +40,7 @@
   transition: background 0.3s;
 }
 
-.language-selector .language-btn:hover {
+language-btn:hover {
   color: #{{ site.colors.tag_hover }};
 }
 
