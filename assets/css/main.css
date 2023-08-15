@@ -165,7 +165,7 @@ body{
 }
 
 .header {
-  background-color: #{{ site.colors.header_background }};
+  background-color: transparent;
   color: #{{ site.colors.header_text }};
 }
 
