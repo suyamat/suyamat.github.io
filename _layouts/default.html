@@ -45,7 +45,7 @@ Get assets path
     {% seo %}
   </head>
   <body onload="show_tag_section('all_posts')">
-
+    <canvas id="bgCanvas"></canvas>
     <div class="header">
 
       <!-- Large header banner on left for large display widths -->
@@ -199,5 +199,46 @@ Get assets path
       {{ content }}
 
     </div>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+            
+        let canvasWidth = window.innerWidth;
+        let canvasHeight = window.innerHeight;
+    
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+    
+        let angle = 0;
+    
+        function drawPattern() {
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    
+          let side = 50;
+          let xCenter = canvasWidth / 2;
+          let yCenter = canvasHeight / 2;
+    
+          ctx.translate(xCenter, yCenter);
+          ctx.rotate(angle);
+    
+          // Drawing a simple rectangle as an example
+          ctx.fillStyle = "#3498db";
+          ctx.fillRect(-side / 2, -side / 2, side, side);
+    
+          // Reset transformation
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+    
+        function animate() {
+          angle += 0.01;
+          drawPattern();
+          requestAnimationFrame(animate);
+        }
+    
+        animate();
+      });
+    </script>
+    
   </body>
 </html>
