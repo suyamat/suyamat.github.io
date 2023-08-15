@@ -21,7 +21,7 @@
   background: linear-gradient(45deg, #4CAF50, #8BC34A); 
   opacity: 1; /* 追加 */
   transform: translateX(0%);
-  transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);	  transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .revealed .block-veil {
