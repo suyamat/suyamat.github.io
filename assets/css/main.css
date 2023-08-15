@@ -7,19 +7,23 @@
 .language-selector .language-btn {
   display: inline-block;
   background: #f9f9f9;
-  color: #{{ site.colors.tag_hover }};
+  color: #{{ site.colors.tag }};
   padding: 10px 20px;
+  border: 1px solid #ddd;
   border-radius: 4px;
   margin-right: 10px;
   transition: background 0.3s;
 }
 
 .language-selector .language-btn:hover {
+  display: inline-block;
   background: #f9f9f9;
-  padding: 10px;
+  color: #{{ site.colors.tag_hover }};
+  padding: 10px 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-bottom: 20px;
+  margin-right: 10px;
+  transition: background 0.3s;
 }
 
 body{
@@ -138,14 +142,17 @@ body{
 
 .post_tag {
   display: inline-block;
-  background: #{{ site.colors.tag }};
-  padding: 0.3rem 0.5rem;
-  margin: 0.25rem;
-  border-radius: 5px;
+  background: #f9f9f9;
+  color: #{{ site.colors.tag }};
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0 5px 5px 0;
+  transition: background 0.3s;
 }
 
 .post_tag:hover {
-  background: #{{ site.colors.tag_hover }};
+  color: #{{ site.colors.tag_hover }};
 }
 
 .col1 img, span {
@@ -239,24 +246,6 @@ body{
     background: #272822;
   }
 
-  .post_tag {
-    display: inline-block;
-    background: #f9f9f9;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    margin: 0 5px 5px 0;
-    transition: background 0.3s;
-  }
-
-  .post_tag:hover {
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
-
 {% if site.color_mode == "auto" %}
 }
 {% endif %}
@@ -291,23 +280,6 @@ body{
     width: 800px;
     position: relative;
     left: calc(calc(100% - 350px)/2 - 400px + 350px);
-  }
-  .post_tag {
-    display: inline-block;
-    background: #f9f9f9;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    margin: 0 5px 5px 0;
-    transition: background 0.3s;
-  }
-
-  .post_tag:hover {
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
   }
 
 /* 投稿ブロックのスタイル */
@@ -352,23 +324,6 @@ body{
   div.small_header {
     display:flex;
   }
-  .post_tag {
-    display: inline-block;
-    background: #f9f9f9;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    margin: 0 5px 5px 0;
-    transition: background 0.3s;
-  }
-
-  .post_tag:hover {
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-  }
 
 /* 投稿ブロックのスタイル */
   .post_block, .conf_block {
@@ -409,23 +364,6 @@ body{
   }
   div.small_header {
     display:flex;
-  }
-  .post_tag {
-    display: inline-block;
-    background: #f9f9f9;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    margin: 0 5px 5px 0;
-    transition: background 0.3s;
-  }
-
-  .post_tag:hover {
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
   }
 
 /* 投稿ブロックのスタイル */
