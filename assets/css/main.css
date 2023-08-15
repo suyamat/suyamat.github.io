@@ -39,6 +39,8 @@
 }
 
 .education, .skills {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   background: #f9f9f9;
   padding: 10px;
   border: 1px solid #ddd;
@@ -73,6 +75,8 @@ h2, h3 {
 }
 
 .language-selector .language-btn {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   display: inline-block;
   background: #f9f9f9;
   color: #{{ site.colors.tag }};
