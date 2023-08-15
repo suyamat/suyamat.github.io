@@ -16,14 +16,7 @@
 }
 
 .language-selector .language-btn:hover {
-  display: inline-block;
-  background: #f9f9f9;
   color: #{{ site.colors.tag_hover }};
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
-  transition: background 0.3s;
 }
 
 body{
