@@ -202,85 +202,71 @@ Get assets path
     </div>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
-        // ... 既存のcanvasのコード ...
+          let scene, camera, renderer, geometry, material, mesh;
+          let positions;
 
-        // Three.jsの初期化とアニメーション
-        let scene, camera, renderer, geometry, material, mesh;
-        let positions;
+          init();
+          animate();
 
-        init();
-        animate();
+          function init() {
+              scene = new THREE.Scene();
+              camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+              camera.position.z = 10;
+              camera.position.y = 5;
+              camera.lookAt(0, 0, 0);
 
-        function init() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 5;
+              renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
+              renderer.setClearColor(0xffffff, 0);
+              renderer.setSize(window.innerWidth, window.innerHeight);
 
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
-            renderer.setClearColor(0xffffff, 0); 
-            renderer.setSize(window.innerWidth, window.innerHeight);
+              const divisions = 150;
+              const simplex = new SimplexNoise();
 
-            const divisions = 100;
-            positions = new Float32Array(divisions * divisions * 3);
-            geometry = new THREE.BufferGeometry();
-            
-            for(let i = 0; i < divisions; i++) {
-                for(let j = 0; j < divisions; j++) {
-                    const x = (i / divisions) * 5 - 2.5;
-                    const y = (j / divisions) * 5 - 2.5;
-                    const z = Math.sin(x * 2) * 0.5 + Math.cos(y * 2) * 0.5;
+              positions = new Float32Array(divisions * divisions * 3);
+              geometry = new THREE.BufferGeometry();
 
-                    const index = (i * divisions + j) * 3;
-                    positions[index] = x;
-                    positions[index + 1] = y;
-                    positions[index + 2] = z;
-                }
-            }
+              for(let i = 0; i < divisions; i++) {
+                  for(let j = 0; j < divisions; j++) {
+                      const x = (i / divisions) * 10 - 5;
+                      const y = (j / divisions) * 10 - 5;
+                      const z = simplex.noise2D(x * 1.5, y * 1.5) * 3;
 
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            
-            material = new THREE.MeshNormalMaterial();
-            mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
+                      const index = (i * divisions + j) * 3;
+                      positions[index] = x;
+                      positions[index + 1] = y;
+                      positions[index + 2] = z;
+                  }
+              }
 
-            window.addEventListener('resize', onWindowResize, false);
-        }
+              geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+              geometry.computeVertexNormals();
 
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
+              material = new THREE.MeshStandardMaterial({ color: 0x667788, roughness: 0.5, metalness: 0.1 });
+              mesh = new THREE.Mesh(geometry, material);
+              scene.add(mesh);
 
-        function animate() {
-            requestAnimationFrame(animate);
+              const light = new THREE.DirectionalLight(0xffffff, 1);
+              light.position.set(1, 2, 4);
+              scene.add(light);
 
-            // 波の動きを追加
-            for(let i = 0; i < positions.length; i += 3) {
-                positions[i + 2] = Math.sin(positions[i] * 2 + performance.now() * 0.001) * 0.5 
-                                 + Math.cos(positions[i + 1] * 2 + performance.now() * 0.001) * 0.5;
-            }
+              window.addEventListener('resize', onWindowResize, false);
+          }
 
-            geometry.attributes.position.needsUpdate = true;
+          function onWindowResize() {
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(window.innerWidth, window.innerHeight);
+          }
 
-            mesh.rotation.x += 0.01;
-            mesh.rotation.y += 0.01;
+          function animate() {
+              requestAnimationFrame(animate);
 
-            renderer.render(scene, camera);
-        }
+              mesh.rotation.y += 0.002;
 
-        function animate() {
-            requestAnimationFrame(animate);
-
-            mesh.rotation.x += 0.01;
-            mesh.rotation.y += 0.01;
-
-            renderer.render(scene, camera);
-        }
-
-        // ... 既存のanimate関数 ...
+              renderer.render(scene, camera);
+          }
       });
-    </script>
+  </script>
     
   </body>
 </html>
