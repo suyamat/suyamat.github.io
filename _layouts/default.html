@@ -44,7 +44,7 @@ Get assets path
     </script>
     <script>
       // ページの読み込みが完了したときにアニメーションを開始
-      document.addEventListener("DOMContentLoaded", function() {
+      window.addEventListener("load", function() {
         setTimeout(function() {
           document.querySelector('.content').classList.add('revealed');
         }, 100);  // 100ms後にアニメーションを開始
