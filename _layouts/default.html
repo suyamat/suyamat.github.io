@@ -214,7 +214,7 @@ Get assets path
           camera.position.z = 50;
 
           renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
-          renderer.setClearColor(0x000000, 0);  // 背景を透明に設定
+          renderer.setClearColor(0x000000, 0);
           renderer.setSize(window.innerWidth, window.innerHeight);
 
           const attractorParams = {
@@ -239,14 +239,14 @@ Get assets path
               z += dz * attractorParams.dt;
 
               vertices.push(x, y, z);
-              colors.push(i / attractorParams.steps, 0.5, 1 - i / attractorParams.steps, 0.5);  // 適切なアルファ値を持つ色を生成
+              colors.push(i / attractorParams.steps, 0.5, 1 - i / attractorParams.steps, 0.8); 
           }
 
           geometry = new THREE.BufferGeometry();
           geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
           geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
 
-          material = new THREE.LineBasicMaterial({ vertexColors: THREE.VertexColors, transparent: true });  // 色の配列を使用
+          material = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true });
 
           line = new THREE.Line(geometry, material);
           scene.add(line);
