@@ -46,8 +46,6 @@
   border-radius: 4px;
   margin-right: 10px;
   transition: background 0.3s;
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
 }
 
 .language-selector .language-btn:hover {
@@ -372,7 +370,7 @@ body{
     padding-bottom: 10px;
   }
 
-  .education , .skills, .awards {
+  .education, .skills, .awards {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
