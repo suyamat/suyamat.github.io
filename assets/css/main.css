@@ -32,7 +32,7 @@
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   display: inline-block;
   background: #f9f9f9;
-  color: #{{ site.colors.tag }};
+  color: #{{ site.colors.tag_hover }};
   padding: 10px 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
