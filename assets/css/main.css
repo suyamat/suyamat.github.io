@@ -13,13 +13,13 @@
 }
 
 .block-veil {
-  position: absolute; /* 追加: ベールを絶対位置に設定 */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white; /* ベールの色。必要に応じて変更 */
-  transform: translateX(0);
+  background-color: white;
+  transform: translateX(0%);
   transition: transform 1.5s ease-out;
 }
 
