@@ -37,6 +37,15 @@
   margin-bottom: 20px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 }
+
+.education, .skills {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
 h2, h3 {
   border-bottom: 2px solid #3498db;
   padding-bottom: 10px;
@@ -50,6 +59,7 @@ h2, h3 {
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 }
 .profile {
   position: relative; /* 追加: post_blockを相対位置に設定 */
@@ -59,7 +69,7 @@ h2, h3 {
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-bottom: 20px;
-
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .language-selector .language-btn {
