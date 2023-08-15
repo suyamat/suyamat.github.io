@@ -46,7 +46,7 @@ Get assets path
     {% seo %}
   </head>
   <body onload="show_tag_section('all_posts')">
-    <canvas id="threeCanvas"></canvas>
+    <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>  <!-- Three.jsのためのcanvas要素を背景に設定 -->
     <div class="header">
 
       <!-- Large header banner on left for large display widths -->
@@ -210,16 +210,22 @@ Get assets path
         init();
         animate();
 
+        let scene, camera, renderer, geometry, material, torusKnot;
+
+        init();
+        animate();
+
         function init() {
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.z = 5;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById('threeCanvas') });
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') }); // 背景を透明にするためにalphaをtrueに設定
+            renderer.setClearColor(0xffffff, 0); // 白色で透明度を0に設定
             renderer.setSize(window.innerWidth, window.innerHeight);
 
             geometry = new THREE.TorusKnotGeometry(1, 0.4, 100, 16);
-            material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+            material = new THREE.MeshBasicMaterial({ color: 0x888888, wireframe: true, transparent: true, opacity: 0.5 }); // 色を変更し、半透明に設定
             torusKnot = new THREE.Mesh(geometry, material);
             scene.add(torusKnot);
 
