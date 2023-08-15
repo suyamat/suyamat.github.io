@@ -212,12 +212,12 @@ Get assets path
           function init() {
               scene = new THREE.Scene();
               camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-              camera.position.z = 15;
+              camera.position.z = 20;
               camera.position.y = 5;
               camera.lookAt(0, 0, 0);
 
               renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
-              renderer.setClearColor(0xffffff, 0);
+              renderer.setClearColor(0x000000, 0);  // 背景を完全に透明に
               renderer.setSize(window.innerWidth, window.innerHeight);
 
               const divisions = 200;
@@ -227,7 +227,14 @@ Get assets path
               positions = new Float32Array(divisions * divisions * 3);
               geometry = new THREE.BufferGeometry();
 
-              material = new THREE.MeshStandardMaterial({ color: 0x667788, roughness: 0.5, metalness: 0.1 });
+              material = new THREE.MeshStandardMaterial({ 
+                  color: 0x667788, 
+                  roughness: 0.5, 
+                  metalness: 0.2,
+                  transparent: true,
+                  opacity: 0.7  // 透明度を設定
+              });
+
               mesh = new THREE.Mesh(geometry, material);
               scene.add(mesh);
 
@@ -242,12 +249,12 @@ Get assets path
               const divisions = 200;
               for(let i = 0; i < divisions; i++) {
                   for(let j = 0; j < divisions; j++) {
-                      const x = (i / divisions) * 10 - 5;
-                      const y = (j / divisions) * 10 - 5;
+                      const x = (i / divisions) * 20 - 10;
+                      const y = (j / divisions) * 20 - 10;
                       
-                      const z = simplex.noise3D(x * 1.5, y * 1.5, time) * 3 
-                              + simplex.noise3D(x, y, time * 0.5) * 2 
-                              + simplex.noise2D(x * 0.5, y * 0.5) * 1;
+                      const z = simplex.noise3D(x * 0.5, y * 0.5, time) * 5
+                              + simplex.noise3D(x * 1.2, y * 1.2, time * 0.5) * 4
+                              + simplex.noise2D(x * 0.2, y * 0.2) * 3;
 
                       const index = (i * divisions + j) * 3;
                       positions[index] = x;
@@ -269,7 +276,7 @@ Get assets path
           function animate() {
               requestAnimationFrame(animate);
 
-              time += 0.01;
+              time += 0.005;
               updateGeometry();
               mesh.rotation.y += 0.002;
 
