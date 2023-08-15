@@ -12,11 +12,6 @@
   z-index: -1; /* 最背面に配置 */
 }
 
-.post_block, .conf_block {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-}
-
 .block-veil {
   position: absolute; /* 追加: ベールを絶対位置に設定 */
   top: 0;
@@ -313,12 +308,14 @@ body{
 
 /* 投稿ブロックのスタイル */
   .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   }
   h2, h3 {
     border-bottom: 2px solid #3498db;
@@ -356,12 +353,14 @@ body{
 
 /* 投稿ブロックのスタイル */
   .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   }
   h2, h3 {
     border-bottom: 2px solid #3498db;
@@ -397,12 +396,14 @@ body{
 
 /* 投稿ブロックのスタイル */
   .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* 追加: post_blockを相対位置に設定 */
+    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   }
   h2, h3 {
     border-bottom: 2px solid #3498db;
