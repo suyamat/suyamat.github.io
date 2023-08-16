@@ -107,7 +107,7 @@ body{
   opacity: 0;
   transition: opacity 0s 0.2s;
 }
-.col2.make_visible {
+.col2.make-visible {
   opacity: 1;
 }
 
