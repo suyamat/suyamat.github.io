@@ -29,8 +29,20 @@
 .revealed .block-veil {
   transform: translateX(-100%); /* ベールが左に移動 */
 }
+.post_tag, .language-btn {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+  display: inline-block;
+  background: #f9f9f9;
+  color: #{{ site.colors.tag_hover }};
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
 
-.language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
+.post_block, .conf_block, .education, .skills, .awards, .profile {
   position: relative; /* 追加: post_blockを相対位置に設定 */
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   background: #f9f9f9;
