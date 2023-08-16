@@ -275,6 +275,7 @@ Get assets path
         setTimeout(function() {
           blocks.forEach(block => {
             block.classList.add('revealed');
+            block.classList.add('make-visible');
           });
         }, 100);  // すべてのベールが100ms後に同時にめくれるようにします
       });

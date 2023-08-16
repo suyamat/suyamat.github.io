@@ -55,7 +55,7 @@
   opacity: 0;
   transition: opacity 0s 0.2s;
 }
-.revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile {
+.post_block.make-visible, .conf_block.make-visible, .education.make-visible, .skills.make-visible, .awards.make-visible, .profile.make-visible {
   opacity: 1;
 }
 
@@ -317,11 +317,6 @@ body{
     border-radius: 4px;
     margin-bottom: 20px;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transition: opacity 0s 0.2s;
-  }
-  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile {
-    opacity: 1;
   }
 }
 
