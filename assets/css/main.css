@@ -18,7 +18,6 @@
   right: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
   background: linear-gradient(90deg, 
                               #4CAF50 0%, #4CAF50 33.3%, 
                               #8BC34A 33.3%, #8BC34A 66.6%, 
@@ -29,6 +28,23 @@
 
 .revealed .block-veil {
   transform: translateX(-100%); /* ベールが左に移動 */
+}
+
+.language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+.language-btn:hover {
+  color: #{{ site.colors.tag_hover }};
+}
+.post_tag:hover {
+  color: #{{ site.colors.tag_hover }};
 }
 
 body{
@@ -271,23 +287,6 @@ body{
     position: relative;
     left: calc(calc(100% - 350px)/2 - 400px + 350px);
   }
-  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
-    position: relative; /* 追加: post_blockを相対位置に設定 */
-    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-  }
-  .language-btn:hover {
-    color: #{{ site.colors.tag_hover }};
-  }
-  .post_tag:hover {
-    color: #{{ site.colors.tag_hover }};
-  }
   
   h2, h3 {
     border-bottom: 2px solid #3498db;
@@ -312,27 +311,7 @@ body{
   div.small_header {
     display:flex;
   }
-  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
-    position: relative; /* 追加: post_blockを相対位置に設定 */
-    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
-  }
-  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
-    opacity: 1;
-  }
-  .language-btn:hover {
-    color: #{{ site.colors.tag_hover }};
-  }
-  .post_tag:hover {
-    color: #{{ site.colors.tag_hover }};
-  }
+
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
@@ -355,27 +334,6 @@ body{
   }
   div.small_header {
     display:flex;
-  }
-  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
-    position: relative; /* 追加: post_blockを相対位置に設定 */
-    overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
-  }
-  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
-    opacity: 1;
-  }
-  .language-btn:hover {
-    color: #{{ site.colors.tag_hover }};
-  }
-  .post_tag:hover {
-    color: #{{ site.colors.tag_hover }};
   }
   h2, h3 {
     border-bottom: 2px solid #3498db;
