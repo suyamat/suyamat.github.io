@@ -23,11 +23,11 @@
                               #8BC34A 33.3%, #8BC34A 66.6%, 
                               #CDDC39 66.6%, #CDDC39 100%);
   transform: translateX(-100%); /* 追加: 初めはベールをその位置に保持 */
-  transition: transform 0.7s cubic-bezier(1, 0.01, 0.01, 1);
+  transition: transform 0.5s cubic-bezier(1, 0.01, 0.01, 1);
 }
 
 .revealed .block-veil {
-  transform: translateX(0%); /* ベールが左に移動 */
+  transform: translateX(100%); /* ベールが左に移動 */
 }
 .post_tag, .language-btn {
   position: relative; /* 追加: post_blockを相対位置に設定 */
