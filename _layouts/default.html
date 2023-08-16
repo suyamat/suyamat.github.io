@@ -270,26 +270,23 @@ Get assets path
       }
     </script>
     <script>
-      window.addEventListener('scroll', function() {
+      document.addEventListener("DOMContentLoaded", function() {
         const elements = document.querySelectorAll('.post_block, .conf_block, .awards, .profile, .education, .skills, .post_tag, .language-btn');
-        
-        elements.forEach(function(element) {
-          if (isInViewport(element)) {
-            element.classList.add('make-visible');
-            element.classList.add('revealed');
-          }
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('make-visible');
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+            }
+          });
+        });
+
+        elements.forEach(element => {
+          observer.observe(element);
         });
       });
-
-      function isInViewport(element) {
-        const bounding = element.getBoundingClientRect();
-        return (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-      };
     </script>
   </body>
 </html>
