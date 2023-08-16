@@ -88,14 +88,7 @@ body{
 }
 
 .col2 {
-  float: left;
-  width: 50%;
-  text-align: center;
-  height: 20px;
-}
-.col2 {
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  display: inline-block;
   background: #f9f9f9;
   color: #{{ site.colors.tag_hover }};
   padding: 10px;
