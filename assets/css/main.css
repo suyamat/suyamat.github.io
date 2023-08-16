@@ -43,7 +43,8 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-right: 10px;
-  transition: background 0.3s;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
 }
 
 .language-btn:hover {
@@ -174,7 +175,8 @@ body{
   border: 1px solid #ddd;
   border-radius: 4px;
   margin: 0 5px 5px 0;
-  transition: background 0.3s;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
 }
 
 .post_tag:hover {
@@ -319,8 +321,8 @@ body{
     opacity: 0;
     transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
   }
-  :not(.revealed) .post_block, :not(.revealed) .conf_block, :not(.revealed) .education, :not(.revealed) .skills, :not(.revealed) .awards, :not(.revealed) .profile, :not(.revealed) .language-btn, :not(.revealed) .post_tag {
-    opacity: 0;
+  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
+    opacity: 1;
   }
   
   h2, h3 {
@@ -358,8 +360,8 @@ body{
     opacity: 0;
     transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
   }
-  :not(.revealed) .post_block, :not(.revealed) .conf_block, :not(.revealed) .education, :not(.revealed) .skills, :not(.revealed) .awards, :not(.revealed) .profile, :not(.revealed) .language-btn, :not(.revealed) .post_tag {
-    opacity: 0;
+  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
+    opacity: 1;
   }
   
   h2, h3 {
@@ -397,8 +399,8 @@ body{
     opacity: 0;
     transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
   }
-  :not(.revealed) .post_block, :not(.revealed) .conf_block, :not(.revealed) .education, :not(.revealed) .skills, :not(.revealed) .awards, :not(.revealed) .profile, :not(.revealed) .language-btn, :not(.revealed) .post_tag {
-    opacity: 0;
+  .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
+    opacity: 1;
   }
   
   h2, h3 {
