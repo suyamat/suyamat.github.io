@@ -25,30 +25,12 @@
                               #CDDC39 66.6%, #CDDC39 100%);
   transform: translateX(0%); /* 追加: 初めはベールをその位置に保持 */
   transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s,
-              transform 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s; /* transformの遷移も追加 */
+              transform 0.7s cubic-bezier(1, 0.01, 0.01, 1); /* transformの遷移も追加 */
 }
 
 .revealed .block-veil {
   transform: translateX(-100%); /* ベールが左に移動 */
   opacity: 1; /* ベールが不透明になる */
-}
-
-.language-btn {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  display: inline-block;
-  background: #f9f9f9;
-  color: #{{ site.colors.tag_hover }};
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
-  opacity: 0;
-  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
-}
-
-.language-btn:hover {
-  color: #{{ site.colors.tag_hover }};
 }
 
 body{
@@ -163,24 +145,6 @@ body{
   background-color: #eee;
   padding: 1px 10px;
   border-radius: 8px;
-}
-
-.post_tag {
-  position: relative; /* 追加: post_blockを相対位置に設定 */
-  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
-  display: inline-block;
-  background: #f9f9f9;
-  color: #{{ site.colors.tag_hover }};
-  padding: 5px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin: 0 5px 5px 0;
-  opacity: 0;
-  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
-}
-
-.post_tag:hover {
-  color: #{{ site.colors.tag_hover }};
 }
 
 .col1 img, span {
@@ -309,7 +273,7 @@ body{
     position: relative;
     left: calc(calc(100% - 350px)/2 - 400px + 350px);
   }
-  .post_block, .conf_block, .education, .skills, .awards, .profile {
+  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
@@ -323,6 +287,13 @@ body{
   }
   .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
     opacity: 1;
+  }
+
+  .language-btn:hover {
+    color: #{{ site.colors.tag_hover }};
+  }
+  .post_tag:hover {
+    color: #{{ site.colors.tag_hover }};
   }
   
   h2, h3 {
@@ -348,7 +319,7 @@ body{
   div.small_header {
     display:flex;
   }
-  .post_block, .conf_block, .education, .skills, .awards, .profile {
+  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
@@ -363,7 +334,12 @@ body{
   .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
     opacity: 1;
   }
-  
+  .language-btn:hover {
+    color: #{{ site.colors.tag_hover }};
+  }
+  .post_tag:hover {
+    color: #{{ site.colors.tag_hover }};
+  }
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
@@ -387,7 +363,7 @@ body{
   div.small_header {
     display:flex;
   }
-  .post_block, .conf_block, .education, .skills, .awards, .profile {
+  .language-btn, .post_tag, .post_block, .conf_block, .education, .skills, .awards, .profile {
     position: relative; /* 追加: post_blockを相対位置に設定 */
     overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
     background: #f9f9f9;
@@ -402,7 +378,12 @@ body{
   .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile, .revealed .language-btn, .revealed .post_tag {
     opacity: 1;
   }
-  
+  .language-btn:hover {
+    color: #{{ site.colors.tag_hover }};
+  }
+  .post_tag:hover {
+    color: #{{ site.colors.tag_hover }};
+  }
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
