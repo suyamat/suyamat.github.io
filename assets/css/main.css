@@ -52,10 +52,12 @@
   margin-bottom: 20px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   visibility: hidden;
-  transition: visibility 0s 0.2s;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0s 0.2s;
 }
 .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile {
   visibility: visible;
+  opacity: 1;
 }
 
 .language-btn:hover {
