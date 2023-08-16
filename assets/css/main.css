@@ -23,11 +23,13 @@
                               #8BC34A 33.3%, #8BC34A 66.6%, 
                               #CDDC39 66.6%, #CDDC39 100%);
   transform: translateX(-100%); /* 追加: 初めはベールをその位置に保持 */
-  transition: transform 0.75s cubic-bezier(1, 0.01, 0.01, 1);
+  opacity: 0;
+  transition: opacity 0s 0.2s, transform 0.75s cubic-bezier(1, 0.01, 0.01, 1);
 }
 
 .revealed .block-veil {
   transform: translateX(100%);
+  opacity: 1;
 }
 .post_tag, .language-btn {
   position: relative; /* 追加: post_blockを相対位置に設定 */
@@ -40,6 +42,8 @@
   border-radius: 4px;
   margin-bottom: 20px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0s 0.2s;
 }
 
 .post_block, .conf_block, .education, .skills, .awards, .profile {
@@ -56,6 +60,9 @@
   transition: opacity 0s 0.2s;
 }
 .post_block.make-visible, .conf_block.make-visible, .education.make-visible, .skills.make-visible, .awards.make-visible, .profile.make-visible {
+  opacity: 1;
+}
+.post_tag.make-visible, .language-btn.make-visible {
   opacity: 1;
 }
 
