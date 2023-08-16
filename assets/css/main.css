@@ -27,7 +27,7 @@
 }
 
 .revealed .block-veil {
-  transform: translateX(100%); /* ベールが左に移動 */
+  transform: translateX(100%);
 }
 .post_tag, .language-btn {
   position: relative; /* 追加: post_blockを相対位置に設定 */
@@ -55,7 +55,7 @@
   transition: visibility 0s 0.2s;
 }
 .revealed .post_block, .revealed .conf_block, .revealed .education, .revealed .skills, .revealed .awards, .revealed .profile {
-  opacity: visible;
+  visibility: visible;
 }
 
 .language-btn:hover {
