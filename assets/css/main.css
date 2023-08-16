@@ -24,7 +24,7 @@
                               #CDDC39 66.6%, #CDDC39 100%);
   opacity: 0;
   transform: translateX(0%); /* 追加: 初めはベールをその位置に保持 */
-  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s, transform 0.7s cubic-bezier(1, 0.01, 0.01, 1);
+  transition: opacity 0.7s 0.2s, transform 0.7s cubic-bezier(1, 0.01, 0.01, 1);
 }
 
 .revealed .block-veil {
@@ -43,7 +43,7 @@
   margin-bottom: 20px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   opacity: 0;
-  transition: opacity 0.7s cubic-bezier(1, 0.01, 0.01, 1) 0.2s;
+  transition: opacity 0.7s 0.2s;
 }
 .revealed .post_tag, .revealed .language-btn {
   opacity: 1;
