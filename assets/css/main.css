@@ -201,6 +201,11 @@ body{
   vertical-align: middle;
 }
 
+.col2 img, span {
+  vertical-align: middle;
+}
+
+
 
 .header {
   background-color: transparent;
