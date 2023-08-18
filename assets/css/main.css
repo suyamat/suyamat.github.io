@@ -86,6 +86,11 @@ body{
   text-align: center;
   height: 20px;
 }
+.col2 {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
 
 .col2 {
   position: relative; /* 追加: post_blockを相対位置に設定 */
