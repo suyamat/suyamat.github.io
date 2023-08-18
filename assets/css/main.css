@@ -106,7 +106,7 @@ body{
   opacity: 0;
   transition: opacity 0s 0.2s;
 }
-.col2:horver {
+.col2:hover {
   color: #{{ site.colors.tag_hover }};
 }
 .col2.make-visible {
