@@ -116,11 +116,6 @@ body{
   height: 20px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-
 .row:after {
   content: "";
   display: table;
