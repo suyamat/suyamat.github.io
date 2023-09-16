@@ -46,7 +46,7 @@
   transition: opacity 0s 0.2s;
 }
 
-.post_block, .conf_block, .contest_block, .experience_block, .education, .skills, .profile {
+.post_block, .conf_block, .experience_block, .contest_block, .education, .skills, .profile {
   position: relative; /* 追加: post_blockを相対位置に設定 */
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   display: inline-block;
