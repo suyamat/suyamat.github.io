@@ -14,7 +14,7 @@ layout: default
 
   <h2>Profile</h2>
   <div class="profile">
-    <p>{{ site.data.ja_configlong_description }}</p>
+    <p>{{ site.data.ja_config.long_description }}</p>
     <div class="block-veil"></div>
   </div>
 
@@ -22,7 +22,7 @@ layout: default
   Get tags from all posts
   {% endcomment %}
   {% assign rawtags = "" %}
-  {% for post in site.data.ja_configposts %}
+  {% for post in site.data.ja_config.posts %}
   {% assign ttags = post.tags | join:'|' | append:'|' %}
   {% assign rawtags = rawtags | append:ttags %}
   {% endfor %}
@@ -46,11 +46,11 @@ layout: default
   {% comment %}
   Get site url without trailing forward slash
   {% endcomment %}
-  {% if site.data.ja_configmain_github_io %}
+  {% if site.data.ja_config.main_github_io %}
   {% assign site_url = "" %}
   {% else %}
-  {% assign site_url_len = site.data.ja_configurl | size | minus: 1 %}
-  {% assign site_url = site.data.ja_configurl | slice: 0, site_url_len %}
+  {% assign site_url_len = site.data.ja_config.url | size | minus: 1 %}
+  {% assign site_url = site.data.ja_config.url | slice: 0, site_url_len %}
   {% endif %}
 
   <p>
@@ -70,7 +70,7 @@ layout: default
   <div id="all_posts">
     <div id="paper">
       <h2> 論文 </h2>
-      {% for post in site.data.ja_configposts %}
+      {% for post in site.data.ja_config.posts %}
       {% if post.category == "publication" or post.category == "preprint" %}
       <div class="post_block">
         <h3>{{ post.title }}</h3>
@@ -91,7 +91,7 @@ layout: default
 
     <div id="conferences">
       <h2> 学会 </h2>
-      {% for post in site.data.ja_configposts %}
+      {% for post in site.data.ja_config.posts %}
       {% if post.category == "conference" %}
       <div class="conf_block">
         <h3>{{ post.title }}</h3>
@@ -112,7 +112,7 @@ layout: default
   
     <div id="contest">
       <h2> コンテスト </h2>
-      {% for post in site.data.ja_configposts %}
+      {% for post in site.data.ja_config.posts %}
       {% if post.category == "contest" %}
       <div class="contest_block">
         <h3>{{ post.title }}</h3>
@@ -133,7 +133,7 @@ layout: default
 
     <div id="experience">
       <h2> 経歴 </h2>
-      {% for post in site.data.ja_configposts %}
+      {% for post in site.data.ja_config.posts %}
       {% if post.category == "experience" %}
       <div class="experience_block">
         <h3>{{ post.title }}</h3>
@@ -157,7 +157,7 @@ layout: default
   {% for tag in tags %}
   <div id="{{ tag | slugify }}" class="by_tag">
     <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
-    {% for post in site.data.ja_configposts %}
+    {% for post in site.data.ja_config.posts %}
     {% if post.tags contains tag %}
     <div class="post_block">
       <h3>{{ post.title }}</h3>
