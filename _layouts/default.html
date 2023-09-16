@@ -211,7 +211,7 @@ Get assets path
     <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 
     <script>
-        let scene, camera, renderer, material, line, geometry, time = 0;
+        let scene, camera, renderer, material, mesh, geometry, time = 0;
         const simplex = new SimplexNoise();
 
         init();
@@ -235,10 +235,10 @@ Get assets path
                 for (let j = 0; j < segments; j++) {
                     const x = (i / segments - 0.5) * size;
                     const y = (j / segments - 0.5) * size;
-                    const z = simplex.noise3D(i / segments, j / segments, time) * 2;
+                    const z = simplex.noise2D(i / segments, j / segments) * 2;
 
                     vertices.push(x, y, z);
-                    colors.push(0, 0, Math.abs(z) / 2 + 0.5, 1); // Blue gradient based on the z value
+                    colors.push(0, 0, (z + 2) / 4, 1); // Blue gradient based on the z value
                 }
             }
 
@@ -255,16 +255,17 @@ Get assets path
                     const index3 = (i + 1) * segments + j + 1;
                     const index4 = i * segments + j + 1;
 
-                    indices.push(index1, index2, index2, index3, index3, index4, index4, index1);
+                    indices.push(index1, index2, index3);
+                    indices.push(index1, index3, index4);
                 }
             }
 
             geometry.setIndex(indices);
 
-            material = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true });
+            material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
 
-            line = new THREE.LineSegments(geometry, material);
-            scene.add(line);
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
@@ -289,7 +290,7 @@ Get assets path
                 for (let j = 0; j < segments; j++) {
                     const x = (i / segments - 0.5) * size;
                     const y = (j / segments - 0.5) * size;
-                    const z = simplex.noise3D(i / segments, j / segments, time) * 2;
+                    const z = simplex.noise2D(i / segments, j / segments, time) * 2;
                     vertices.push(x, y, z);
                 }
             }
@@ -297,7 +298,6 @@ Get assets path
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
             geometry.attributes.position.needsUpdate = true;
         }
-
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
