@@ -283,17 +283,22 @@ Get assets path
         function updateVertices() {
             const vertices = [];
             const segments = 100;
+            const size = 50;
 
             for (let i = 0; i < segments; i++) {
                 for (let j = 0; j < segments; j++) {
+                    const x = (i / segments - 0.5) * size;
+                    const y = (j / segments - 0.5) * size;
                     const z = simplex.noise3D(i / segments, j / segments, time) * 2;
-                    vertices.push(0, 0, z);
+
+                    vertices.push(x, y, z);
                 }
             }
 
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
             geometry.attributes.position.needsUpdate = true;
         }
+
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
