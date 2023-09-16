@@ -46,7 +46,7 @@
   transition: opacity 0s 0.2s;
 }
 
-.post_block, .conf_block, .education, .skills, .awards, .profile {
+.post_block, .conf_block, .contest_block, .experience_block, .education, .skills, .awards, .profile {
   position: relative; /* 追加: post_blockを相対位置に設定 */
   overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
   display: inline-block;
@@ -59,7 +59,7 @@
   opacity: 0;
   transition: opacity 0s 0.2s;
 }
-.post_block.make-visible, .conf_block.make-visible, .education.make-visible, .skills.make-visible, .awards.make-visible, .profile.make-visible {
+.post_block.make-visible, .conf_block.make-visible, .contest_block.make_visible, .experience_block.make-visible, .education.make-visible, .skills.make-visible, .profile.make-visible {
   opacity: 1;
 }
 .post_tag.make-visible, .language-btn.make-visible {

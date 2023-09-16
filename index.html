@@ -114,7 +114,7 @@ layout: default
       <h2> Contests </h2>
       {% for post in site.posts %}
       {% if post.category == "contest" %}
-      <div class="conf_block">
+      <div class="contest_block">
         <h3>{{ post.title }}</h3>
         <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
         {% if post.description %}
