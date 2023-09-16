@@ -43,8 +43,8 @@ syntax_highlight_stylesheet: syntax_highlight.css
 # Colors - white mode
 colors:
   text: 333
-  tag: dbefdc
-  tag_hover: 93cf95
+  tag: 339cff
+  tag_hover: 9dd0ff
   header_background: ffffff
   header_text: 00000
   header_link_hover: 93cf95

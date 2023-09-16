@@ -225,11 +225,11 @@ body{
 }
 
 .header a {
-  color: #339cff;
+  color: #{{ site.colors.tag}};
 }
 
 .header a:hover {
-  color: #a7d4ff;
+  color: #{{ site.colors.tag_hover}};
 }
 
 .content a {
