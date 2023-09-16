@@ -54,7 +54,7 @@ Get assets path
 
         <!-- Name -->
         <div class="name_group">
-          <h1><a href="">{{ site.data.ja_config.name }}</a></h1>
+          <h1>{{ site.data.ja_config.name }}</h1>
         </div>
 
         <a href=""><img src="{{ site.data.ja_config.logo }}" alt="Logo" class="center_img" ></a>
@@ -97,13 +97,13 @@ Get assets path
                 <div class="block-veil"></div>
               </div>
             </a>
-            <a href="{{ site.data.ja_config.linkedin_url }}">
+            <!-- <a href="{{ site.data.ja_config.linkedin_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
                 <span> LinkedIn </span>
                 <div class="block-veil"></div>
               </div>
-            </a>
+            </a> -->
           </div>
 
           <div class="row">
@@ -114,13 +114,13 @@ Get assets path
                 <div class="block-veil"></div>
               </div>
             </a>
-            <a href="{{ site.data.ja_config.resume_url }}">
+            <!-- <a href="{{ site.data.ja_config.resume_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
                 <span> Resume </span>
                 <div class="block-veil"></div>
               </div>
-            </a>
+            </a> -->
           </div>
 
         </div>
@@ -139,7 +139,7 @@ Get assets path
               </a>
             </div>
             <div class="name_header_name">
-              <h1><a href="">{{ site.data.ja_config.name }}</a></h1>
+              <h1>{{ site.data.ja_config.name }}</h1>
             </div>
           </div>
         </div>
@@ -279,7 +279,7 @@ Get assets path
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        const elements = document.querySelectorAll('.post_block, .conf_block, .awards, .profile, .education, .skills, .post_tag, .language-btn, .col2');
+        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
 
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
