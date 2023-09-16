@@ -87,6 +87,7 @@ body{
   height: 20px;
 }
 .col2 {
+  position: 20 px
   width: calc(50%);
   text-align: center;
   margin: 0 5px;
