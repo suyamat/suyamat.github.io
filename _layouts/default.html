@@ -230,16 +230,17 @@ Get assets path
           const vertices = [];
           const colors = [];
           const segments = 100;
-          const size = 50;
+          const width = 100;  // Adjusted width to make the wave appear longer
+          const depth = 10;  // Adjusted depth to narrow the wave
 
           for (let i = 0; i < segments; i++) {
               for (let j = 0; j < segments; j++) {
-                  const x = (i / segments - 0.5) * size;
-                  const y = (j / segments - 0.5) * size;
-                  const z = simplex.noise2D(i / segments, time) * 2;
+                  const x = (i / segments - 0.5) * width;
+                  const y = (j / segments - 0.5) * depth;
+                  const z = simplex.noise2D(i / 10, time) * 2; // Adjusted noise parameters to stretch the wave along the x axis
 
                   vertices.push(x, y, z);
-                  colors.push(0, 0, Math.abs(z) / 2 + 0.5, 1); // Blue gradient based on the z value
+                  colors.push(0, 0, Math.abs(z) / 2 + 0.5, 1); 
               }
           }
 
@@ -285,13 +286,14 @@ Get assets path
       function updateVertices() {
           const vertices = [];
           const segments = 100;
-          const size = 50;
+          const width = 100;
+          const depth = 10;
 
           for (let i = 0; i < segments; i++) {
               for (let j = 0; j < segments; j++) {
-                  const x = (i / segments - 0.5) * size;
-                  const y = (j / segments - 0.5) * size;
-                  const z = simplex.noise2D(i / segments, time) * 2;
+                  const x = (i / segments - 0.5) * width;
+                  const y = (j / segments - 0.5) * depth;
+                  const z = simplex.noise2D(i / 10, time) * 2;
                   vertices.push(x, y, z);
               }
           }
