@@ -234,7 +234,11 @@ body{
 }
 
 .content a {
-  color: #{{ site.colors.links }};
+  color: #{{ site.colors.tag }};
+}
+
+.content a:hover {
+  color: #{{ site.colors.tag_hover }};
 }
 
 .content {
