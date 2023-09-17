@@ -213,60 +213,55 @@ Get assets path
     <script>
       const canvas = document.getElementById('threeCanvas');
       const ctx = canvas.getContext('2d');
-  
+      
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
   
-      let puddles = [];
-      let time = 0;
+      let lanternY = canvas.height;
+      const lanternHeight = 50;
+      const lanternWidth = 30;
+      const seaLevel = canvas.height - 20;
   
-      function createPuddle() {
-          puddles.push({
-              x: Math.random() * canvas.width,
-              y: Math.random() * canvas.height,
-              radius: 0,
-              maxRadius: Math.random() * 50 + 50,
-              spreadingSpeed: Math.random() * 0.5 + 0.5,
-              alpha: 1,
-              irregularity: Math.random() * 20 - 10,
-          });
+      function drawSea() {
+          ctx.fillStyle = '#1E3A66';
+          ctx.fillRect(0, seaLevel, canvas.width, 20);
       }
   
-      function drawPuddle() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+      function drawLantern() {
+          // Lantern body
+          ctx.fillStyle = '#FF6F3C';
+          ctx.beginPath();
+          ctx.ellipse(canvas.width / 2, lanternY, lanternWidth, lanternHeight, 0, 0, Math.PI * 2);
+          ctx.fill();
   
-          puddles.forEach((puddle, index) => {
-              ctx.beginPath();
-              
-              for (let i = 0; i < Math.PI * 2; i += Math.PI / 10) {
-                  const offsetX = Math.cos(i) * puddle.irregularity * Math.random();
-                  const offsetY = Math.sin(i) * puddle.irregularity * Math.random();
-                  ctx.lineTo(
-                      puddle.x + offsetX + Math.cos(i) * puddle.radius,
-                      puddle.y + offsetY + Math.sin(i) * puddle.radius
-                  );
-              }
+          // Lantern flame
+          ctx.fillStyle = '#FFD700';
+          ctx.beginPath();
+          ctx.ellipse(canvas.width / 2, lanternY - lanternHeight / 2, lanternWidth / 2, lanternHeight / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+      }
   
-              ctx.closePath();
-              ctx.fillStyle = `rgba(0, 0, 255, ${puddle.alpha})`; // blue color with varying alpha
-              ctx.fill();
-  
-              puddle.radius += puddle.spreadingSpeed;
-              puddle.alpha -= 0.002;
-  
-              if (puddle.radius > puddle.maxRadius) {
-                  puddles.splice(index, 1);
-              }
-          });
+      function drawStars() {
+          for(let i = 0; i < 200; i++) {
+              const x = Math.random() * canvas.width;
+              const y = Math.random() * seaLevel;
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(x, y, 2, 2);
+          }
       }
   
       function animate() {
-          time++;
-          if (time % 100 === 0) {
-              createPuddle();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          lanternY -= 0.5;
+  
+          if (lanternY < -lanternHeight) {
+              lanternY = canvas.height;
           }
   
-          drawPuddle();
+          drawSea();
+          drawLantern();
+          drawStars();
+  
           requestAnimationFrame(animate);
       }
   
