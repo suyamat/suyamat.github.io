@@ -43,6 +43,10 @@ Get assets path
         document.getElementById(tag).style.display = 'block';
       }
     </script>
+    <style>
+      body { margin: 0; }
+      #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    </style>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     {% seo %}
   </head>
@@ -208,40 +212,13 @@ Get assets path
       {{ content }}
     </div>
 
-    <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+    <div id="particles-js"></div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-      const canvas = document.getElementById('threeCanvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-  
-      let time = 0;
-  
-      function drawWave(y, wavelength, amplitude, color, speed) {
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          for(let x = 0; x < canvas.width; x++) {
-              const offset = x / wavelength * Math.PI * 2 + time * speed;
-              const waveY = y + Math.sin(offset) * amplitude;
-              ctx.lineTo(x, waveY);
-          }
-          ctx.stroke();
-      }
-  
-      function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-          drawWave(canvas.height * 0.3, 200, 20, 'rgba(0, 0, 255, 0.3)', 0.1);
-          drawWave(canvas.height * 0.5, 150, 30, 'rgba(0, 0, 255, 0.5)', 0.2);
-          drawWave(canvas.height * 0.7, 100, 40, 'rgba(0, 0, 255, 0.7)', 0.3);
-  
-          time += 0.01;
-          requestAnimationFrame(animate);
-      }
-  
-      animate();
+        particlesJS.load('particles-js', 'https://rawgit.com/VincentGarreau/particles.js/master/demo/particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
