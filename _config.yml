@@ -26,7 +26,7 @@ social:
     - https://github.com/suyamat
 
 # Images + files
-logo: assets/img/headshot.svg
+logo: assets/img/my_image.jpg
 cv_url: assets/files/cv.pdf
 resume_url: assets/files/resume.pdf
 
@@ -43,13 +43,13 @@ syntax_highlight_stylesheet: syntax_highlight.css
 # Colors - white mode
 colors:
   text: 333
-  tag: dbefdc
-  tag_hover: 93cf95
+  tag: 339cff
+  tag_hover: 9dd0ff
   header_background: ffffff
   header_text: 00000
-  header_link_hover: 93cf95
-  links: 459c48
-  links_visited: 357a38
+  header_link_hover: 9dd0ff
+  links: 339cff
+  links_visited: 339cff
 
 # Colors - dark mode
 colors_dark:

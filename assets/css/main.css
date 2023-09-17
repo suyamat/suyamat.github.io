@@ -3,19 +3,73 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab');
 
-
-.language-selector .language-btn {
-  display: inline-block;
-  background: #f9f9f9;
-  color: #{{ site.colors.tag }};
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
-  transition: background 0.3s;
+#particles-js { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1; 
 }
 
-.language-selector .language-btn:hover {
+.block-veil {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+                              #0000FF 0%, #0000FF 33.3%, 
+                              #3399FF 33.3%, #3399FF 66.6%, 
+                              #66CCFF 66.6%, #66CCFF 100%);
+  transform: translateX(-100%); /* 追加: 初めはベールをその位置に保持 */
+  opacity: 0;
+  transition: opacity 0s 0.2s, transform 1.0s cubic-bezier(1, 0.01, 0.01, 1);
+}
+
+.revealed .block-veil {
+  transform: translateX(100%);
+  opacity: 1;
+}
+.post_tag, .language-btn {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+  display: inline-block;
+  background: #f9f9f9;
+  color: #{{ site.colors.tag_hover }};
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0s 0.2s;
+}
+
+.post_block, .conf_block, .experience_block, .contest_block, .education, .skills, .profile {
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+  display: inline-block;
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0s 0.2s;
+}
+.post_block.make-visible, .conf_block.make-visible, .contest_block.make-visible, .experience_block.make-visible, .education.make-visible, .skills.make-visible, .profile.make-visible {
+  opacity: 1;
+}
+.post_tag.make-visible, .language-btn.make-visible {
+  opacity: 1;
+}
+
+.language-btn:hover {
+  color: #{{ site.colors.tag_hover }};
+}
+.post_tag:hover {
   color: #{{ site.colors.tag_hover }};
 }
 
@@ -32,19 +86,45 @@ body{
   text-align: center;
   height: 20px;
 }
+.col2 {
+  display: inline-block;
+  width: 99%;
+  text-align: center;
+  margin: 0 auto;
+}
 
 .col2 {
-  float: left;
-  width: 50%;
-  text-align: center;
-  height: 20px;
+  position: relative; /* 追加: post_blockを相対位置に設定 */
+  overflow: hidden;   /* 追加: ベールがpost_blockの外に出ないようにする */
+  background: #f9f9f9;
+  color: #{{ site.colors.tag}};
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0s 0.2s;
+  width: 99%;
+  margin: 0 auto;
+}
+.col2:hover {
+  color: #{{ site.colors.tag_hover}};
+}
+.col2.make-visible {
+  opacity: 1;
 }
 
 .col1 {
-  float: left;
+  display: inline-block;
   width: 99%;
   text-align: center;
-  height: 20px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+.row {
+  display: flex;
+  justify-content: center;
 }
 
 .row:after {
@@ -113,6 +193,7 @@ body{
   float: left;
   position: relative;
   bottom: 16px;
+  color: #{{site.color.header_text}};
 }
 
 .language-python.highlighter-rouge {
@@ -133,21 +214,6 @@ body{
   border-radius: 8px;
 }
 
-.post_tag {
-  display: inline-block;
-  background: #f9f9f9;
-  color: #{{ site.colors.tag }};
-  padding: 5px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin: 0 5px 5px 0;
-  transition: background 0.3s;
-}
-
-.post_tag:hover {
-  color: #{{ site.colors.tag_hover }};
-}
-
 .col1 img, span {
   vertical-align: middle;
 }
@@ -157,7 +223,7 @@ body{
 }
 
 .header {
-  background-color: #{{ site.colors.header_background }};
+  background-color: transparent;
   color: #{{ site.colors.header_text }};
 }
 
@@ -167,19 +233,19 @@ body{
 }
 
 .header a {
-  color: #{{ site.colors.header_text }};
+  color: #{{ site.colors.tag}};
 }
 
 .header a:hover {
-  color: #{{ site.colors.header_link_hover }};
+  color: #{{ site.colors.tag_hover}};
 }
 
 .content a {
-  color: #{{ site.colors.links }};
+  color: #{{ site.colors.tag }};
 }
 
-.content a:visited {
-  color: #{{ site.colors.links_visited }};
+.content a:hover {
+  color: #{{ site.colors.tag_hover }};
 }
 
 .content {
@@ -263,6 +329,7 @@ body{
   .name_group {
     padding-top: 20px;
     padding-bottom: 10px;
+    color: # {{ site.color.header_text}};
   }
 
   div.small_header {
@@ -274,29 +341,11 @@ body{
     position: relative;
     left: calc(calc(100% - 350px)/2 - 400px + 350px);
   }
-
-/* 投稿ブロックのスタイル */
-  .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  }
+  
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
   }
-
-  #education p, #skills p {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-  }
-  
 
 }
 
@@ -318,28 +367,11 @@ body{
     display:flex;
   }
 
-/* 投稿ブロックのスタイル */
-  .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  }
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
   }
-
-  #education p, #skills p {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-  }
-
+  
 }
 
 @media print, screen and (max-width: 768px) {
@@ -358,26 +390,8 @@ body{
   div.small_header {
     display:flex;
   }
-
-/* 投稿ブロックのスタイル */
-  .post_block, .conf_block {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  }
   h2, h3 {
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
-  }
-
-  #education p, #skills p {
-      background: #f9f9f9;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 20px;
   }
 }

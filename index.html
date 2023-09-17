@@ -3,12 +3,20 @@ layout: default
 ---
 
 <div>
-  <div class="language-selector">
-    <a href="https://suyamat.github.io" class="language-btn">English</a>
-    <a href="https://suyamat.github.io/ja" class="language-btn">Japanese</a>
-  </div>
+  <a href="https://suyamat.github.io" class="language-btn">
+    English
+    <div class="block-veil"></div>
+  </a>
+  <a href="https://suyamat.github.io/ja" class="language-btn">
+    Japanese
+    <div class="block-veil"></div>
+  </a>
 
-  <p>{{ site.long_description }}</p>
+  <h2>Profile</h2>
+  <div class="profile">
+    <p>{{ site.long_description }}</p>
+    <div class="block-veil"></div>
+  </div>
 
   {% comment %}
   Get tags from all posts
@@ -47,20 +55,26 @@ layout: default
 
   <p>
   <h2> Tags </h2>
-  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">All</a>
+  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">
+    All
+    <div class="block-veil"></div>
+  </a>
   {% for tag in tags %}
-  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
+  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> 
+    {{ tag }} 
+    <div class="block-veil"></div>
+  </a>
   {% endfor %}
   </p>
 
   <div id="all_posts">
     <div id="paper">
-      <h2> Paper </h2>
+      <h2> Papers </h2>
       {% for post in site.posts %}
       {% if post.category == "publication" or post.category == "preprint" %}
       <div class="post_block">
-        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -69,6 +83,7 @@ layout: default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -79,8 +94,8 @@ layout: default
       {% for post in site.posts %}
       {% if post.category == "conference" %}
       <div class="conf_block">
-        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -89,6 +104,49 @@ layout: default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+    <div id="contest">
+      <h2> Contests </h2>
+      {% for post in site.posts %}
+      {% if post.category == "contest" %}
+      <div class="contest_block">
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %}
+        <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %}
+        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+          <img src="{{ post.img_url }}" class="center_img">
+        </a>
+        {% endif %}
+        <div class="block-veil"></div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div id="experience">
+      <h2> Experience </h2>
+      {% for post in site.posts %}
+      {% if post.category == "experience" %}
+      <div class="experience_block">
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %}
+        <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %}
+        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+          <img src="{{ post.img_url }}" class="center_img">
+        </a>
+        {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -102,8 +160,8 @@ layout: default
     {% for post in site.posts %}
     {% if post.tags contains tag %}
     <div class="post_block">
-      <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-      <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+      <h3>{{ post.title }}</h3>
+      <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
       {% if post.description %}
       <p> {{ post.description }} </p>
       {% endif %}
@@ -112,42 +170,35 @@ layout: default
         <img src="{{ post.img_url }}" class="center_img">
       </a>
       {% endif %}
+      
     </div>
     {% endif %}
     {% endfor %}
   </div>
   {% endfor %}
 
-</div>
-
-<div id="education">
   <h2> Education </h2>
-  <p><i>2023 April - </i><br />
-    <b>Osaka University</b><br />
-    Graduate School of Frontier Biosciences <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
-  </p>
+  <div class="education">
+    <p><i>2023 April - </i><br />
+      <b>Osaka University</b><br />
+      Graduate School of Frontier Biosciences <br />
+      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        Shinji Nishimoto</a>
+    </p>
 
-  <p><i>2019 April - 2023 March </i><br />
-    <b>Osaka University</b><br />
-    Division of Biophysical Engineering, <br />
-    Department of Systems Science, <br />
-    School of Engineering Science, <br />
-    Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      Shinji Nishimoto</a>
-  </p>
+    <p><i>2019 April - 2023 March </i><br />
+      <b>Osaka University</b><br />
+      Division of Biophysical Engineering, <br />
+      Department of Systems Science, <br />
+      School of Engineering Science, <br />
+      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        Shinji Nishimoto</a>
+    </p>
+    <div class="block-veil"></div>
+  </div>
 
-  <div id="awards"></div>
-  <h2> Contests </h2>
-  <p><i>2023 August</i><br />
-    <a href="http://algonauts.csail.mit.edu/challenge.html">
-      Alogonauts Project 2023 Challenge</a><br />
-    Ranked <b>8th</b> out of 107 teams.<br />
-  </p>
-
-  <div id="skills">
-    <h2> Skills</h2>
+  <h2> Skills</h2>
+  <div class="skills">
     <h3>Programing Languages</h3>
     <p>
       Python, C, MATLAB, R, HTML, CSS
@@ -156,6 +207,7 @@ layout: default
     <p>
       VS Code, git, ChatGPT, Docker, Singularity
     </p>
+    <div class="block-veil"></div>
   </div>
 
 </div>

@@ -3,12 +3,20 @@ layout: ja_default
 ---
 
 <div>
-  <div class="language-selector">
-    <a href="https://suyamat.github.io" class="language-btn">English</a>
-    <a href="https://suyamat.github.io/ja" class="language-btn">Japanese</a>
-  </div>
+  <a href="https://suyamat.github.io" class="language-btn">
+    English
+    <div class="block-veil"></div>
+  </a>
+  <a href="https://suyamat.github.io/ja" class="language-btn">
+    Japanese
+    <div class="block-veil"></div>
+  </a>
 
-  <p>{{ site.data.ja_config.long_description }}</p>
+  <h2>Profile</h2>
+  <div class="profile">
+    <p>{{ site.data.ja_config.long_description }}</p>
+    <div class="block-veil"></div>
+  </div>
 
   {% comment %}
   Get tags from all posts
@@ -38,18 +46,24 @@ layout: ja_default
   {% comment %}
   Get site url without trailing forward slash
   {% endcomment %}
-  {% if site.main_github_io %}
+  {% if site.data.ja_config.main_github_io %}
   {% assign site_url = "" %}
   {% else %}
-  {% assign site_url_len = site.url | size | minus: 1 %}
-  {% assign site_url = site.url | slice: 0, site_url_len %}
+  {% assign site_url_len = site.data.ja_config.url | size | minus: 1 %}
+  {% assign site_url = site.data.ja_config.url | slice: 0, site_url_len %}
   {% endif %}
 
   <p>
-  <h2> タグ </h2>
-  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">All</a>
+  <h2> Tags </h2>
+  <a onclick="show_tag_section('all_posts')" style="cursor: pointer;" class="post_tag">
+    All
+    <div class="block-veil"></div>
+  </a>
   {% for tag in tags %}
-  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> {{ tag }} </a>
+  <a onclick="show_tag_section('{{ tag | slugify }}')" style="cursor: pointer;" class="post_tag"> 
+    {{ tag }} 
+    <div class="block-veil"></div>
+  </a>
   {% endfor %}
   </p>
 
@@ -59,8 +73,8 @@ layout: ja_default
       {% for post in site.posts %}
       {% if post.category == "publication" or post.category == "preprint" %}
       <div class="post_block">
-        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -69,6 +83,7 @@ layout: ja_default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -79,8 +94,8 @@ layout: ja_default
       {% for post in site.posts %}
       {% if post.category == "conference" %}
       <div class="conf_block">
-        <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-        <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -89,6 +104,49 @@ layout: ja_default
           <img src="{{ post.img_url }}" class="center_img">
         </a>
         {% endif %}
+        <div class="block-veil"></div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+    <div id="contest">
+      <h2> コンテスト </h2>
+      {% for post in site.posts %}
+      {% if post.category == "contest" %}
+      <div class="contest_block">
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %}
+        <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %}
+        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+          <img src="{{ post.img_url }}" class="center_img">
+        </a>
+        {% endif %}
+        <div class="block-veil"></div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div id="experience">
+      <h2> 経歴 </h2>
+      {% for post in site.posts %}
+      {% if post.category == "experience" %}
+      <div class="experience_block">
+        <h3>{{ post.title }}</h3>
+        <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
+        {% if post.description %}
+        <p> {{ post.description }} </p>
+        {% endif %}
+        {% if post.img_url %}
+        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
+          <img src="{{ post.img_url }}" class="center_img">
+        </a>
+        {% endif %}
+        <div class="block-veil"></div>
       </div>
       {% endif %}
       {% endfor %}
@@ -98,12 +156,12 @@ layout: ja_default
 
   {% for tag in tags %}
   <div id="{{ tag | slugify }}" class="by_tag">
-    <h2 id="{{ tag | slugify }}">"{{ tag }}" に関する投稿</h2>
+    <h2 id="{{ tag | slugify }}">Posts tagged "{{ tag }}"</h2>
     {% for post in site.posts %}
     {% if post.tags contains tag %}
     <div class="post_block">
-      <h3><a href="{{ site_url }}{{ post.url }}">{{ post.title }}</a></h3>
-      <span><strong>{{ post.date | date_to_string }}</strong> - {{ post.tags | array_to_sentence_string }}</span>
+      <h3>{{ post.title }}</h3>
+      <span>Tag: {{ post.tags | array_to_sentence_string }}</span>
       {% if post.description %}
       <p> {{ post.description }} </p>
       {% endif %}
@@ -112,48 +170,42 @@ layout: ja_default
         <img src="{{ post.img_url }}" class="center_img">
       </a>
       {% endif %}
+      
     </div>
     {% endif %}
     {% endfor %}
   </div>
   {% endfor %}
 
-</div>
-
-<div id="education">
   <h2> 学歴 </h2>
-  <p><i>2023/4 - </i><br />
-    <b>大阪大学</b><br />
-    生命機能研究科 <br />
-    指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      西本 伸志</a>
-  </p>
+  <div class="education">
+    <p><i>2023/4 - </i><br />
+      <b>大阪大学大学院</b><br />
+      生命機能研究科 <br />
+      指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        西本伸志</a>
+    </p>
 
-  <p><i>2019/4 - 2023/3 </i><br />
-    <b>大阪大学</b><br />
-    基礎工学部システム科学科生物工学コース<br />
-    指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-      西本 伸志</a>
-  </p>
+    <p><i>2019/4 - 2023/3 </i><br />
+      <b>大阪大学</b><br />
+      基礎工学部システム科学科 <br />
+      指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        西本伸志</a>
+    </p>
+    <div class="block-veil"></div>
+  </div>
 
-  <div id="awards"></div>
-  <h2> コンテスト </h2>
-  <p><i>2023 August</i><br />
-    <a href="http://algonauts.csail.mit.edu/challenge.html">
-      Alogonauts Project 2023 Challenge</a><br />
-    <b>8位入賞</b> (107チーム中)<br />
-  </p>
-
-  <div id="skills">
-    <h2> スキル</h2>
+  <h2> スキル</h2>
+  <div class="skills">
     <h3>プログラミング言語</h3>
     <p>
       Python, C, MATLAB, R, HTML, CSS
     </p>
-    <h3>開発ツール</h3>
+    <h3>ツール</h3>
     <p>
       VS Code, git, ChatGPT, Docker, Singularity
     </p>
+    <div class="block-veil"></div>
   </div>
 
 </div>

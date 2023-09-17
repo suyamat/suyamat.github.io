@@ -28,6 +28,7 @@ Get assets path
     <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script src="https://threejs.org/build/three.js"></script>
     <script>
       function show_tag_section(tag) {
         // Hide all other tag divs
@@ -41,11 +42,11 @@ Get assets path
         document.getElementById(tag).style.display = 'block';
       }
     </script>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="">
     {% seo %}
   </head>
   <body onload="show_tag_section('all_posts')">
-
+    <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>  <!-- Three.jsのためのcanvas要素を背景に設定 -->
     <div class="header">
 
       <!-- Large header banner on left for large display widths -->
@@ -53,10 +54,10 @@ Get assets path
 
         <!-- Name -->
         <div class="name_group">
-          <h1><a href="">{{ site.data.ja_config.name }}</a></h1>
+          <h1>{{ site.data.ja_config.name }}</h1>
         </div>
 
-        <a href=""><img src="{{ site.data.ja_config.logo }}" alt="Logo" class="center_img" ></a>
+        <a href=""><img src="{{ site.logo }}" alt="Logo" class="center_img" ></a>
 
         <!-- Position + company -->
         <div class="link_group">
@@ -93,14 +94,16 @@ Get assets path
               <div class="col2">
                 <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
                 <span> Github </span>
+                <div class="block-veil"></div>
               </div>
             </a>
-            <a href="{{ site.data.ja_config.linkedin_url }}">
+            <!-- <a href="{{ site.data.ja_config.linkedin_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
                 <span> LinkedIn </span>
+                <div class="block-veil"></div>
               </div>
-            </a>
+            </a> -->
           </div>
 
           <div class="row">
@@ -108,14 +111,16 @@ Get assets path
               <div class="col2">
                 <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
                 <span> Email </span>
+                <div class="block-veil"></div>
               </div>
             </a>
-            <a href="{{ site.data.ja_config.resume_url }}">
+            <!-- <a href="{{ site.data.ja_config.resume_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
                 <span> Resume </span>
+                <div class="block-veil"></div>
               </div>
-            </a>
+            </a> -->
           </div>
 
         </div>
@@ -130,11 +135,11 @@ Get assets path
           <div class="name_header_box">
             <div class="name_header_img">
               <a href="">
-                <img src="{{ site.data.ja_config.logo }}" alt="Logo" height="60">
+                <img src="{{ site.logo }}" alt="Logo" height="60">
               </a>
             </div>
             <div class="name_header_name">
-              <h1><a href="">{{ site.data.ja_config.name }}</a></h1>
+              <h1>{{ site.data.ja_config.name }}</h1>
             </div>
           </div>
         </div>
@@ -149,8 +154,8 @@ Get assets path
           <div class="row">
             <div class="col1">
               <a href="{{ site.data.ja_config.company_url }}">
-                  <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
-                  <span> {{ site.data.ja_config.company_name }} </span>
+                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
+                <span> {{ site.data.ja_config.company_name }} </span>
               </a>
             </div>
           </div>
@@ -163,14 +168,16 @@ Get assets path
                 <div class="col2">
                   <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
                   <span> Github </span>
+                  <div class="block-veil"></div>
                 </div>
               </a>
-              <a href="{{ site.data.ja_config.linkedin_url }}">
+              <!-- <a href="{{ site.data.ja_config.linkedin_url }}">
                 <div class="col2">
                   <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
                   <span> LinkedIn </span>
+                  <div class="block-veil"></div>
                 </div>
-              </a>
+              </a> -->
             </div>
 
             <div class="row">
@@ -178,14 +185,16 @@ Get assets path
                 <div class="col2">
                   <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
                   <span> Email </span>
+                  <div class="block-veil"></div>
                 </div>
               </a>
-              <a href="{{ site.data.ja_config.resume_url }}">
+              <!-- <a href="{{ site.data.ja_config.resume_url }}">
                 <div class="col2">
                   <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
                   <span> Resume </span>
+                  <div class="block-veil"></div>
                 </div>
-              </a>
+              </a> -->
             </div>
         </div>
 
@@ -195,9 +204,35 @@ Get assets path
     
     <!-- Page content -->
     <div class="content">
-
       {{ content }}
-
     </div>
+
+    <div id="particles-js"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS.load('particles-js', 'assets/js/particles.json', function() {
+          console.log('callback - particles.js config loaded');
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('make-visible');
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+            }
+          });
+        });
+
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      });
+    </script>
   </body>
 </html>
