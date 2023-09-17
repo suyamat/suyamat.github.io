@@ -116,7 +116,7 @@ body{
 }
 
 .col1 {
-  float: left;
+  display: inline-block;
   width: 99%;
   text-align: center;
   height: 20px;
