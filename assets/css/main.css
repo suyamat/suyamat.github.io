@@ -118,7 +118,7 @@ body{
 .col1 {
   display: inline-block;
   width: 99%;
-  text-align: center;
+  /* text-align: center; */
   margin: 0 auto;
 }
 .row {
