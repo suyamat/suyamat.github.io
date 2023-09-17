@@ -223,7 +223,7 @@ Get assets path
       class WaterDrop {
           constructor() {
               this.x = Math.random() * width;
-              this.y = Math.random() * height;
+              this.y = Math.random() * -height;
               this.speed = Math.random() * 2 + 2;
               this.radius = Math.random() * 2 + 2;
           }
@@ -231,7 +231,7 @@ Get assets path
           update() {
               this.y += this.speed;
               if (this.y > height) {
-                  this.y = 0;
+                  this.y = Math.random() * -height;
                   this.x = Math.random() * width;
               }
           }
@@ -245,7 +245,31 @@ Get assets path
           }
       }
   
+      class Splash {
+          constructor(x, y) {
+              this.x = x;
+              this.y = y;
+              this.radius = 0;
+              this.alpha = 1;
+          }
+  
+          update() {
+              this.radius += 2;
+              this.alpha -= 0.03;
+          }
+  
+          draw() {
+              context.beginPath();
+              context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+              context.fillStyle = `rgba(0, 0, 255, ${this.alpha})`;
+              context.fill();
+              context.closePath();
+          }
+      }
+  
       const waterDrops = [];
+      const splashes = [];
+  
       for (let i = 0; i < 100; i++) {
           waterDrops.push(new WaterDrop());
       }
@@ -253,9 +277,24 @@ Get assets path
       function animate() {
           context.clearRect(0, 0, width, height);
   
-          waterDrops.forEach(waterDrop => {
+          waterDrops.forEach((waterDrop, index) => {
               waterDrop.update();
               waterDrop.draw();
+  
+              if (waterDrop.y > height - 20) {
+                  splashes.push(new Splash(waterDrop.x, waterDrop.y));
+                  waterDrops.splice(index, 1);
+                  waterDrops.push(new WaterDrop());
+              }
+          });
+  
+          splashes.forEach((splash, index) => {
+              splash.update();
+              splash.draw();
+  
+              if (splash.alpha <= 0) {
+                  splashes.splice(index, 1);
+              }
           });
   
           requestAnimationFrame(animate);
