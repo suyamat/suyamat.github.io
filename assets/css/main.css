@@ -3,13 +3,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab');
 
-#threeCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 最背面に配置 */
+#particles-js { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1; 
 }
 
 .block-veil {
