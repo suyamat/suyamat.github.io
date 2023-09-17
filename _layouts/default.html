@@ -213,7 +213,6 @@ Get assets path
     <script>
       const canvas = document.getElementById('threeCanvas');
       const context = canvas.getContext('2d');
-      const simplex = new SimplexNoise();
   
       let width = window.innerWidth;
       let height = window.innerHeight;
@@ -221,32 +220,43 @@ Get assets path
       canvas.width = width;
       canvas.height = height;
   
-      let time = 0;
+      class WaterDrop {
+          constructor() {
+              this.x = Math.random() * width;
+              this.y = Math.random() * height;
+              this.speed = Math.random() * 2 + 2;
+              this.radius = Math.random() * 2 + 2;
+          }
+  
+          update() {
+              this.y += this.speed;
+              if (this.y > height) {
+                  this.y = 0;
+                  this.x = Math.random() * width;
+              }
+          }
+  
+          draw() {
+              context.beginPath();
+              context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+              context.fillStyle = 'blue';
+              context.fill();
+              context.closePath();
+          }
+      }
+  
+      const waterDrops = [];
+      for (let i = 0; i < 100; i++) {
+          waterDrops.push(new WaterDrop());
+      }
   
       function animate() {
           context.clearRect(0, 0, width, height);
   
-          const gradient = context.createLinearGradient(0, 0, width, 0);
-          gradient.addColorStop(0, 'blue');
-          gradient.addColorStop(1, 'lightblue');
-  
-          context.fillStyle = gradient;
-  
-          context.beginPath();
-  
-          for (let y = 0; y < height; y++) {
-              const noise = simplex.noise2D(0, y * 0.05 + time) * 50;
-              const x = width / 2 + noise;
-              context.lineTo(x, y);
-          }
-  
-          context.lineTo(width, height);
-          context.lineTo(width, 0);
-          context.closePath();
-  
-          context.fill();
-  
-          time += 0.005; // 値を小さくすると、ウェーブの動きが緩やかになります
+          waterDrops.forEach(waterDrop => {
+              waterDrop.update();
+              waterDrop.draw();
+          });
   
           requestAnimationFrame(animate);
       }
