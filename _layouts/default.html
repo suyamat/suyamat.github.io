@@ -213,6 +213,7 @@ Get assets path
     <script>
       const canvas = document.getElementById('threeCanvas');
       const context = canvas.getContext('2d');
+      const simplex = new SimplexNoise();
   
       let width = window.innerWidth;
       let height = window.innerHeight;
@@ -221,6 +222,7 @@ Get assets path
       canvas.height = height;
   
       let time = 0;
+  
       function animate() {
           context.clearRect(0, 0, width, height);
   
@@ -233,7 +235,8 @@ Get assets path
           context.beginPath();
   
           for (let y = 0; y < height; y++) {
-              const x = width / 2 + 50 * Math.sin((y * 0.01) + time);
+              const noise = simplex.noise2D(y * 0.1, time);
+              const x = width / 2 + noise * 100;
               context.lineTo(x, y);
           }
   
