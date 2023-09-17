@@ -87,7 +87,7 @@ body{
   height: 20px;
 }
 .col2 {
-  float: left;
+  display: inline-block;
   width: 50%;
   text-align: center;
   margin: 0 auto;
