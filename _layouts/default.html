@@ -213,55 +213,31 @@ Get assets path
     <script>
       const canvas = document.getElementById('threeCanvas');
       const ctx = canvas.getContext('2d');
-      
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
   
-      let lanternY = canvas.height;
-      const lanternHeight = 50;
-      const lanternWidth = 30;
-      const seaLevel = canvas.height - 20;
+      let time = 0;
   
-      function drawSea() {
-          ctx.fillStyle = '#1E3A66';
-          ctx.fillRect(0, seaLevel, canvas.width, 20);
-      }
-  
-      function drawLantern() {
-          // Lantern body
-          ctx.fillStyle = '#FF6F3C';
+      function drawWave(y, wavelength, amplitude, color, speed) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
           ctx.beginPath();
-          ctx.ellipse(canvas.width / 2, lanternY, lanternWidth, lanternHeight, 0, 0, Math.PI * 2);
-          ctx.fill();
-  
-          // Lantern flame
-          ctx.fillStyle = '#FFD700';
-          ctx.beginPath();
-          ctx.ellipse(canvas.width / 2, lanternY - lanternHeight / 2, lanternWidth / 2, lanternHeight / 2, 0, 0, Math.PI * 2);
-          ctx.fill();
-      }
-  
-      function drawStars() {
-          for(let i = 0; i < 200; i++) {
-              const x = Math.random() * canvas.width;
-              const y = Math.random() * seaLevel;
-              ctx.fillStyle = '#FFFFFF';
-              ctx.fillRect(x, y, 2, 2);
+          for(let x = 0; x < canvas.width; x++) {
+              const offset = x / wavelength * Math.PI * 2 + time * speed;
+              const waveY = y + Math.sin(offset) * amplitude;
+              ctx.lineTo(x, waveY);
           }
+          ctx.stroke();
       }
   
       function animate() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          lanternY -= 0.5;
   
-          if (lanternY < -lanternHeight) {
-              lanternY = canvas.height;
-          }
+          drawWave(canvas.height * 0.3, 200, 20, 'rgba(0, 0, 255, 0.3)', 0.1);
+          drawWave(canvas.height * 0.5, 150, 30, 'rgba(0, 0, 255, 0.5)', 0.2);
+          drawWave(canvas.height * 0.7, 100, 40, 'rgba(0, 0, 255, 0.7)', 0.3);
   
-          drawSea();
-          drawLantern();
-          drawStars();
-  
+          time += 0.01;
           requestAnimationFrame(animate);
       }
   
