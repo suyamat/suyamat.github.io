@@ -212,91 +212,50 @@ Get assets path
 
     <script>
       const canvas = document.getElementById('threeCanvas');
-      const context = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d');
   
-      let width = window.innerWidth;
-      let height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
   
-      canvas.width = width;
-      canvas.height = height;
+      let puddles = [];
+      let time = 0;
   
-      class WaterDrop {
-          constructor() {
-              this.x = Math.random() * width;
-              this.y = Math.random() * -height;
-              this.speed = Math.random() * 2 + 2;
-              this.radius = Math.random() * 2 + 2;
-          }
+      function createPuddle() {
+          puddles.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              radius: 0,
+              maxRadius: Math.random() * 50 + 50,
+              spreadingSpeed: Math.random() * 0.5 + 0.5,
+              alpha: 1,
+          });
+      }
   
-          update() {
-              this.y += this.speed;
-              if (this.y > height) {
-                  this.y = Math.random() * -height;
-                  this.x = Math.random() * width;
+      function drawPuddle() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+          puddles.forEach((puddle, index) => {
+              ctx.beginPath();
+              ctx.arc(puddle.x, puddle.y, puddle.radius, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(0, 0, 255, ${puddle.alpha})`; // blue color with varying alpha
+              ctx.fill();
+              
+              puddle.radius += puddle.spreadingSpeed;
+              puddle.alpha -= 0.002;
+  
+              if (puddle.alpha <= 0) {
+                  puddles.splice(index, 1);
               }
-          }
-  
-          draw() {
-              context.beginPath();
-              context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-              context.fillStyle = 'blue';
-              context.fill();
-              context.closePath();
-          }
-      }
-  
-      class Splash {
-          constructor(x, y) {
-              this.x = x;
-              this.y = y;
-              this.radius = 0;
-              this.alpha = 1;
-          }
-  
-          update() {
-              this.radius += 2;
-              this.alpha -= 0.03;
-          }
-  
-          draw() {
-              context.beginPath();
-              context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-              context.fillStyle = `rgba(0, 0, 255, ${this.alpha})`;
-              context.fill();
-              context.closePath();
-          }
-      }
-  
-      const waterDrops = [];
-      const splashes = [];
-  
-      for (let i = 0; i < 100; i++) {
-          waterDrops.push(new WaterDrop());
+          });
       }
   
       function animate() {
-          context.clearRect(0, 0, width, height);
-  
-          waterDrops.forEach((waterDrop, index) => {
-              waterDrop.update();
-              waterDrop.draw();
-  
-              if (waterDrop.y > height - 20) {
-                  splashes.push(new Splash(waterDrop.x, waterDrop.y));
-                  waterDrops.splice(index, 1);
-                  waterDrops.push(new WaterDrop());
-              }
-          });
-  
-          splashes.forEach((splash, index) => {
-              splash.update();
-              splash.draw();
-  
-              if (splash.alpha <= 0) {
-                  splashes.splice(index, 1);
-              }
-          });
-  
+          time++;
+          if (time % 100 === 0) {
+              createPuddle();
+          }
+          
+          drawPuddle();
           requestAnimationFrame(animate);
       }
   
