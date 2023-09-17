@@ -235,8 +235,8 @@ Get assets path
           context.beginPath();
   
           for (let y = 0; y < height; y++) {
-              const noise = simplex.noise2D(y * 0.1, time);
-              const x = width / 2 + noise * 100;
+              const noise = simplex.noise2D(0, y * 0.05 + time) * 50;
+              const x = width / 2 + noise;
               context.lineTo(x, y);
           }
   
@@ -246,7 +246,7 @@ Get assets path
   
           context.fill();
   
-          time += 0.05;
+          time += 0.005; // 値を小さくすると、ウェーブの動きが緩やかになります
   
           requestAnimationFrame(animate);
       }
