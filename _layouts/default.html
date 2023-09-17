@@ -211,96 +211,33 @@ Get assets path
     <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 
     <script>
-      let scene, camera, renderer, material, mesh, geometry, time = 0;
-      const simplex = new SimplexNoise();
-
-      init();
-      animate();
-
-      function init() {
-          scene = new THREE.Scene();
-          camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-          camera.position.z = 50;
-          camera.lookAt(0, 0, 0); 
-
-          renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('threeCanvas') });
-          renderer.setClearColor(0x000080, 0); // Dark Blue Background
-          renderer.setSize(window.innerWidth, window.innerHeight);
-
-          const vertices = [];
-          const colors = [];
-          const segments = 100;
-          const width = 100;  // Adjusted width to make the wave appear longer
-          const depth = 10;  // Adjusted depth to narrow the wave
-
-          for (let i = 0; i < segments; i++) {
-              for (let j = 0; j < segments; j++) {
-                  const x = (i / segments - 0.5) * width;
-                  const y = (j / segments - 0.5) * depth;
-                  const z = simplex.noise2D(i / 10, time) * 2; // Adjusted noise parameters to stretch the wave along the x axis
-
-                  vertices.push(x, y, z);
-                  colors.push(0, 0, Math.abs(z) / 2 + 0.5, 1); 
-              }
+      const canvas = document.getElementById('threeCanvas');
+      const context = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+  
+      let time = 0;
+  
+      function drawWave() {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+  
+          context.beginPath();
+          
+          context.moveTo(0, canvas.height / 2);
+  
+          for (let i = 0; i < canvas.width; i++) {
+              context.lineTo(i, canvas.height / 2 + Math.sin((i * 0.01) + time) * 100);
           }
-
-          geometry = new THREE.BufferGeometry();
-          geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-          geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
-
-          const indices = [];
-
-          for (let i = 0; i < segments - 1; i++) {
-              for (let j = 0; j < segments - 1; j++) {
-                  const index1 = i * segments + j;
-                  const index2 = (i + 1) * segments + j;
-                  const index3 = (i + 1) * segments + j + 1;
-                  const index4 = i * segments + j + 1;
-
-                  indices.push(index1, index2, index3);
-                  indices.push(index1, index3, index4);
-              }
-          }
-
-          geometry.setIndex(indices);
-
-          material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
-
-          mesh = new THREE.Mesh(geometry, material);
-          scene.add(mesh);
-
-          window.addEventListener('resize', () => {
-              camera.aspect = window.innerWidth / window.innerHeight;
-              camera.updateProjectionMatrix();
-              renderer.setSize(window.innerWidth, window.innerHeight);
-          });
+  
+          context.strokeStyle = 'blue';
+          context.lineWidth = 2;
+          context.stroke();
+  
+          time += 0.05;
+          requestAnimationFrame(drawWave);
       }
-
-      function animate() {
-          time += 0.01;
-          updateVertices();
-          requestAnimationFrame(animate);
-          renderer.render(scene, camera);
-      }
-
-      function updateVertices() {
-          const vertices = [];
-          const segments = 100;
-          const width = 100;
-          const depth = 10;
-
-          for (let i = 0; i < segments; i++) {
-              for (let j = 0; j < segments; j++) {
-                  const x = (i / segments - 0.5) * width;
-                  const y = (j / segments - 0.5) * depth;
-                  const z = simplex.noise2D(i / 10, time) * 2;
-                  vertices.push(x, y, z);
-              }
-          }
-
-          geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-          geometry.attributes.position.needsUpdate = true;
-      }
+  
+      drawWave();
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
