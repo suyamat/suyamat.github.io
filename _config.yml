@@ -12,10 +12,9 @@ description: Personal Website
 url: https://suyamat.github.io
 main_github_io: true
 long_description: >-
-    Hello! I'm Takuya Matsuyama, a first-year master's student. 
-    Currently, I am affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>) at Osaka University. 
-    I am interested in the theme of the fusion between AI and the brain, 
-    and I am working on elucidating brain functions using AI for image, video, music, and language processing.
+    Hello! I am Takuya Matsuyama, a second-year master's student at the Graduate School of Frontier Biosciences at Osaka University.
+    I am currently affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>),
+    where I am working on elucidating brain functions using Vision, Audio, and Language AI.
 
 # Social links
 github_url: https://github.com/suyamat
