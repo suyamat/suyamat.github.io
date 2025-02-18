@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <style>
+    /* CSS変数で色や角丸の値を管理 */
+    :root {
+      --btn-border-radius: 12px;       /* ボタンの角の丸み */
+      --btn-border-color: #4a90e2;       /* 枠の色 */
+      --btn-bg-color: #4a90e2;           /* ボタン内部の背景色 */
+      --btn-text-color: #ffffff;         /* テキストの色 */
+      --btn-hover-bg-color: #357ABD;     /* ホバー時の背景色 */
+      --btn-hover-border-color: #357ABD; /* ホバー時の枠の色 */
+    }
+
     /* 独自スタイル：ボタン間の余白を追加 */
     .btn-cluster {
       text-align: center;
@@ -17,6 +27,19 @@
     }
     .btn-cluster a {
       margin: 0 20px;
+    }
+
+    /* ボタンの枠の形状と内部の色の変更 */
+    .button {
+      border-radius: var(--btn-border-radius);
+      border: 2px solid var(--btn-border-color);
+      background-color: var(--btn-bg-color);
+      color: var(--btn-text-color);
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .button:hover {
+      background-color: var(--btn-hover-bg-color);
+      border-color: var(--btn-hover-border-color);
     }
   </style>
 </head>
