@@ -3,38 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>背景を透明にしたボタン表示例</title>
+  <title>背景画像とタイトル付きボタン表示例</title>
   <!-- Bulma CSS（ボタンスタイル用） -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <!-- Font Awesome（アイコン用） -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- Google Fonts（タイトル用フォント例） -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap" rel="stylesheet">
   <style>
-    /* CSS変数で色や角丸の値を管理 */
+    /* CSS変数で各種スタイルを管理 */
     :root {
-      --btn-border-radius: 12px;          /* ボタンの角の丸み */
-      --btn-border-color: #ffa07a;          /* 枠の色 */
-      --btn-bg-color: #e75480;          /* 背景を透明に */
-      --btn-text-color: #fff;            /* テキストの色 */
-      --btn-hover-bg-color: rgba(74,144,226,0.1); /* ホバー時の薄い背景色 */
-      --btn-hover-border-color: #ffa07a;    /* ホバー時の枠の色 */
+      /* ボタン用 */
+      --btn-border-radius: 20px;
+      --btn-border-color: #e74300;
+      --btn-bg-color: #e75480;
+      --btn-text-color: #fff;
+      --btn-hover-bg-color: rgba(74,144,226,0.1);
+      --btn-hover-border-color: #e74300;
+      
+      /* タイトル用（Merriweather Bold） */
+      --title-font-family: 'Merriweather', serif;
+      --title-color: #ffffff;
+      
+      /* 背景画像用 */
+      --bg-image-opacity: 0.5; /* 0〜1の値で透明度調整 */
     }
 
-    /* 独自スタイル：ボタン間の余白を追加 */
-    .btn-cluster {
-      text-align: center;
-      margin: 1em 0;
-    }
-    .btn-cluster a {
-      margin: 0 20px;
-    }
-
-        /* ページ全体の背景も透明に（必要に応じて設定） */
+    /* ページ全体の設定 */
     body {
+      margin: 0;
+      padding: 0;
       background-color: transparent;
+      position: relative; /* 疑似要素の基準 */
+    }
+    /* 疑似要素で背景画像を設定 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0%;
+      left: 0;
+      right: 0;
+      bottom: 55%;
+      background: url('./deep_sea.png') no-repeat center center;
+      /* background-size: contain; */
+      opacity: var(--bg-image-opacity);
+      z-index: -1; /* コンテンツの背面に配置 */
     }
 
-    /* ボタンを囲むコンテナの背景を透明に */
+    /* タイトルスタイル */
+    .page-title {
+      font-family: var(--title-font-family);
+      font-weight: 900; /* Bold指定 */
+      font-style: italic; /* イタリックに設定 */
+      color: #e75480;
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2.5rem;
+    }
+
+    /* 独自スタイル：ボタン間の余白 */
     .btn-cluster {
       text-align: center;
       margin: 1em 0;
@@ -43,7 +71,8 @@
     .btn-cluster a {
       margin: 0 20px;
     }
-    /* ボタンの枠の形状と内部の色の変更 */
+
+    /* ボタンのスタイル設定 */
     .button {
       border-radius: var(--btn-border-radius);
       border: 2px solid var(--btn-border-color);
@@ -58,6 +87,10 @@
   </style>
 </head>
 <body>
+  <!-- ページ上部のタイトル -->
+  <h1 class="page-title">LaVCa: LLM-assited Visual Cortex Captioning</h1>
+
+  <!-- ボタン群 -->
   <div class="btn-cluster">
     <!-- arXivリンク -->
     <a href="" class="button doc-link" target="_blank">
