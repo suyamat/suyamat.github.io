@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Container</title>
+  <!-- 例：Bulma CSS（ボタンのスタイル用）-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- 例：Font Awesome（アイコン用）-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 必要に応じてその他のライブラリも読み込み -->
+  <style>
+    /* 独自のスタイルが必要な場合はここに追加 */
+    .button-container {
+      text-align: center;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <!-- replace arxiv -->
+    <a href="https://arxiv.org/abs/2501.17161v1" class="button paper-link" target="_blank">
+      <span class="icon is-small">
+        <i class="ai ai-arxiv"></i>
+      </span>
+      arXiv
+    </a>
+    <!-- replace pdf -->
+    <a href="assets/sftvsrl_paper.pdf" class="button paper-link" target="_blank">
+      <span class="icon is-small">
+        <i class="fas fa-file-pdf"></i>
+      </span>
+      <span>pdf</span>
+    </a>
+    <!-- replace image -->
+    <a href="https://github.com/LeslieTrue/SFTvsRL" class="button" target="_blank">
+      <span class="icon is-small">
+        <i class="fab fa-github"></i>
+      </span>
+      <span>Code</span>
+    </a>
+    <a href="https://huggingface.co/collections/tianzhechu/sftvsrl-models-and-data-6797ba6de522c7de7fcb80ba" class="button" target="_blank">
+      <span class="icon is-small">
+        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
+      </span>
+      <span>Checkpoints&Data</span>
+    </a>
+  </div>
+</body>
+</html>
