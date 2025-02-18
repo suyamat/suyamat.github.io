@@ -20,9 +20,6 @@
       position: relative;
       width: 1200px;
       overflow: hidden;
-      /* border-radius: 10px; */
-      /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
-      /* background-color: #fff; */
     }
     .carousel-inner {
       display: flex;
@@ -54,6 +51,33 @@
     .carousel-control.next {
       right: 10px;
     }
+    /* 矢印ボタン：HTML内のテキストは削除し、疑似要素で「<」「>」を表示 */
+    .carousel-control.prev::after {
+      content: "＜";
+    }
+    .carousel-control.next::after {
+      content: "＞";
+    }
+    /* ドット（インジケーター）のスタイル */
+    .carousel-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .carousel-dot.active {
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
@@ -70,17 +94,19 @@
       <img src="./voxel_exs/voxel_examples_3.png" alt="Slide 3">
     </div>
     <div class="carousel-item">
-        <img src="./voxel_exs/voxel_examples_4.png" alt="Slide 3">
+      <img src="./voxel_exs/voxel_examples_4.png" alt="Slide 4">
     </div>
     <div class="carousel-item">
-        <img src="./voxel_exs/voxel_examples_5.png" alt="Slide 3">
+      <img src="./voxel_exs/voxel_examples_5.png" alt="Slide 5">
     </div>
     <div class="carousel-item">
-        <img src="./voxel_exs/voxel_examples_6.png" alt="Slide 3">
+      <img src="./voxel_exs/voxel_examples_6.png" alt="Slide 6">
     </div>
   </div>
-  <button class="carousel-control prev">&#9664;</button>
-  <button class="carousel-control next">&#9654;</button>
+  <button class="carousel-control prev"></button>
+  <button class="carousel-control next"></button>
+  <!-- ドットインジケーターをカルーセル内下部中央に配置 -->
+  <div class="carousel-dots"></div>
 </div>
 
 <script>
@@ -88,27 +114,43 @@
   const carouselItems = document.querySelectorAll('.carousel-item');
   const prevBtn = document.querySelector('.carousel-control.prev');
   const nextBtn = document.querySelector('.carousel-control.next');
+  const dotsContainer = document.querySelector('.carousel-dots');
   let currentIndex = 0;
   const totalItems = carouselItems.length;
-
+  const dots = [];
+  
+  // ドットを動的に作成
+  for (let i = 0; i < totalItems; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('carousel-dot');
+    if (i === 0) {
+      dot.classList.add('active');
+    }
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      updateCarousel();
+    });
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+  }
+  
   function updateCarousel() {
     carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // アクティブなドットの更新
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
   }
-
+  
   prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
     updateCarousel();
   });
-
+  
   nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
     updateCarousel();
   });
-
-//   // 自動スライド（3秒ごと）
-//   setInterval(() => {
-//     nextBtn.click();
-//   }, 3000);
 </script>
 
 </body>
