@@ -22,12 +22,6 @@
       --btn-hover-bg-color: rgba(74,144,226,0.1);
       --btn-hover-border-color: #e74300;
       
-      /* タイトル用（Merriweather Bold Italic） */
-      --title-font-family: 'Merriweather', serif;
-      --title-color: #e75480;
-      
-      /* 背景画像用 */
-      --bg-image-opacity: 0.5; /* 0〜1の値で透明度調整 */
     }
 
     /* html, bodyの基本サイズ設定 */
@@ -45,34 +39,6 @@
       margin: 0 auto;      /* 中央寄せ */
       position: relative;  /* 背景画像用の位置指定の基準 */
       background-color: transparent;
-    }
-
-    /* ラッパーの疑似要素で背景画像を設定 */
-    .page-wrapper::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 65%;
-      background: url('./deep_sea.png') no-repeat center center;
-      /* 必要に応じて background-size を調整 */
-      /* background-size: contain; */
-      opacity: var(--bg-image-opacity);
-      z-index: -1; /* コンテンツの背面に配置 */
-      margin: 0px 0px;
-
-    }
-
-    /* タイトルスタイル */
-    .page-title {
-      font-family: var(--title-font-family);
-      font-weight: 900;       /* Bold */
-      font-style: italic;     /* Italic */
-      color: var(--title-color);
-      text-align: center;
-      margin: 10px 0;
-      font-size: 2.5rem;
     }
 
     /* 独自スタイル：ボタン間の余白 */
@@ -101,8 +67,6 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- ページ上部のタイトル -->
-    <h1 class="page-title">LaVCa: LLM-assisted Visual Cortex Captioning</h1>
 
     <!-- ボタン群 -->
     <div class="btn-cluster">
