@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ボタン表示例</title>
+  <title>背景を透明にしたボタン表示例</title>
   <!-- Bulma CSS（ボタンスタイル用） -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <!-- Font Awesome（アイコン用） -->
@@ -12,12 +12,12 @@
   <style>
     /* CSS変数で色や角丸の値を管理 */
     :root {
-      --btn-border-radius: 12px;       /* ボタンの角の丸み */
-      --btn-border-color: #4a90e2;       /* 枠の色 */
-      --btn-bg-color: #4a90e2;           /* ボタン内部の背景色 */
-      --btn-text-color: #ffffff;         /* テキストの色 */
-      --btn-hover-bg-color: #357ABD;     /* ホバー時の背景色 */
-      --btn-hover-border-color: #357ABD; /* ホバー時の枠の色 */
+      --btn-border-radius: 12px;          /* ボタンの角の丸み */
+      --btn-border-color: #ffa07a;          /* 枠の色 */
+      --btn-bg-color: #e75480;          /* 背景を透明に */
+      --btn-text-color: #fff;            /* テキストの色 */
+      --btn-hover-bg-color: rgba(74,144,226,0.1); /* ホバー時の薄い背景色 */
+      --btn-hover-border-color: #ffa07a;    /* ホバー時の枠の色 */
     }
 
     /* 独自スタイル：ボタン間の余白を追加 */
@@ -29,6 +29,20 @@
       margin: 0 20px;
     }
 
+        /* ページ全体の背景も透明に（必要に応じて設定） */
+    body {
+      background-color: transparent;
+    }
+
+    /* ボタンを囲むコンテナの背景を透明に */
+    .btn-cluster {
+      text-align: center;
+      margin: 1em 0;
+      background-color: transparent;
+    }
+    .btn-cluster a {
+      margin: 0 20px;
+    }
     /* ボタンの枠の形状と内部の色の変更 */
     .button {
       border-radius: var(--btn-border-radius);
