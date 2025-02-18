@@ -9,7 +9,7 @@
   <!-- Font Awesome（アイコン用） -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <!-- Google Fonts（タイトル用フォント例） -->
+  <!-- Google Fonts（Merriweather Bold Italic） -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap" rel="stylesheet">
   <style>
     /* CSS変数で各種スタイルを管理 */
@@ -22,43 +22,56 @@
       --btn-hover-bg-color: rgba(74,144,226,0.1);
       --btn-hover-border-color: #e74300;
       
-      /* タイトル用（Merriweather Bold） */
+      /* タイトル用（Merriweather Bold Italic） */
       --title-font-family: 'Merriweather', serif;
-      --title-color: #ffffff;
+      --title-color: #e75480;
       
       /* 背景画像用 */
       --bg-image-opacity: 0.5; /* 0〜1の値で透明度調整 */
     }
 
-    /* ページ全体の設定 */
-    body {
+    /* html, bodyの基本サイズ設定 */
+    html, body {
+      width: 100%;
+      height: 100%;
       margin: 0;
       padding: 0;
-      background-color: transparent;
-      position: relative; /* 疑似要素の基準 */
     }
-    /* 疑似要素で背景画像を設定 */
-    body::before {
+
+    /* ページ全体を包むラッパー（ここで全体のサイズを指定） */
+    .page-wrapper {
+      width: 1200px;       /* 例: 固定幅1200px */
+      min-height: 400px;   /* 例: 最低高さ800px */
+      margin: 0 auto;      /* 中央寄せ */
+      position: relative;  /* 背景画像用の位置指定の基準 */
+      background-color: transparent;
+    }
+
+    /* ラッパーの疑似要素で背景画像を設定 */
+    .page-wrapper::before {
       content: "";
-      position: fixed;
-      top: 0%;
+      position: absolute;
+      top: 0;
       left: 0;
       right: 0;
-      bottom: 55%;
+      bottom: 65%;
       background: url('./deep_sea.png') no-repeat center center;
+      /* 必要に応じて background-size を調整 */
       /* background-size: contain; */
       opacity: var(--bg-image-opacity);
       z-index: -1; /* コンテンツの背面に配置 */
+      margin: 0px 0px;
+
     }
 
     /* タイトルスタイル */
     .page-title {
       font-family: var(--title-font-family);
-      font-weight: 900; /* Bold指定 */
-      font-style: italic; /* イタリックに設定 */
-      color: #e75480;
+      font-weight: 900;       /* Bold */
+      font-style: italic;     /* Italic */
+      color: var(--title-color);
       text-align: center;
-      margin: 20px 0;
+      margin: 10px 0;
       font-size: 2.5rem;
     }
 
@@ -87,32 +100,34 @@
   </style>
 </head>
 <body>
-  <!-- ページ上部のタイトル -->
-  <h1 class="page-title">LaVCa: LLM-assited Visual Cortex Captioning</h1>
+  <div class="page-wrapper">
+    <!-- ページ上部のタイトル -->
+    <h1 class="page-title">LaVCa: LLM-assited Visual Cortex Captioning</h1>
 
-  <!-- ボタン群 -->
-  <div class="btn-cluster">
-    <!-- arXivリンク -->
-    <a href="" class="button doc-link" target="_blank">
-      <span class="icon is-small">
-        <i class="ai ai-arxiv"></i>
-      </span>
-      <span>arXiv</span>
-    </a>
-    <!-- PDFリンク -->
-    <a href="" class="button doc-link" target="_blank">
-      <span class="icon is-small">
-        <i class="fas fa-file-pdf"></i>
-      </span>
-      <span>PDF</span>
-    </a>
-    <!-- コード参照 -->
-    <a href="" class="button code-btn" target="_blank">
-      <span class="icon is-small">
-        <i class="fab fa-github"></i>
-      </span>
-      <span>Code</span>
-    </a>
+    <!-- ボタン群 -->
+    <div class="btn-cluster">
+      <!-- arXivリンク -->
+      <a href="" class="button doc-link" target="_blank">
+        <span class="icon is-small">
+          <i class="ai ai-arxiv"></i>
+        </span>
+        <span>arXiv</span>
+      </a>
+      <!-- PDFリンク -->
+      <a href="" class="button doc-link" target="_blank">
+        <span class="icon is-small">
+          <i class="fas fa-file-pdf"></i>
+        </span>
+        <span>PDF</span>
+      </a>
+      <!-- コード参照 -->
+      <a href="" class="button code-btn" target="_blank">
+        <span class="icon is-small">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+      </a>
+    </div>
   </div>
 </body>
 </html>
