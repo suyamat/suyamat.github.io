@@ -1,74 +1,192 @@
-/* -------------------- ベース -------------------- */
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+/* ================================================================
+   Design tokens
+   ================================================================ */
+   :root {
+    /* 明るいブルーの背景グラデーション */
+    --bg-start: #a9e4ff;
+    --bg-end:   #21b5ff;
+  
+    /* 文字・カード関連 */
+    --text-light: #ffffff;     /* ヘッダーなど濃い背景上の文字 */
+    --text-dark:  #082032;     /* ガラスカード上の文字           */
+    --text-accent: #ffe36e;    /* ナビの hover / active           */
+  
+    --glass-bg: rgba(255,255,255,0.25);
+    --glass-border: rgba(255,255,255,0.35);
+  }
+  
+  /* ================================================================
+     Reset & base
+     ================================================================ */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    font-family: "Exo", sans-serif;
+    color: var(--text-light);
+    background: linear-gradient(120deg, var(--bg-start), var(--bg-end));
+    min-height: 100vh;
+    text-shadow: 0 0 4px rgba(0,0,0,0.35); /* 濃背景での可読性向上 */
+  }
+  
+  /* ================================================================
+     背景グラデーション (固定)
+     ================================================================ */
+  .bg-gradient {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background: inherit; /* body と同じグラデ */
+  }
+  
+  /* ================================================================
+     ヘッダー & ナビゲーション
+     ================================================================ */
+  .wave-header { position: relative; text-align: center; overflow: hidden; }
+  
+  .wave-header .navbar-brand,
+  .wave-header .nav-link {
+    color: var(--text-light) !important;
+    text-shadow: 0 0 6px rgba(0,0,0,0.55);
+    transition: color .2s ease;
+  }
+  
+  .wave-header .nav-link:hover,
+  .wave-header .nav-link:focus,
+  .wave-header .nav-link.active {
+    color: var(--text-accent) !important;
+  }
+  
+  /* 中央キャッチコピー */
+  .inner-header {
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+  }
+  .inner-header h1 { text-shadow: 0 0 8px rgba(0,0,0,0.45); }
+  .inner-header p  { color: rgba(255,255,255,0.9); }
+  
+  /* SVG 波 */
+  .waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    min-height: 100px;
+    max-height: 150px;
+    margin-bottom: -7px; /* Safari ギャップ対策 */
+  }
+  
+  /* ================================================================
+     Glass カード (メインコンテンツ)
+     ================================================================ */
+  .card.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    color: var(--text-dark);               /* ★ 白→ダークに変更 */
+    text-shadow: none;                     /* 影をオフに */
+  }
+  
+  /* カード内タイトルもしっかり濃色 */
+  .card.glass .card-header,
+  .card.glass h2,
+  .card.glass strong { color: var(--text-dark); }
+  
+  /* ================================================================
+     Carousel 画像
+     ================================================================ */
+  .carousel-inner img { aspect-ratio: 16 / 9; }
+  
+  /* ================================================================
+     波アニメーション
+     ================================================================ */
+  .parallax > use { animation: moveWave 25s cubic-bezier(.55,.5,.45,.5) infinite; }
+  .parallax > use:nth-child(1){ animation-delay:-2s;  animation-duration:7s; }
+  .parallax > use:nth-child(2){ animation-delay:-3s;  animation-duration:10s;}
+  .parallax > use:nth-child(3){ animation-delay:-4s;  animation-duration:13s;}
+  .parallax > use:nth-child(4){ animation-delay:-5s;  animation-duration:20s;}
+  
+  @keyframes moveWave {
+    0%   { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
+  }
+  
+  /* ================================================================
+     モバイル調整
+     ================================================================ */
+  @media (max-width: 768px) {
+    .waves        { height: 40px; min-height: 40px; }
+    .inner-header { height: 50vh; }
+    .inner-header h1 { font-size: 1.8rem; }
+  }
 
-*{ margin:0; padding:0; }
-body{ font-family:'Exo',sans-serif; }
+  /* ================================================================
+   Main content typography & layout
+   ================================================================ */
 
-/* -------------------- コンテンツ -------------------- */
-.context{
-  position:relative;
-  z-index:1;        /* 背景より前面 */
-  width:100%;
-}
-
-/* ---- カードを完全に透明化 ---- */
-.card{
-  background-color:transparent !important; /* 背景色なし */
-  border:none;                             /* 枠線も不要なら削除 */
-  box-shadow:none;                         /* 影も消す */
-  color:#fff;                              /* 読みやすいよう文字を白に */
-}
-.card-header{
-  background-color:transparent !important;
-  border-bottom:none;
-  font-weight:bold;
-  color:black;
-  font-size: 30px;
-}
-.card-body{
-  background-color:transparent !important;
-  color:black;
-}
-
-/* カルーセルを中央寄せ・幅50% */
-#myCarousel{
-  width:50%;
-  margin:0 auto;
-}
-
-/* -------------------- 背景アニメーション -------------------- */
-.area{
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
-  background:#5b7feb;
-  background:-webkit-linear-gradient(to left,#8f94fb,#4e54c8);
-  overflow:hidden;
-}
-.circles{
-  position:absolute; top:0; left:0;
-  width:100%; height:100%;
-}
-.circles li{
-  position:absolute; list-style:none;
-  width:20px; height:20px;
-  background:rgba(255,255,255,0.2);
-  bottom:-150px;
-  animation:animate 25s linear infinite;
-}
-.circles li:nth-child(1){ left:25%; width:80px;  height:80px;  animation-delay:0s;}
-.circles li:nth-child(2){ left:10%; width:20px;  height:20px;  animation-delay:2s;  animation-duration:12s;}
-.circles li:nth-child(3){ left:70%; width:20px;  height:20px;  animation-delay:4s;}
-.circles li:nth-child(4){ left:40%; width:60px;  height:60px;  animation-delay:0s;  animation-duration:18s;}
-.circles li:nth-child(5){ left:65%; width:20px;  height:20px;  animation-delay:0s;}
-.circles li:nth-child(6){ left:75%; width:110px; height:110px; animation-delay:3s;}
-.circles li:nth-child(7){ left:35%; width:150px; height:150px; animation-delay:7s;}
-.circles li:nth-child(8){ left:50%; width:25px;  height:25px;  animation-delay:15s; animation-duration:45s;}
-.circles li:nth-child(9){ left:20%; width:15px;  height:15px;  animation-delay:2s;  animation-duration:35s;}
-.circles li:nth-child(10){left:85%; width:150px; height:150px; animation-delay:0s;  animation-duration:11s;}
-
-@keyframes animate{
-  0%  { transform:translateY(0) rotate(0deg);      opacity:1; border-radius:0;}
-  100%{ transform:translateY(-1000px) rotate(720deg); opacity:0; border-radius:50%;}
-}
+/* 1) カードの最大幅を制限し中央寄せ */
+.content-wrapper {
+    max-width: 760px;
+    padding: 0 1rem;
+  }
+  
+  /* 2) 共通タイトル */
+  .card-title {
+    font-size: clamp(1.25rem, 2vw + 1rem, 1.5rem);
+    font-weight: 700;
+    background-color: transparent;
+    border: 0;
+    margin-bottom: 0;
+    color: var(--text-dark);
+  }
+  
+  /* 3) サブ見出し */
+  .sub-heading {
+    font-size: clamp(1.1rem, 1.5vw + 0.9rem, 1.4rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+  }
+  
+  /* 4) 箇条書きをスタイリッシュに */
+  .stylish-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    line-height: 1.75;
+  }
+  
+  .stylish-list li {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-dark);
+  }
+  
+  .stylish-list li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-size: 0.6rem;
+    color: var(--text-dark);
+    opacity: 0.6;
+  }
+  
+  /* 5) 大画面では少し余裕を持たせる */
+  @media (min-width: 992px) {
+    .content-wrapper {
+      padding: 0;
+    }
+    .card-title   { font-size: 1.6rem; }
+    .sub-heading  { font-size: 1.5rem; }
+  }
+  
