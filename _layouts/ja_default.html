@@ -9,7 +9,7 @@ Get assets path
   {% assign assets = "assets" %}
 {% endif %}
 
-<html lang="{{ site.data.ja_config.lang | default: "en-US" }}">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,46 @@ Get assets path
       }
     </script>
     <link rel="shortcut icon" type="image/x-icon" href="">
-    {% seo %}
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
+    <meta name="author" content="松山 卓矢">
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}">
+    {% else %}
+    <meta name="keywords" content="松山 卓矢, 松山卓矢, Takuya Matsuyama, 大阪大学, 生命機能研究科, 西本研究室, 脳科学, 計算論的神経科学, AI">
+    {% endif %}
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://suyamat.github.io/ja">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="松山 卓矢">
+    <link rel="alternate" hreflang="ja" href="https://suyamat.github.io/ja">
+    <link rel="alternate" hreflang="en" href="https://suyamat.github.io">
+    <link rel="alternate" hreflang="x-default" href="https://suyamat.github.io">
+    <link rel="canonical" href="https://suyamat.github.io/ja">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "松山 卓矢",
+      "alternateName": "Takuya Matsuyama",
+      "url": "https://suyamat.github.io/ja",
+      "sameAs": ["https://github.com/suyamat", "https://suyamat.github.io"],
+      "jobTitle": "修士課程大学院生",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "大阪大学",
+        "url": "https://www.fbs.osaka-u.ac.jp/ja"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "大阪大学"
+      },
+      "description": "大阪大学大学院生命機能研究科修士課程。Vision・Audio・Language AIを用いた脳機能解明の研究。西本研究室所属。"
+    }
+    </script>
   </head>
   <body onload="show_tag_section('all_posts')">
     <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>  <!-- Three.jsのためのcanvas要素を背景に設定 -->

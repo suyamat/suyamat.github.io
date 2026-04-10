@@ -8,9 +8,11 @@ place_name: 大阪
 
 # Blog info
 title: 松山 卓矢
-description: 個人サイト
+description: 松山卓矢（Takuya Matsuyama）の個人サイト。大阪大学大学院生命機能研究科修士課程在籍。Vision・Audio・Language AIを用いた脳機能解明の研究を行っています。
 url: https://suyamat.github.io/ja
 main_github_io: false
+author: 松山 卓矢
+lang: ja
 long_description: >-
     初めまして! 大阪大学生命機能研究科修士課程二年生の松山卓矢です。現在、知覚・認知神経科学研究室（<a href="https://nishimotolab.org/">西本研究室</a>）に所属しており、
     Vision, Audio, Language AIを用いた脳機能の解明に取り組んでいます。

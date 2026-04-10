@@ -8,9 +8,11 @@ place_name: Osaka, Japan
 
 # Blog info
 title: Takuya Matsuyama
-description: Personal Website
+description: Personal website of Takuya Matsuyama (松山 卓矢), a graduate student at the Graduate School of Frontier Biosciences, Osaka University. Research in computational neuroscience, Vision/Audio/Language AI, and brain decoding.
 url: https://suyamat.github.io
 main_github_io: true
+author: Takuya Matsuyama
+lang: en-US
 long_description: >-
     Hello! I am Takuya Matsuyama, a second-year master's student at the Graduate School of Frontier Biosciences at Osaka University.
     I am currently affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>),
@@ -33,6 +35,7 @@ resume_url: assets/files/resume.pdf
 markdown: kramdown
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 highlighter: rouge
 color_mode: light  # auto, light, or dark
 comments: false
