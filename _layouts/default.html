@@ -29,19 +29,6 @@ Get assets path
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script src="https://threejs.org/build/three.js"></script>
-    <script>
-      function show_tag_section(tag) {
-        // Hide all other tag divs
-        document.getElementById('all_posts').style.display = 'none';
-        var tag_divs = document.getElementsByClassName('by_tag');
-        var i;
-        for (var i = 0; i < tag_divs.length; i++) {
-          tag_divs[i].style.display = 'none';
-        }
-        // Show the one we want
-        document.getElementById(tag).style.display = 'block';
-      }
-    </script>
     <style>
       body { margin: 0; }
       #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
@@ -82,6 +69,9 @@ Get assets path
     </script>
   </head>
   <body onload="show_tag_section('all_posts')">
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress-bar"></div>
+
     <div class="header">
 
       <!-- Large header banner on left for large display widths -->
@@ -129,14 +119,12 @@ Get assets path
               <div class="col2">
                 <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
                 <span> Github </span>
-                <div class="block-veil"></div>
               </div>
             </a>
             <!-- <a href="{{ site.linkedin_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
                 <span> LinkedIn </span>
-                <div class="block-veil"></div>
               </div>
             </a> -->
           </div>
@@ -146,14 +134,12 @@ Get assets path
               <div class="col2">
                 <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
                 <span> Email </span>
-                <div class="block-veil"></div>
               </div>
             </a>
             <!-- <a href="{{ site.resume_url }}">
               <div class="col2">
                 <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
                 <span> Resume </span>
-                <div class="block-veil"></div>
               </div>
             </a> -->
           </div>
@@ -203,14 +189,12 @@ Get assets path
                 <div class="col2">
                   <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
                   <span> Github </span>
-                  <div class="block-veil"></div>
                 </div>
               </a>
               <!-- <a href="{{ site.linkedin_url }}">
                 <div class="col2">
                   <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
                   <span> LinkedIn </span>
-                  <div class="block-veil"></div>
                 </div>
               </a> -->
             </div>
@@ -220,14 +204,12 @@ Get assets path
                 <div class="col2">
                   <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
                   <span> Email </span>
-                  <div class="block-veil"></div>
                 </div>
               </a>
               <!-- <a href="{{ site.resume_url }}">
                 <div class="col2">
                   <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
                   <span> Resume </span>
-                  <div class="block-veil"></div>
                 </div>
               </a> -->
             </div>
@@ -236,7 +218,7 @@ Get assets path
       </div>
 
     </div>
-    
+
     <!-- Page content -->
     <div class="content">
       {{ content }}
@@ -251,20 +233,97 @@ Get assets path
       });
     </script> -->
     <script>
+      // Scroll progress bar functionality
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = scrollPercent + '%';
+      }
+
+      window.addEventListener('scroll', updateScrollProgress, false);
+
+      // Tag section switching with smooth fade animation
+      function show_tag_section(tag) {
+        const allPostsDiv = document.getElementById('all_posts');
+        const tagDivs = document.getElementsByClassName('by_tag');
+
+        // Fade out current visible content
+        const currentVisible = document.querySelector('.by_tag[style*="display: block"], #all_posts[style*="display: block"]');
+        if (currentVisible) {
+          currentVisible.style.opacity = '0';
+          currentVisible.style.transition = 'opacity 0.2s ease-out';
+
+          setTimeout(() => {
+            // Hide all
+            allPostsDiv.style.display = 'none';
+            for (let i = 0; i < tagDivs.length; i++) {
+              tagDivs[i].style.display = 'none';
+            }
+
+            // Show selected
+            if (tag === 'all_posts') {
+              allPostsDiv.style.display = 'block';
+              allPostsDiv.style.opacity = '1';
+              allPostsDiv.style.transition = 'opacity 0.3s ease-in';
+            } else {
+              document.getElementById(tag).style.display = 'block';
+              document.getElementById(tag).style.opacity = '1';
+              document.getElementById(tag).style.transition = 'opacity 0.3s ease-in';
+            }
+
+            // Update active tag styling
+            updateActiveTag(tag);
+          }, 200);
+        } else {
+          // First time initialization
+          allPostsDiv.style.display = 'none';
+          for (let i = 0; i < tagDivs.length; i++) {
+            tagDivs[i].style.display = 'none';
+          }
+
+          if (tag === 'all_posts') {
+            allPostsDiv.style.display = 'block';
+          } else {
+            document.getElementById(tag).style.display = 'block';
+          }
+
+          updateActiveTag(tag);
+        }
+      }
+
+      // Update active tag styling
+      function updateActiveTag(activeTag) {
+        const allTags = document.querySelectorAll('.post_tag, .language-btn');
+        allTags.forEach(tag => {
+          tag.classList.remove('active');
+          if (tag.getAttribute('onclick') && tag.getAttribute('onclick').includes(activeTag)) {
+            tag.classList.add('active');
+          }
+        });
+      }
+
+      // Intersection Observer for scroll animations
       document.addEventListener("DOMContentLoaded", function() {
-        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
+        const elementsToAnimate = document.querySelectorAll(
+          '.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2, h2'
+        );
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
 
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('make-visible');
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+              observer.unobserve(entry.target);
             }
           });
-        });
+        }, observerOptions);
 
-        elements.forEach(element => {
+        elementsToAnimate.forEach(element => {
           observer.observe(element);
         });
       });
