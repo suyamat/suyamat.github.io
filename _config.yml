@@ -1,22 +1,24 @@
 # Info about you
 name: Takuya Matsuyama
-position: Graduate Student
-email: 
-company_name: Osaka University
-company_url: https://www.fbs.osaka-u.ac.jp/en/
-place_name: Osaka, Japan
+position: Web Engineer
+email:
+company_name: Fukui Computer Co., Ltd.
+company_url: https://www.fukuicompu.co.jp/
+place_name: Fukui, Japan
 
 # Blog info
 title: Takuya Matsuyama
-description: Personal website of Takuya Matsuyama (松山 卓矢), a graduate student at the Graduate School of Frontier Biosciences, Osaka University. Research in computational neuroscience, Vision/Audio/Language AI, and brain decoding.
+description: Personal website of Takuya Matsuyama (松山 卓矢), a web engineer at Fukui Computer Co., Ltd. Developing full-stack web applications with ASP.NET Core, TypeScript, SQL Server, and Azure. Background in AI-based brain research at Osaka University.
 url: https://suyamat.github.io
 main_github_io: true
 author: Takuya Matsuyama
 lang: en-US
 long_description: >-
-    Hello! I am Takuya Matsuyama, a second-year master's student at the Graduate School of Frontier Biosciences at Osaka University.
-    I am currently affiliated with the Perception and Cognitive Neuroscience Laboratory (<a href="https://nishimotolab.org/">Nishimoto Lab</a>),
-    where I am working on elucidating brain functions using Vision, Audio, and Language AI.
+    Hello! I am Takuya Matsuyama, a web engineer at <a href="https://www.fukuicompu.co.jp/">Fukui Computer Co., Ltd.</a>,
+    where I develop full-stack web applications using ASP.NET Core, TypeScript, SQL Server, and Azure.
+    I completed my master's degree at the Graduate School of Frontier Biosciences, Osaka University,
+    where I researched brain function elucidation using Vision, Audio, and Language AI at the
+    <a href="https://nishimotolab.org/">Nishimoto Lab</a>.
 
 # Social links
 github_url: https://github.com/suyamat

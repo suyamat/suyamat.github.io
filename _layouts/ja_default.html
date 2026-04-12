@@ -28,28 +28,14 @@ Get assets path
     <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script>
-      function show_tag_section(tag) {
-        // Hide all other tag divs
-        document.getElementById('all_posts').style.display = 'none';
-        var tag_divs = document.getElementsByClassName('by_tag');
-        var i;
-        for (var i = 0; i < tag_divs.length; i++) {
-          tag_divs[i].style.display = 'none';
-        }
-        // Show the one we want
-        document.getElementById(tag).style.display = 'block';
-      }
-    </script>
-    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
     <meta name="author" content="松山 卓矢">
     {% if page.keywords %}
     <meta name="keywords" content="{{ page.keywords }}">
     {% else %}
-    <meta name="keywords" content="松山 卓矢, 松山卓矢, Takuya Matsuyama, 大阪大学, 生命機能研究科, 西本研究室, 脳科学, 計算論的神経科学, AI">
+    <meta name="keywords" content="松山 卓矢, 松山卓矢, Takuya Matsuyama, Webエンジニア, 福井コンピュータ, 福井コンピュータ株式会社, ASP.NET Core, TypeScript, SQL Server, Azure, 大阪大学, 脳科学, AI">
     {% endif %}
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
@@ -70,22 +56,23 @@ Get assets path
       "alternateName": "Takuya Matsuyama",
       "url": "https://suyamat.github.io/ja",
       "sameAs": ["https://github.com/suyamat", "https://suyamat.github.io"],
-      "jobTitle": "修士課程大学院生",
+      "jobTitle": "Webエンジニア",
       "worksFor": {
         "@type": "Organization",
-        "name": "大阪大学",
-        "url": "https://www.fbs.osaka-u.ac.jp/ja"
+        "name": "福井コンピュータ株式会社",
+        "url": "https://www.fukuicompu.co.jp/"
       },
       "alumniOf": {
         "@type": "Organization",
         "name": "大阪大学"
       },
-      "description": "大阪大学大学院生命機能研究科修士課程。Vision・Audio・Language AIを用いた脳機能解明の研究。西本研究室所属。"
+      "description": "福井コンピュータ株式会社勤務のWebエンジニア。ASP.NET Core・TypeScript・SQL Server・Azureを用いたフルスタック開発。大阪大学大学院にてAIを活用した脳研究に従事。"
     }
     </script>
   </head>
   <body onload="show_tag_section('all_posts')">
-    <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>  <!-- Three.jsのためのcanvas要素を背景に設定 -->
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress-bar"></div>
     <div class="header">
 
       <!-- Large header banner on left for large display widths -->
@@ -246,31 +233,75 @@ Get assets path
       {{ content }}
     </div>
 
-    <div id="particles-js"></div>
+    <script>
+      // Scroll progress bar
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = scrollPercent + '%';
+      }
+      window.addEventListener('scroll', updateScrollProgress, false);
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-      particlesJS.load('particles-js', 'assets/js/particles.json', function() {
-          console.log('callback - particles.js config loaded');
-      });
-    </script>
-    <script>
+      // Tag section switching with smooth fade
+      function show_tag_section(tag) {
+        const allPostsDiv = document.getElementById('all_posts');
+        const tagDivs = document.getElementsByClassName('by_tag');
+
+        const currentVisible = document.querySelector('.by_tag[style*="display: block"], #all_posts[style*="display: block"]');
+        if (currentVisible) {
+          currentVisible.style.opacity = '0';
+          currentVisible.style.transition = 'opacity 0.2s ease-out';
+          setTimeout(() => {
+            allPostsDiv.style.display = 'none';
+            for (let i = 0; i < tagDivs.length; i++) tagDivs[i].style.display = 'none';
+            if (tag === 'all_posts') {
+              allPostsDiv.style.display = 'block';
+              allPostsDiv.style.opacity = '1';
+              allPostsDiv.style.transition = 'opacity 0.3s ease-in';
+            } else {
+              document.getElementById(tag).style.display = 'block';
+              document.getElementById(tag).style.opacity = '1';
+              document.getElementById(tag).style.transition = 'opacity 0.3s ease-in';
+            }
+            updateActiveTag(tag);
+          }, 200);
+        } else {
+          allPostsDiv.style.display = 'none';
+          for (let i = 0; i < tagDivs.length; i++) tagDivs[i].style.display = 'none';
+          if (tag === 'all_posts') {
+            allPostsDiv.style.display = 'block';
+          } else {
+            document.getElementById(tag).style.display = 'block';
+          }
+          updateActiveTag(tag);
+        }
+      }
+
+      function updateActiveTag(activeTag) {
+        document.querySelectorAll('.post_tag, .language-btn').forEach(tag => {
+          tag.classList.remove('active');
+          if (tag.getAttribute('onclick') && tag.getAttribute('onclick').includes(activeTag)) {
+            tag.classList.add('active');
+          }
+        });
+      }
+
+      // Intersection Observer for scroll animations
       document.addEventListener("DOMContentLoaded", function() {
-        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
-
+        const elementsToAnimate = document.querySelectorAll(
+          '.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2, h2'
+        );
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('make-visible');
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+              observer.unobserve(entry.target);
             }
           });
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        elements.forEach(element => {
-          observer.observe(element);
-        });
+        elementsToAnimate.forEach(element => observer.observe(element));
       });
     </script>
   </body>
