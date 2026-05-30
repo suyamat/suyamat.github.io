@@ -9,7 +9,7 @@ Get assets path
   {% assign assets = "assets" %}
 {% endif %}
 
-<html lang="{{ site.data.ja_config.lang | default: "en-US" }}">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,224 +28,159 @@ Get assets path
     <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script>
-      function show_tag_section(tag) {
-        // Hide all other tag divs
-        document.getElementById('all_posts').style.display = 'none';
-        var tag_divs = document.getElementsByClassName('by_tag');
-        var i;
-        for (var i = 0; i < tag_divs.length; i++) {
-          tag_divs[i].style.display = 'none';
-        }
-        // Show the one we want
-        document.getElementById(tag).style.display = 'block';
-      }
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
+    <meta name="author" content="松山 卓矢">
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}">
+    {% else %}
+    <meta name="keywords" content="松山 卓矢, 松山卓矢, Takuya Matsuyama, Webエンジニア, 福井コンピュータ, 福井コンピュータ株式会社, ASP.NET Core, TypeScript, SQL Server, Azure, 大阪大学, 脳科学, AI">
+    {% endif %}
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://suyamat.github.io/ja">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="松山 卓矢">
+    <link rel="alternate" hreflang="ja" href="https://suyamat.github.io/ja">
+    <link rel="alternate" hreflang="en" href="https://suyamat.github.io">
+    <link rel="alternate" hreflang="x-default" href="https://suyamat.github.io">
+    <link rel="canonical" href="https://suyamat.github.io/ja">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "松山 卓矢",
+      "alternateName": "Takuya Matsuyama",
+      "url": "https://suyamat.github.io/ja",
+      "sameAs": ["https://github.com/suyamat", "https://suyamat.github.io"],
+      "jobTitle": "Webエンジニア",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "福井コンピュータ株式会社",
+        "url": "https://www.fukuicompu.co.jp/"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "大阪大学"
+      },
+      "description": "福井コンピュータ株式会社勤務のWebエンジニア。ASP.NET Core・TypeScript・SQL Server・Azureを用いたフルスタック開発。大阪大学大学院にてAIを活用した脳研究に従事。"
+    }
     </script>
-    <link rel="shortcut icon" type="image/x-icon" href="">
-    {% seo %}
   </head>
   <body onload="show_tag_section('all_posts')">
-    <canvas id="threeCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>  <!-- Three.jsのためのcanvas要素を背景に設定 -->
-    <div class="header">
-
-      <!-- Large header banner on left for large display widths -->
-      <div class="big_header">
-
-        <!-- Name -->
-        <div class="name_group">
-          <h1>{{ site.data.ja_config.name }}</h1>
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress-bar"></div>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-avatar">
+          <img src="{{ site.logo }}" alt="{{ site.data.ja_config.name }}">
         </div>
-
-        <a href=""><img src="{{ site.logo }}" alt="Logo" class="center_img" ></a>
-
-        <!-- Position + company -->
-        <div class="link_group">
-
-          <div class="row">
-              <div class="col1">
-                <span> {{ site.data.ja_config.position }} at </span>
-              </div>
-          </div>
-
-          <div class="row">
-            <a href="{{ site.data.ja_config.company_url }}">
-              <div class="col1">
-                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
-                <span> {{ site.data.ja_config.company_name }} </span>
-              </div>
+        <div class="hero-body">
+          <h1 class="hero-name">{{ site.data.ja_config.name }}</h1>
+          <p class="hero-title">{{ site.data.ja_config.position }} <span class="hero-at">@</span>
+            <a href="{{ site.data.ja_config.company_url }}" target="_blank" rel="noopener">{{ site.data.ja_config.company_name }}</a>
+          </p>
+          {% if site.data.ja_config.place_name %}<p class="hero-location">{{ site.data.ja_config.place_name }}</p>{% endif %}
+          <nav class="hero-links">
+            <a class="hero-link" href="{{ site.data.ja_config.github_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/github_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/github_icon_light.png" alt="" aria-hidden="true">
+              <span>GitHub</span>
             </a>
-          </div>
-
-          <div class="row">
-            <div class="col1">
-              <img src="{{ assets }}/img/place_icon_dark.png" height="16" width="16">
-              <span> {{ site.data.ja_config.place_name }} </span>
-            </div>
-          </div>
-
+            <a class="hero-link" href="{{ site.data.ja_config.google_scholar_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/google_scholar_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/google_scholar_icon_light.png" alt="" aria-hidden="true">
+              <span>Scholar</span>
+            </a>
+            {% if site.data.ja_config.email %}
+            <a class="hero-link" href="mailto:{{ site.data.ja_config.email }}">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/email_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/email_icon_light.png" alt="" aria-hidden="true">
+              <span>Email</span>
+            </a>
+            {% endif %}
+          </nav>
         </div>
-
-        <!-- Badges/links -->
-        <div class="link_group">
-
-          <div class="row">
-            <a href="{{ site.data.ja_config.github_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
-                <span> Github </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <a href="{{ site.data.ja_config.google_scholar_url }}" target="_blank" rel="noopener">
-              <div class="col2">
-                <img src="{{ assets }}/img/google_scholar_icon_dark.png" height="16" width="16">
-                <span> Scholar </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <!-- <a href="{{ site.data.ja_config.linkedin_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
-                <span> LinkedIn </span>
-                <div class="block-veil"></div>
-              </div>
-            </a> -->
-          </div>
-
-          <div class="row">
-            <a href="mailto:{{ site.data.ja_config.email }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
-                <span> Email </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <!-- <a href="{{ site.data.ja_config.resume_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
-                <span> Resume </span>
-                <div class="block-veil"></div>
-              </div>
-            </a> -->
-          </div>
-
-        </div>
-
       </div>
-
-      <!-- Smaller header banner on top for small display widths -->
-      <div class="small_header">
-
-        <!-- Name -->
-        <div class="small_header_box">
-          <div class="name_header_box">
-            <div class="name_header_img">
-              <a href="">
-                <img src="{{ site.logo }}" alt="Logo" height="60">
-              </a>
-            </div>
-            <div class="name_header_name">
-              <h1>{{ site.data.ja_config.name }}</h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- Position + Company -->
-        <div class="small_header_box">
-          <div class="row">
-            <div class="col1">
-              <span> {{ site.data.ja_config.position }} at </span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col1">
-              <a href="{{ site.data.ja_config.company_url }}">
-                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
-                <span> {{ site.data.ja_config.company_name }} </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Badges/links -->
-        <div class="small_header_box">
-            <div class="row">
-              <a href="{{ site.data.ja_config.github_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
-                  <span> Github </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <a href="{{ site.data.ja_config.google_scholar_url }}" target="_blank" rel="noopener">
-                <div class="col2">
-                  <img src="{{ assets }}/img/google_scholar_icon_dark.png" height="16" width="16">
-                  <span> Scholar </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <!-- <a href="{{ site.data.ja_config.linkedin_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
-                  <span> LinkedIn </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a> -->
-            </div>
-
-            <div class="row">
-              <a href="mailto:{{ site.data.ja_config.email }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
-                  <span> Email </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <!-- <a href="{{ site.data.ja_config.resume_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
-                  <span> Resume </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a> -->
-            </div>
-        </div>
-
-      </div>
-
-    </div>
+    </header>
     
     <!-- Page content -->
     <div class="content">
       {{ content }}
     </div>
 
-    <div id="particles-js"></div>
+    <script>
+      // Scroll progress bar
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = scrollPercent + '%';
+      }
+      window.addEventListener('scroll', updateScrollProgress, false);
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-      particlesJS.load('particles-js', 'assets/js/particles.json', function() {
-          console.log('callback - particles.js config loaded');
-      });
-    </script>
-    <script>
+      // Tag section switching with smooth fade
+      function show_tag_section(tag) {
+        const allPostsDiv = document.getElementById('all_posts');
+        const tagDivs = document.getElementsByClassName('by_tag');
+
+        const currentVisible = document.querySelector('.by_tag[style*="display: block"], #all_posts[style*="display: block"]');
+        if (currentVisible) {
+          currentVisible.style.opacity = '0';
+          currentVisible.style.transition = 'opacity 0.2s ease-out';
+          setTimeout(() => {
+            allPostsDiv.style.display = 'none';
+            for (let i = 0; i < tagDivs.length; i++) tagDivs[i].style.display = 'none';
+            if (tag === 'all_posts') {
+              allPostsDiv.style.display = 'block';
+              allPostsDiv.style.opacity = '1';
+              allPostsDiv.style.transition = 'opacity 0.3s ease-in';
+            } else {
+              document.getElementById(tag).style.display = 'block';
+              document.getElementById(tag).style.opacity = '1';
+              document.getElementById(tag).style.transition = 'opacity 0.3s ease-in';
+            }
+            updateActiveTag(tag);
+          }, 200);
+        } else {
+          allPostsDiv.style.display = 'none';
+          for (let i = 0; i < tagDivs.length; i++) tagDivs[i].style.display = 'none';
+          if (tag === 'all_posts') {
+            allPostsDiv.style.display = 'block';
+          } else {
+            document.getElementById(tag).style.display = 'block';
+          }
+          updateActiveTag(tag);
+        }
+      }
+
+      function updateActiveTag(activeTag) {
+        document.querySelectorAll('.post_tag, .language-btn').forEach(tag => {
+          tag.classList.remove('active');
+          if (tag.getAttribute('onclick') && tag.getAttribute('onclick').includes(activeTag)) {
+            tag.classList.add('active');
+          }
+        });
+      }
+
+      // Intersection Observer for scroll animations
       document.addEventListener("DOMContentLoaded", function() {
-        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
-
+        const elementsToAnimate = document.querySelectorAll(
+          '.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2, h2'
+        );
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('make-visible');
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+              observer.unobserve(entry.target);
             }
           });
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        elements.forEach(element => {
-          observer.observe(element);
-        });
+        elementsToAnimate.forEach(element => observer.observe(element));
       });
     </script>
   </body>

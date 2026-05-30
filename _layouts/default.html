@@ -28,225 +28,185 @@ Get assets path
     <link rel="stylesheet" type="text/css" href="{{ assets }}/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="atom.xml" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script>
-      function show_tag_section(tag) {
-        // Hide all other tag divs
-        document.getElementById('all_posts').style.display = 'none';
-        var tag_divs = document.getElementsByClassName('by_tag');
-        var i;
-        for (var i = 0; i < tag_divs.length; i++) {
-          tag_divs[i].style.display = 'none';
-        }
-        // Show the one we want
-        document.getElementById(tag).style.display = 'block';
-      }
-    </script>
-    <style>
-      body { margin: 0; }
-      #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-    </style>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     {% seo %}
+    <meta name="author" content="Takuya Matsuyama">
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}">
+    {% else %}
+    <meta name="keywords" content="Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fukui Computer, 福井コンピュータ, ASP.NET Core, TypeScript, SQL Server, Azure, Osaka University, 大阪大学, neuroscience, AI">
+    {% endif %}
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <link rel="alternate" hreflang="en" href="https://suyamat.github.io">
+    <link rel="alternate" hreflang="ja" href="https://suyamat.github.io/ja">
+    <link rel="alternate" hreflang="x-default" href="https://suyamat.github.io">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Takuya Matsuyama",
+      "alternateName": "松山 卓矢",
+      "url": "https://suyamat.github.io",
+      "sameAs": ["https://github.com/suyamat"],
+      "jobTitle": "Web Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Fukui Computer Co., Ltd.",
+        "url": "https://www.fukuicompu.co.jp/"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "Osaka University"
+      },
+      "description": "Web engineer at Fukui Computer Co., Ltd. Full-stack development with ASP.NET Core, TypeScript, SQL Server, and Azure. Background in AI-based brain research at Osaka University."
+    }
+    </script>
+    <meta name="google-site-verification" content="JEPKXLtQjvZkAUHygH4kad22BwurMjp3XL3FbI0M-f8" />
   </head>
   <body onload="show_tag_section('all_posts')">
-    <div class="header">
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress-bar"></div>
 
-      <!-- Large header banner on left for large display widths -->
-      <div class="big_header">
-
-        <!-- Name -->
-        <div class="name_group">
-          <h1>{{ site.name }}</h1>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-avatar">
+          <img src="{{ site.logo }}" alt="{{ site.name }}">
         </div>
-
-        <a href=""><img src="{{ site.logo }}" alt="Logo" class="center_img" ></a>
-
-        <!-- Position + company -->
-        <div class="link_group">
-
-          <div class="row">
-              <div class="col1">
-                <span> {{ site.position }} at </span>
-              </div>
-          </div>
-
-          <div class="row">
-            <a href="{{ site.company_url }}">
-              <div class="col1">
-                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
-                <span> {{ site.company_name }} </span>
-              </div>
+        <div class="hero-body">
+          <h1 class="hero-name">{{ site.name }}</h1>
+          <p class="hero-title">{{ site.position }} <span class="hero-at">at</span>
+            <a href="{{ site.company_url }}" target="_blank" rel="noopener">{{ site.company_name }}</a>
+          </p>
+          {% if site.place_name %}<p class="hero-location">{{ site.place_name }}</p>{% endif %}
+          <nav class="hero-links">
+            <a class="hero-link" href="{{ site.github_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/github_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/github_icon_light.png" alt="" aria-hidden="true">
+              <span>GitHub</span>
             </a>
-          </div>
-
-          <div class="row">
-            <div class="col1">
-              <img src="{{ assets }}/img/place_icon_dark.png" height="16" width="16">
-              <span> {{ site.place_name }} </span>
-            </div>
-          </div>
-
+            <a class="hero-link" href="{{ site.google_scholar_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/google_scholar_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/google_scholar_icon_light.png" alt="" aria-hidden="true">
+              <span>Scholar</span>
+            </a>
+            {% if site.email %}
+            <a class="hero-link" href="mailto:{{ site.email }}">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/email_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/email_icon_light.png" alt="" aria-hidden="true">
+              <span>Email</span>
+            </a>
+            {% endif %}
+          </nav>
         </div>
-
-        <!-- Badges/links -->
-        <div class="link_group">
-
-          <div class="row">
-            <a href="{{ site.github_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
-                <span> Github </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <a href="{{ site.google_scholar_url }}" target="_blank" rel="noopener">
-              <div class="col2">
-                <img src="{{ assets }}/img/google_scholar_icon_dark.png" height="16" width="16">
-                <span> Scholar </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <!-- <a href="{{ site.linkedin_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
-                <span> LinkedIn </span>
-                <div class="block-veil"></div>
-              </div>
-            </a> -->
-          </div>
-
-          <div class="row">
-            <a href="mailto:{{ site.email }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
-                <span> Email </span>
-                <div class="block-veil"></div>
-              </div>
-            </a>
-            <!-- <a href="{{ site.resume_url }}">
-              <div class="col2">
-                <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
-                <span> Resume </span>
-                <div class="block-veil"></div>
-              </div>
-            </a> -->
-          </div>
-
-        </div>
-
       </div>
+    </header>
 
-      <!-- Smaller header banner on top for small display widths -->
-      <div class="small_header">
-
-        <!-- Name -->
-        <div class="small_header_box">
-          <div class="name_header_box">
-            <div class="name_header_img">
-              <a href="">
-                <img src="{{ site.logo }}" alt="Logo" height="60">
-              </a>
-            </div>
-            <div class="name_header_name">
-              <h1>{{ site.name }}</h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- Position + Company -->
-        <div class="small_header_box">
-          <div class="row">
-            <div class="col1">
-              <span> {{ site.position }} at </span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col1">
-              <a href="{{ site.company_url }}">
-                <img src="{{ assets }}/img/company_icon.png" height="16" width="16">
-                <span> {{ site.company_name }} </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Badges/links -->
-        <div class="small_header_box">
-            <div class="row">
-              <a href="{{ site.github_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
-                  <span> Github </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <a href="{{ site.google_scholar_url }}" target="_blank" rel="noopener">
-                <div class="col2">
-                  <img src="{{ assets }}/img/google_scholar_icon_dark.png" height="16" width="16">
-                  <span> Scholar </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <!-- <a href="{{ site.linkedin_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
-                  <span> LinkedIn </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a> -->
-            </div>
-
-            <div class="row">
-              <a href="mailto:{{ site.email }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
-                  <span> Email </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a>
-              <!-- <a href="{{ site.resume_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
-                  <span> Resume </span>
-                  <div class="block-veil"></div>
-                </div>
-              </a> -->
-            </div>
-        </div>
-
-      </div>
-
-    </div>
-    
     <!-- Page content -->
     <div class="content">
       {{ content }}
     </div>
 
-    <div id="particles-js"></div>
+    <!-- <div id="particles-js"></div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
       particlesJS.load('particles-js', 'assets/js/particles.json', function() {
           console.log('callback - particles.js config loaded');
       });
-    </script>
+    </script> -->
     <script>
+      // Scroll progress bar functionality
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector('.scroll-progress-bar').style.width = scrollPercent + '%';
+      }
+
+      window.addEventListener('scroll', updateScrollProgress, false);
+
+      // Tag section switching with smooth fade animation
+      function show_tag_section(tag) {
+        const allPostsDiv = document.getElementById('all_posts');
+        const tagDivs = document.getElementsByClassName('by_tag');
+
+        // Fade out current visible content
+        const currentVisible = document.querySelector('.by_tag[style*="display: block"], #all_posts[style*="display: block"]');
+        if (currentVisible) {
+          currentVisible.style.opacity = '0';
+          currentVisible.style.transition = 'opacity 0.2s ease-out';
+
+          setTimeout(() => {
+            // Hide all
+            allPostsDiv.style.display = 'none';
+            for (let i = 0; i < tagDivs.length; i++) {
+              tagDivs[i].style.display = 'none';
+            }
+
+            // Show selected
+            if (tag === 'all_posts') {
+              allPostsDiv.style.display = 'block';
+              allPostsDiv.style.opacity = '1';
+              allPostsDiv.style.transition = 'opacity 0.3s ease-in';
+            } else {
+              document.getElementById(tag).style.display = 'block';
+              document.getElementById(tag).style.opacity = '1';
+              document.getElementById(tag).style.transition = 'opacity 0.3s ease-in';
+            }
+
+            // Update active tag styling
+            updateActiveTag(tag);
+          }, 200);
+        } else {
+          // First time initialization
+          allPostsDiv.style.display = 'none';
+          for (let i = 0; i < tagDivs.length; i++) {
+            tagDivs[i].style.display = 'none';
+          }
+
+          if (tag === 'all_posts') {
+            allPostsDiv.style.display = 'block';
+          } else {
+            document.getElementById(tag).style.display = 'block';
+          }
+
+          updateActiveTag(tag);
+        }
+      }
+
+      // Update active tag styling
+      function updateActiveTag(activeTag) {
+        const allTags = document.querySelectorAll('.post_tag, .language-btn');
+        allTags.forEach(tag => {
+          tag.classList.remove('active');
+          if (tag.getAttribute('onclick') && tag.getAttribute('onclick').includes(activeTag)) {
+            tag.classList.add('active');
+          }
+        });
+      }
+
+      // Intersection Observer for scroll animations
       document.addEventListener("DOMContentLoaded", function() {
-        const elements = document.querySelectorAll('.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2');
+        const elementsToAnimate = document.querySelectorAll(
+          '.post_block, .conf_block, .contest_block, .experience_block, .profile, .education, .skills, .post_tag, .language-btn, .col2, h2'
+        );
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
 
         const observer = new IntersectionObserver(function(entries) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('make-visible');
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target); // 一度表示された要素の監視を停止
+              observer.unobserve(entry.target);
             }
           });
-        });
+        }, observerOptions);
 
-        elements.forEach(element => {
+        elementsToAnimate.forEach(element => {
           observer.observe(element);
         });
       });
