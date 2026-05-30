@@ -124,6 +124,9 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
       {% for post in site.posts %}
       {% if post.category == "contest" %}
       <div class="contest_block">
+        {% if post.platform %}
+        <span class="category-badge">{{ post.platform }}</span>
+        {% endif %}
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -173,18 +176,17 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
   <div class="education">
     <p><i>2025 April - </i><br />
       <b><a href="https://www.fukuicompu.co.jp/">Fukui Computer Co., Ltd.</a></b><br />
-      Web Engineer (Full-stack) <br />
-      ASP.NET Core, TypeScript, SQL Server, Azure
+      Web Engineer (Full-stack)
     </p>
 
     <p><i>2024 July - 2025 February </i><br />
       <b><a href="https://www.nii.ac.jp/en/">National Institute of Informatics (NII)</a></b><br />
-      Research Assistant in LLMC
+      Research Assistant in LLM Center
     </p>
 
     <p><i>2023 April - 2025 March </i><br />
       <b><a href="https://www.nict.go.jp/en/">National Institute of Information and Communications Technology (NICT)</a></b><br />
-      Collaborating Researcher in CiNet
+      Collaborating Researcher
     </p>
 
     <p><i>2023 August - 2023 September (1 month)</i><br />

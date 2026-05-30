@@ -125,6 +125,9 @@ lang: ja
       {% for post in site.posts %}
       {% if post.category == "contest" %}
       <div class="contest_block">
+        {% if post.platform %}
+        <span class="category-badge">{{ post.platform }}</span>
+        {% endif %}
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -174,23 +177,22 @@ lang: ja
   <div class="education">
     <p><i>2025/4 - </i><br />
       <b><a href="https://www.fukuicompu.co.jp/">福井コンピュータ株式会社</a></b><br />
-      Webエンジニア（フルスタック）<br />
-      ASP.NET Core, TypeScript, SQL Server, Azure
+      Webエンジニア（フルスタック）
     </p>
 
     <p><i>2024/7 - 2025/2 </i><br />
       <b><a href="https://www.nii.ac.jp/">国立情報学研究所（NII）</a></b><br />
-      LLMC リサーチアシスタント
+      LLMセンター リサーチアシスタント
     </p>
 
     <p><i>2023/4 - 2025/3 </i><br />
       <b><a href="https://www.nict.go.jp/">情報通信研究機構（NICT）</a></b><br />
-      CiNet 連携研究員
+      協力研究員
     </p>
 
     <p><i>2023/8 - 2023/9（1ヶ月）</i><br />
-      <b><a href="https://group.ntt/jp/">NTT研究所</a></b><br />
-      研究インターンシップ <br />
+      <b><a href="https://group.ntt/jp/">NTT R&amp;D</a></b><br />
+      リサーチインターンシップ <br />
       生成AIを用いたEEGからの画像生成
     </p>
     <div class="block-veil"></div>
