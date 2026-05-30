@@ -9,8 +9,8 @@ place_name: 福井
 # Blog info
 title: 松山 卓矢
 description: 松山卓矢（Takuya Matsuyama）の個人サイト。福井コンピュータ株式会社にてASP.NET Core・TypeScript・SQL Server・Azureを用いたフルスタックWebエンジニアとして勤務。大学院では Vision・Audio・Language AIを活用した脳研究に従事。
-url: https://suyamat.github.io/ja
-main_github_io: false
+url: https://suyamat.github.io
+main_github_io: true
 author: 松山 卓矢
 lang: ja
 long_description: >-
