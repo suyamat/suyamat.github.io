@@ -40,22 +40,22 @@ Get assets path
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ja_config.title }}{% endif %}">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.data.ja_config.description }}{% endif %}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://suyamat.github.io/ja">
+    <meta property="og:url" content="https://suyamat.github.io">
     <meta property="og:locale" content="ja_JP">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:site_name" content="松山 卓矢">
-    <link rel="alternate" hreflang="ja" href="https://suyamat.github.io/ja">
-    <link rel="alternate" hreflang="en" href="https://suyamat.github.io">
+    <link rel="alternate" hreflang="ja" href="https://suyamat.github.io">
+    <link rel="alternate" hreflang="en" href="https://suyamat.github.io/en">
     <link rel="alternate" hreflang="x-default" href="https://suyamat.github.io">
-    <link rel="canonical" href="https://suyamat.github.io/ja">
+    <link rel="canonical" href="https://suyamat.github.io">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "松山 卓矢",
       "alternateName": "Takuya Matsuyama",
-      "url": "https://suyamat.github.io/ja",
-      "sameAs": ["https://github.com/suyamat", "https://suyamat.github.io"],
+      "url": "https://suyamat.github.io",
+      "sameAs": ["https://github.com/suyamat", "https://suyamat.github.io/en"],
       "jobTitle": "Webエンジニア",
       "worksFor": {
         "@type": "Organization",
@@ -76,7 +76,7 @@ Get assets path
     <header class="hero">
       <div class="hero-inner">
         <div class="hero-avatar">
-          <img src="{{ site.logo }}" alt="{{ site.data.ja_config.name }}">
+          <img src="/{{ site.logo }}" alt="{{ site.data.ja_config.name }}">
         </div>
         <div class="hero-body">
           <h1 class="hero-name">{{ site.data.ja_config.name }}</h1>

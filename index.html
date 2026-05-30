@@ -1,23 +1,24 @@
 ---
-layout: default
-title: Takuya Matsuyama (松山 卓矢) - Web Engineer
-description: Personal website of Takuya Matsuyama (松山 卓矢), a web engineer at Fukui Computer Co., Ltd. Full-stack development with ASP.NET Core, TypeScript, SQL Server, and Azure. Background in AI-based brain research at Osaka University.
-keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fukui Computer, 福井コンピュータ, ASP.NET Core, TypeScript, SQL Server, Azure, Osaka University, 大阪大学, neuroscience, 脳科学
+layout: ja_default
+title: 松山 卓矢 (Takuya Matsuyama) - Webエンジニア
+description: 松山卓矢（Takuya Matsuyama）の個人サイト。福井コンピュータ株式会社勤務のWebエンジニア。ASP.NET Core・TypeScript・SQL Server・Azureを用いたフルスタック開発。大阪大学大学院にてAIを活用した脳研究に従事。
+keywords: 松山 卓矢, 松山卓矢, Takuya Matsuyama, Webエンジニア, 福井コンピュータ, 福井コンピュータ株式会社, ASP.NET Core, TypeScript, SQL Server, Azure, 大阪大学, 大阪大学大学院, 脳科学, AI
+lang: ja
 ---
 
 <div>
-  <a href="https://suyamat.github.io" class="language-btn">
+  <a href="https://suyamat.github.io/en" class="language-btn">
     English
     <div class="block-veil"></div>
   </a>
-  <a href="https://suyamat.github.io/ja" class="language-btn">
-    Japanese
+  <a href="https://suyamat.github.io" class="language-btn">
+    日本語
     <div class="block-veil"></div>
   </a>
 
   <h2>Profile</h2>
   <div class="profile">
-    <p>{{ site.long_description }}</p>
+    <p>{{ site.data.ja_config.long_description }}</p>
     <div class="block-veil"></div>
   </div>
 
@@ -49,11 +50,11 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
   {% comment %}
   Get site url without trailing forward slash
   {% endcomment %}
-  {% if site.main_github_io %}
+  {% if site.data.ja_config.main_github_io %}
   {% assign site_url = "" %}
   {% else %}
-  {% assign site_url_len = site.url | size | minus: 1 %}
-  {% assign site_url = site.url | slice: 0, site_url_len %}
+  {% assign site_url_len = site.data.ja_config.url | size | minus: 1 %}
+  {% assign site_url = site.data.ja_config.url | slice: 0, site_url_len %}
   {% endif %}
 
   <p>
@@ -72,7 +73,7 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
 
   <div id="all_posts">
     <div id="paper">
-      <h2> Papers </h2>
+      <h2> 論文 </h2>
       {% for post in site.posts %}
       {% if post.category == "publication" or post.category == "preprint" %}
       <div class="post_block">
@@ -96,7 +97,7 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
     </div>
 
     <div id="conferences">
-      <h2> Conferences </h2>
+      <h2> 学会 </h2>
       {% for post in site.posts %}
       {% if post.category == "conference" %}
       <div class="conf_block">
@@ -120,33 +121,10 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
     </div>
 
     <div id="contest">
-      <h2> Contests </h2>
+      <h2> コンテスト </h2>
       {% for post in site.posts %}
       {% if post.category == "contest" %}
       <div class="contest_block">
-        {% if post.description %}
-        <p> {{ post.description }} </p>
-        {% endif %}
-        {% if post.img_url %}
-        <a href="{{ site_url }}{{ post.url }}" title="{{ post.title }}">
-          <img src="{{ post.img_url }}" class="center_img">
-        </a>
-        {% endif %}
-        {% if post.tags.size > 0 %}
-        <div class="card-tags">
-          {% for tag in post.tags %}<span class="card-tag">{{ tag }}</span>{% endfor %}
-        </div>
-        {% endif %}
-      </div>
-      {% endif %}
-      {% endfor %}
-    </div>
-
-    <div id="experience">
-      <h2> Experience </h2>
-      {% for post in site.posts %}
-      {% if post.category == "experience" %}
-      <div class="experience_block">
         {% if post.description %}
         <p> {{ post.description }} </p>
         {% endif %}
@@ -192,43 +170,57 @@ keywords: Takuya Matsuyama, 松山 卓矢, web engineer, Webエンジニア, Fuk
   </div>
   {% endfor %}
 
-  <h2> Work Experience </h2>
+  <h2> 職歴 </h2>
   <div class="education">
-    <p><i>2025 April - </i><br />
-      <b>Fukui Computer Co., Ltd.</b><br />
-      Web Engineer (Full-stack) <br />
+    <p><i>2025/4 - </i><br />
+      <b><a href="https://www.fukuicompu.co.jp/">福井コンピュータ株式会社</a></b><br />
+      Webエンジニア（フルスタック）<br />
       ASP.NET Core, TypeScript, SQL Server, Azure
     </p>
+
+    <p><i>2024/7 - 2025/2 </i><br />
+      <b><a href="https://www.nii.ac.jp/">国立情報学研究所（NII）</a></b><br />
+      LLMC リサーチアシスタント
+    </p>
+
+    <p><i>2023/4 - 2025/3 </i><br />
+      <b><a href="https://www.nict.go.jp/">情報通信研究機構（NICT）</a></b><br />
+      CiNet 連携研究員
+    </p>
+
+    <p><i>2023/8 - 2023/9（1ヶ月）</i><br />
+      <b><a href="https://group.ntt/jp/">NTT研究所</a></b><br />
+      研究インターンシップ <br />
+      生成AIを用いたEEGからの画像生成
+    </p>
     <div class="block-veil"></div>
   </div>
 
-  <h2> Education </h2>
+  <h2> 学歴 </h2>
   <div class="education">
-    <p><i>2023 April - 2025 March </i><br />
-      <b>Osaka University</b><br />
-      Graduate School of Frontier Biosciences <br />
-      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-        Shinji Nishimoto</a>
+    <p><i>2023/4 - 2025/3 </i><br />
+      <b>大阪大学大学院</b><br />
+      生命機能研究科 <br />
+      指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        西本伸志</a>
     </p>
 
-    <p><i>2019 April - 2023 March </i><br />
-      <b>Osaka University</b><br />
-      Division of Biophysical Engineering, <br />
-      Department of Systems Science, <br />
-      School of Engineering Science, <br />
-      Supervisor: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
-        Shinji Nishimoto</a>
+    <p><i>2019/4 - 2023/3 </i><br />
+      <b>大阪大学</b><br />
+      基礎工学部システム科学科 <br />
+      指導者: <a href="https://scholar.google.com/citations?user=y1pLEGkAAAAJ">
+        西本伸志</a>
     </p>
     <div class="block-veil"></div>
   </div>
 
-  <h2> Skills</h2>
+  <h2> スキル</h2>
   <div class="skills">
-    <h3>Programming Languages</h3>
+    <h3>プログラミング言語</h3>
     <p>
       <span class="card-tag">C#</span><span class="card-tag">TypeScript</span><span class="card-tag">JavaScript</span><span class="card-tag">HTML</span><span class="card-tag">SCSS</span><span class="card-tag">Python</span><span class="card-tag">C</span>
     </p>
-    <h3>Frameworks &amp; Tools</h3>
+    <h3>フレームワーク・ツール</h3>
     <p>
       <span class="card-tag">ASP.NET Core</span><span class="card-tag">Azure</span><span class="card-tag">SQL Server</span><span class="card-tag">Docker</span>
     </p>
