@@ -68,77 +68,39 @@ Get assets path
     <!-- Scroll progress bar -->
     <div class="scroll-progress-bar"></div>
 
-    <div class="header">
-
-      <!-- Top header bar — visible on mobile/tablet only -->
-      <div class="small_header">
-
-        <!-- Name -->
-        <div class="small_header_box">
-          <div class="name_header_box">
-            <div class="name_header_img">
-              <a href="">
-                <img src="{{ site.logo }}" alt="Logo" height="60">
-              </a>
-            </div>
-            <div class="name_header_name">
-              <h1>{{ site.name }}</h1>
-            </div>
-          </div>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-avatar">
+          <img src="{{ site.logo }}" alt="{{ site.name }}">
         </div>
-
-        <!-- Position + Company -->
-        <div class="small_header_box">
-          <div class="row">
-            <div class="col1">
-              <span> {{ site.position }} at </span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col1">
-              <a href="{{ site.company_url }}">
-                <span> {{ site.company_name }} </span>
-              </a>
-            </div>
-          </div>
+        <div class="hero-body">
+          <h1 class="hero-name">{{ site.name }}</h1>
+          <p class="hero-title">{{ site.position }} <span class="hero-at">at</span>
+            <a href="{{ site.company_url }}" target="_blank" rel="noopener">{{ site.company_name }}</a>
+          </p>
+          {% if site.place_name %}<p class="hero-location">{{ site.place_name }}</p>{% endif %}
+          <nav class="hero-links">
+            <a class="hero-link" href="{{ site.github_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/github_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/github_icon_light.png" alt="" aria-hidden="true">
+              <span>GitHub</span>
+            </a>
+            <a class="hero-link" href="{{ site.google_scholar_url }}" target="_blank" rel="noopener">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/google_scholar_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/google_scholar_icon_light.png" alt="" aria-hidden="true">
+              <span>Scholar</span>
+            </a>
+            {% if site.email %}
+            <a class="hero-link" href="mailto:{{ site.email }}">
+              <img class="hero-link-icon on-light" src="{{ assets }}/img/email_icon_dark.png" alt="" aria-hidden="true">
+              <img class="hero-link-icon on-dark" src="{{ assets }}/img/email_icon_light.png" alt="" aria-hidden="true">
+              <span>Email</span>
+            </a>
+            {% endif %}
+          </nav>
         </div>
-
-        <!-- Badges/links -->
-        <div class="small_header_box">
-            <div class="row">
-              <a href="{{ site.github_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/github_icon_dark.png" height="16" width="16">
-                  <span> Github </span>
-                </div>
-              </a>
-              <!-- <a href="{{ site.linkedin_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/linkedin_icon_dark.png" height="16" width="16">
-                  <span> LinkedIn </span>
-                </div>
-              </a> -->
-            </div>
-
-            <div class="row">
-              <a href="mailto:{{ site.email }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/email_icon_dark.png" height="16" width="16">
-                  <span> Email </span>
-                </div>
-              </a>
-              <!-- <a href="{{ site.resume_url }}">
-                <div class="col2">
-                  <img src="{{ assets }}/img/cv_icon_dark.png" height="16" width="16">
-                  <span> Resume </span>
-                </div>
-              </a> -->
-            </div>
-        </div>
-
       </div>
-
-    </div>
+    </header>
 
     <!-- Page content -->
     <div class="content">
